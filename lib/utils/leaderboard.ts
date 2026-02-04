@@ -5,8 +5,25 @@ import type {
   SortDirection,
   SortableColumn,
   LeaderboardFilters,
+  MetricKey,
 } from "@/lib/types";
 import { ratingToNumber } from "./tracker";
+
+const METRIC_KEYS: MetricKey[] = [
+  "contextContinuity",
+  "userSovereignty",
+  "serviceProgrammability",
+  "interoperability",
+  "verifiableInfrastructure",
+  "digitalAssetMaturity",
+];
+
+/**
+ * Count how many metrics a country has at High rating
+ */
+function countHighMetrics(country: Country): number {
+  return METRIC_KEYS.filter(key => country.metrics[key].rating === "High").length;
+}
 
 /**
  * Get the next sort direction in the tri-state cycle: null → desc → asc → null
@@ -96,30 +113,29 @@ export function filterCountries(
 }
 
 /**
- * Assign ranks to countries based on their overall score
- * Countries with the same score get the same rank
+ * Assign unique sequential ranks to countries
+ * Sort by: overall rating (desc) → high metrics count (desc) → name (alpha)
  */
 export function assignRanks(countries: Country[]): RankedCountry[] {
-  // First sort by overall rating descending
-  const sorted = sortCountries(countries, { column: null, direction: null });
+  // Sort with tiebreakers for unique ranks
+  const sorted = [...countries].sort((a, b) => {
+    // Primary: overall rating descending
+    const ratingDiff = ratingToNumber(b.overallRating) - ratingToNumber(a.overallRating);
+    if (ratingDiff !== 0) return ratingDiff;
 
-  let currentRank = 1;
-  let previousScore: number | null = null;
+    // Secondary: high metrics count descending
+    const highDiff = countHighMetrics(b) - countHighMetrics(a);
+    if (highDiff !== 0) return highDiff;
 
-  return sorted.map((country, index) => {
-    const score = ratingToNumber(country.overallRating);
-
-    // If score is different from previous, update rank
-    if (previousScore !== null && score !== previousScore) {
-      currentRank = index + 1;
-    }
-    previousScore = score;
-
-    return {
-      ...country,
-      rank: currentRank,
-    };
+    // Tertiary: alphabetical by name
+    return a.name.localeCompare(b.name);
   });
+
+  // Assign sequential ranks 1, 2, 3... (no ties)
+  return sorted.map((country, index) => ({
+    ...country,
+    rank: index + 1,
+  }));
 }
 
 /**

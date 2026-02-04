@@ -6,6 +6,8 @@ import type { RankedCountry, MetricKey } from "@/lib/types";
 import { RatingBadge } from "@/components/country/RatingBadge";
 import { cn, getFlagUrl } from "@/lib/utils";
 import { METRIC_SHORT_NAMES } from "@/lib/constants/tracker";
+import { HighMetricsIndicator } from "./HighMetricsIndicator";
+import { countHighMetrics } from "@/lib/utils/analytics";
 
 interface RankingsCardProps {
   country: RankedCountry;
@@ -64,7 +66,10 @@ export function RankingsCard({
           <span className="text-xs text-muted">{country.region}</span>
         </div>
 
-        <RatingBadge rating={country.overallRating} size="lg" />
+        <div className="flex items-center gap-2">
+          <RatingBadge rating={country.overallRating} size="lg" />
+          <HighMetricsIndicator count={countHighMetrics(country)} />
+        </div>
       </div>
 
       {/* Metrics Grid - 2x3 */}

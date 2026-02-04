@@ -51,3 +51,47 @@ export interface LeaderboardFilters {
 export interface RankedCountry extends Country {
   rank: number;
 }
+
+// Analytics types for Insights Dashboard
+export interface RatingCounts {
+  High: number;
+  Medium: number;
+  Low: number;
+  total: number;
+}
+
+export interface RegionalStats {
+  region: string;
+  countryCount: number;
+  highCount: number;
+  topPerformer: Country | null;
+}
+
+export interface MetricDistribution {
+  metric: MetricKey;
+  displayName: string;
+  counts: RatingCounts;
+}
+
+export interface Insight {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface SpotlightData {
+  country: Country;
+  label: string;
+  category: string;
+  description: string;
+}
+
+export interface EnhancedRegionalStats extends RegionalStats {
+  mediumCount: number;
+  lowCount: number;
+}
+
+export interface MetricAnalysisData extends MetricDistribution {
+  isStrongest: boolean;
+  isWeakest: boolean;
+}

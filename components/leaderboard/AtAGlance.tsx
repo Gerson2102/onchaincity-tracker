@@ -1,0 +1,36 @@
+import type { Country } from "@/lib/types";
+import { getCountsByRating } from "@/lib/utils/analytics";
+import { StatCard } from "./StatCard";
+import { DistributionBar } from "./DistributionBar";
+
+interface AtAGlanceProps {
+  countries: Country[];
+}
+
+export function AtAGlance({ countries }: AtAGlanceProps) {
+  const counts = getCountsByRating(countries);
+
+  return (
+    <div>
+      <h2 className="heading-serif text-3xl text-charcoal mb-2 animate-fade-up">
+        At a <span className="heading-serif-italic">Glance</span>
+      </h2>
+      <p className="text-stone mb-8 animate-fade-up delay-100">
+        How nations stack up across our evaluation framework
+      </p>
+
+      <div className="card-soft p-8 animate-fade-up delay-200">
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
+          <StatCard label="Countries Tracked" value={counts.total} />
+          <StatCard label="High Performers" value={counts.High} rating="High" />
+          <StatCard label="Developing" value={counts.Medium} rating="Medium" />
+          <StatCard label="Emerging" value={counts.Low} rating="Low" />
+        </div>
+
+        {/* Distribution bar */}
+        <DistributionBar counts={counts} />
+      </div>
+    </div>
+  );
+}

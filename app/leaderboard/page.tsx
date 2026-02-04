@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { LeaderboardContent } from "@/components/leaderboard";
+import {
+  LeaderboardContent,
+  KeyInsights,
+  AtAGlance,
+  Spotlight,
+  RegionalBreakdown,
+  MetricAnalysis,
+} from "@/components/leaderboard";
 import countriesData from "@/data/countries.json";
 import type { TrackerData } from "@/lib/types";
 
@@ -43,9 +50,23 @@ export default function LeaderboardPage() {
         </div>
       </section>
 
-      {/* Rankings */}
+      {/* Insights Dashboard */}
+      <section className="relative py-16 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+          <KeyInsights countries={data.countries} />
+          <AtAGlance countries={data.countries} />
+          <Spotlight countries={data.countries} />
+          <RegionalBreakdown countries={data.countries} />
+          <MetricAnalysis countries={data.countries} />
+        </div>
+      </section>
+
+      {/* Full Rankings */}
       <section className="relative py-12 bg-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="heading-serif text-3xl text-charcoal mb-8">
+            Full <span className="heading-serif-italic">Rankings</span>
+          </h2>
           <Suspense fallback={<LeaderboardLoading />}>
             <LeaderboardContent countries={data.countries} />
           </Suspense>

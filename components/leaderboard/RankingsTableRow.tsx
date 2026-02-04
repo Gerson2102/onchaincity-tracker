@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import type { RankedCountry, MetricKey } from "@/lib/types";
 import { RatingBadge } from "@/components/country/RatingBadge";
 import { cn, getFlagUrl } from "@/lib/utils";
+import { HighMetricsIndicator } from "./HighMetricsIndicator";
+import { countHighMetrics } from "@/lib/utils/analytics";
 
 interface RankingsTableRowProps {
   country: RankedCountry;
@@ -75,6 +77,11 @@ export function RankingsTableRow({
       {/* Overall Rating - Use bar variant for emphasis */}
       <td className="py-4 px-4 text-center">
         <RatingBadge rating={country.overallRating} variant="bar" />
+      </td>
+
+      {/* High Metrics Indicator */}
+      <td className="py-4 px-3 text-center">
+        <HighMetricsIndicator count={countHighMetrics(country)} />
       </td>
 
       {/* Metric Ratings */}

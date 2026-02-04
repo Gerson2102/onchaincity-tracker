@@ -61,6 +61,9 @@ export function RankingsTable({
                     onClick={() => onSort("overall")}
                   />
                 </th>
+                <th className="py-3 px-3 text-center">
+                  <span className="label-subtle text-muted" title="High Metrics Count">Highs</span>
+                </th>
                 {METRIC_KEYS.map((key) => (
                   <th key={key} className="py-3 px-3 text-center">
                     <SortableHeader
