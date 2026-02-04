@@ -199,7 +199,7 @@ export function SearchBar({ variant = "full", onSelect, className }: SearchBarPr
       {isOpen && query && (
         <div
           id="search-results"
-          className="search-dropdown absolute top-full left-0 right-0 mt-2 max-h-80 overflow-y-auto z-50"
+          className="search-dropdown absolute top-full left-0 right-0 mt-2 max-h-80 overflow-y-auto z-[100] shadow-lg"
           role="listbox"
         >
           <SearchResults

@@ -3,17 +3,10 @@ import Image from "next/image";
 import { ClientOnly } from "@/components/ui/ClientOnly";
 import { WorldMap, MapLegend } from "@/components/map";
 import { SearchBar } from "@/components/search";
-import { LeaderboardStats } from "@/components/leaderboard";
 import countriesData from "@/data/countries.json";
 import type { TrackerData } from "@/lib/types";
 
 const data = countriesData as TrackerData;
-
-const stats = [
-  { label: "Governments engaged", value: "5 Nations" },
-  { label: "Citizens from", value: "20+ countries" },
-  { label: "GDP of Citizens", value: "$100M+" },
-];
 
 export default function Home() {
   return (
@@ -67,58 +60,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Section - Asymmetric with offset card */}
-      <section className="relative py-20 lg:py-28 bg-warm-white noise-overlay overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Text - takes 7 cols, left aligned */}
-            <div className="lg:col-span-7 lg:pr-12">
-              <h2 className="animate-slide-left">
-                <span className="heading-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal">
-                  Reclaim your
-                </span>
-                <br />
-                <span className="heading-serif-italic text-4xl sm:text-5xl lg:text-6xl text-accent">
-                  sovereignty
-                </span>
-                <span className="heading-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal">
-                  {" "}& access the world
-                </span>
-              </h2>
-
-              <p className="mt-8 text-stone text-lg leading-relaxed max-w-lg animate-fade-up delay-200">
-                Opt into only the government services you want & need,
-                wherever you are, whoever you are.
-              </p>
-
-              <Link
-                href="/about"
-                className="btn-pill btn-pill-outline mt-8 animate-fade-up delay-300"
-              >
-                Read Manifesto
-              </Link>
-            </div>
-
-            {/* Offset decorative card */}
-            <div className="lg:col-span-5 animate-scale-in delay-400">
-              <div className="relative">
-                {/* Background offset */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-accent/5 to-charcoal/4 rounded-3xl" />
-                <div className="card-editorial p-8 relative bg-cream/80">
-                  <span className="label-accent">Our Vision</span>
-                  <p className="mt-4 heading-serif-italic text-2xl text-charcoal leading-snug">
-                    &ldquo;Governments should serve citizens, not the other way around.&rdquo;
-                  </p>
-                  <p className="mt-4 text-stone text-sm">
-                    With cryptography as our foundation, self-sovereignty becomes the default.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Explore Map Section - Full width feel */}
       <section className="relative py-28 lg:py-36 bg-ivory noise-overlay">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -134,13 +75,13 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="max-w-md mb-8 animate-fade-up delay-300">
+          {/* Search Bar - higher z-index for dropdown visibility */}
+          <div className="max-w-md mb-8 animate-fade-up delay-300 relative z-20">
             <SearchBar variant="full" />
           </div>
 
-          {/* Map Container */}
-          <div className="card-soft p-4 sm:p-6 lg:p-8 animate-scale-in delay-400">
+          {/* Map Container - lower z-index so search dropdown appears above */}
+          <div className="card-soft p-4 sm:p-6 lg:p-8 animate-scale-in delay-400 relative z-10">
             <ClientOnly
               fallback={
                 <div className="w-full aspect-[2/1] flex items-center justify-center bg-ivory/50 rounded-xl">
@@ -162,77 +103,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Stats Section */}
-      <LeaderboardStats countries={data.countries} />
-
-      {/* Philosophy & Stats Section - Asymmetric grid */}
-      <section className="relative py-24 lg:py-32 bg-cream noise-overlay">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-6">
-            {/* Philosophy Card - Wider */}
-            <div className="lg:col-span-5 animate-slide-left">
-              <div className="card-soft card-accent p-8 h-full">
-                <span className="label-accent">Our Philosophy</span>
-                <h3 className="heading-serif text-3xl sm:text-4xl text-charcoal mt-4">
-                  Self-sovereignty
-                </h3>
-                <p className="mt-6 text-stone leading-relaxed">
-                  Governments should serve citizens, not the other way around.
-                  With cryptography as our foundation, self-sovereignty becomes
-                  the default.
-                </p>
-                <div className="mt-8 pt-6 border-t border-charcoal/10">
-                  <p className="heading-serif-italic text-xl text-charcoal">
-                    Belong anywhere. Thrive everywhere.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Center - Visual element with overlap */}
-            <div className="lg:col-span-3 flex items-center justify-center animate-scale-in delay-200">
-              <div className="relative w-full aspect-square max-w-[200px]">
-                {/* Accent ring */}
-                <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-pulse" style={{ animationDuration: '3s' }} />
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cream via-ivory to-peach flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="stat-display text-5xl text-accent">20</span>
-                    <p className="mt-1 text-stone text-xs">Nations Tracked</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats - Compact */}
-            <div className="lg:col-span-4 animate-slide-right delay-300">
-              <div className="card-soft p-8 h-full">
-                <span className="label-accent">Status</span>
-
-                <div className="mt-6 space-y-6">
-                  {stats.map((stat, i) => (
-                    <div key={i} className="group">
-                      <span className="label-subtle text-xs">{stat.label}</span>
-                      <p className="stat-display text-3xl sm:text-4xl text-charcoal mt-1 group-hover:text-accent transition-colors">
-                        {stat.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <Link
-                  href="/leaderboard"
-                  className="btn-pill btn-pill-primary mt-8 w-full"
-                >
-                  View Full Rankings
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Global Demand Section - More dynamic layout */}
-      <section className="relative py-20 lg:py-28 bg-ivory noise-overlay overflow-hidden">
+      <section className="relative py-20 lg:py-28 bg-cream noise-overlay overflow-hidden">
         {/* Decorative accent */}
         <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gradient-to-bl from-accent/5 to-transparent pointer-events-none" />
 
@@ -310,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section - Bold and clear */}
-      <section className="relative py-28 lg:py-40 clouds-bg bg-cream overflow-hidden noise-overlay">
+      <section className="relative py-28 lg:py-40 clouds-bg bg-ivory overflow-hidden noise-overlay">
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-transparent" />
 

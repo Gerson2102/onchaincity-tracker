@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Suspense } from "react";
+import { CompareContent } from "@/components/compare";
 
 export const metadata: Metadata = {
   title: "Compare",
   description: "Compare countries side by side across OnchainCity Tracker metrics.",
 };
+
+function CompareLoading() {
+  return (
+    <div className="space-y-12">
+      {/* Selector skeleton */}
+      <div className="card-soft p-6 animate-pulse">
+        <div className="h-6 w-40 bg-lavender/30 rounded mb-4" />
+        <div className="h-12 bg-lavender/20 rounded" />
+      </div>
+
+      {/* Content skeleton */}
+      <div className="card-soft p-12 text-center">
+        <div className="w-16 h-16 mx-auto rounded-full bg-lavender/20 mb-6" />
+        <div className="h-6 w-48 bg-lavender/30 rounded mx-auto mb-2" />
+        <div className="h-4 w-80 bg-lavender/20 rounded mx-auto" />
+      </div>
+    </div>
+  );
+}
 
 export default function ComparePage() {
   return (
@@ -27,29 +47,10 @@ export default function ComparePage() {
 
       {/* Content */}
       <section className="relative py-20 bg-cream">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <div className="card-soft p-12">
-            <div className="w-16 h-16 mx-auto rounded-full border-2 border-lavender/40 flex items-center justify-center mb-6">
-              <div className="w-8 h-8 rounded-full border border-stone/30" />
-            </div>
-
-            <h2 className="heading-serif text-2xl text-charcoal">
-              Coming <span className="heading-serif-italic">Soon</span>
-            </h2>
-
-            <p className="mt-4 text-stone">
-              The comparison tool is being developed. Soon you&apos;ll be able to
-              select multiple countries and compare their performance across
-              all six dimensions of our framework.
-            </p>
-
-            <Link
-              href="/leaderboard"
-              className="btn-pill btn-pill-outline mt-8"
-            >
-              View Rankings Instead
-            </Link>
-          </div>
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <Suspense fallback={<CompareLoading />}>
+            <CompareContent />
+          </Suspense>
         </div>
       </section>
     </main>

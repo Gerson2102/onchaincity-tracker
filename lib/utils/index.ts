@@ -17,3 +17,12 @@ export {
   getLeaderboardData,
   countByRating,
 } from "./leaderboard";
+export {
+  parseCountryIdsFromUrl,
+  buildCompareUrl,
+  getSharedHighMetrics,
+  getBiggestDivergence,
+  hasMetricDivergence,
+  getMetricRatingDistribution,
+  generateComparisonInsight,
+} from "./comparison";

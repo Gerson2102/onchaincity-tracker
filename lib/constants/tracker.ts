@@ -67,3 +67,10 @@ export const METRIC_SHORT_NAMES: Record<MetricKey, string> = {
   verifiableInfrastructure: "Verifiable",
   digitalAssetMaturity: "Digital Assets",
 };
+
+export const COMPARISON_COLORS = [
+  { name: "Teal", hex: "#0D9488", rgb: "13, 148, 136" },
+  { name: "Amber", hex: "#D97706", rgb: "217, 119, 6" },
+  { name: "Purple", hex: "#7C3AED", rgb: "124, 58, 237" },
+  { name: "Pink", hex: "#DB2777", rgb: "219, 39, 119" },
+] as const;
