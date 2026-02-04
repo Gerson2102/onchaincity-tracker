@@ -1,65 +1,343 @@
+import Link from "next/link";
 import Image from "next/image";
+import { ClientOnly } from "@/components/ui/ClientOnly";
+import { WorldMap, MapLegend } from "@/components/map";
+import { SearchBar } from "@/components/search";
+import { LeaderboardStats } from "@/components/leaderboard";
+import countriesData from "@/data/countries.json";
+import type { TrackerData } from "@/lib/types";
+
+const data = countriesData as TrackerData;
+
+const stats = [
+  { label: "Governments engaged", value: "5 Nations" },
+  { label: "Citizens from", value: "20+ countries" },
+  { label: "GDP of Citizens", value: "$100M+" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main id="main-content" className="relative">
+      {/* Hero Section - Asymmetric with large accent number */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Gradient background with noise */}
+        <div className="absolute inset-0 gradient-dreamy noise-overlay" />
+
+        {/* Soft cloud overlay */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 clouds-bg" />
+
+        {/* Large decorative number */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block">
+          <span className="stat-hero">20</span>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
+          {/* Asymmetric layout - text left aligned on large screens */}
+          <div className="max-w-3xl lg:max-w-2xl lg:ml-0">
+            {/* Main heading with staggered animation */}
+            <h1>
+              <span className="block heading-serif text-5xl sm:text-6xl lg:text-7xl text-charcoal animate-fade-up">
+                A home for
+              </span>
+              <span className="block heading-serif text-5xl sm:text-6xl lg:text-7xl text-charcoal animate-slide-left delay-50">
+                global{" "}
+                <span className="heading-serif-italic text-accent animate-fade-in delay-180">citizens</span>
+              </span>
+            </h1>
+
+            {/* Subtitle with accent divider */}
+            <div className="mt-10 animate-fade-up delay-300">
+              <div className="divider-accent mb-6" />
+              <p className="text-stone text-lg sm:text-xl leading-relaxed max-w-xl">
+                Simplifying access for internet citizens to global government
+                services with programmable & cryptographically secure systems.
+              </p>
+            </div>
+
+            {/* CTA Buttons - Primary action stands out */}
+            <div className="mt-10 flex flex-wrap gap-4 animate-fade-up delay-350">
+              <Link href="/leaderboard" className="btn-pill btn-pill-primary btn-pill-sweep animate-fade-up delay-250">
+                View Rankings
+              </Link>
+              <Link href="/about" className="btn-pill btn-pill-outline animate-fade-up delay-350">
+                Read Manifesto
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section - Asymmetric with offset card */}
+      <section className="relative py-20 lg:py-28 bg-warm-white noise-overlay overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Text - takes 7 cols, left aligned */}
+            <div className="lg:col-span-7 lg:pr-12">
+              <h2 className="animate-slide-left">
+                <span className="heading-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal">
+                  Reclaim your
+                </span>
+                <br />
+                <span className="heading-serif-italic text-4xl sm:text-5xl lg:text-6xl text-accent">
+                  sovereignty
+                </span>
+                <span className="heading-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal">
+                  {" "}& access the world
+                </span>
+              </h2>
+
+              <p className="mt-8 text-stone text-lg leading-relaxed max-w-lg animate-fade-up delay-200">
+                Opt into only the government services you want & need,
+                wherever you are, whoever you are.
+              </p>
+
+              <Link
+                href="/about"
+                className="btn-pill btn-pill-outline mt-8 animate-fade-up delay-300"
+              >
+                Read Manifesto
+              </Link>
+            </div>
+
+            {/* Offset decorative card */}
+            <div className="lg:col-span-5 animate-scale-in delay-400">
+              <div className="relative">
+                {/* Background offset */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-accent/5 to-charcoal/4 rounded-3xl" />
+                <div className="card-editorial p-8 relative bg-cream/80">
+                  <span className="label-accent">Our Vision</span>
+                  <p className="mt-4 heading-serif-italic text-2xl text-charcoal leading-snug">
+                    &ldquo;Governments should serve citizens, not the other way around.&rdquo;
+                  </p>
+                  <p className="mt-4 text-stone text-sm">
+                    With cryptography as our foundation, self-sovereignty becomes the default.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Explore Map Section - Full width feel */}
+      <section className="relative py-28 lg:py-36 bg-ivory noise-overlay">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Header - left aligned */}
+          <div className="max-w-2xl mb-12">
+            <span className="label-accent animate-fade-in">Explore</span>
+            <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-3 animate-slide-left delay-100">
+              The World at a Glance
+            </h2>
+            <p className="mt-4 text-stone text-lg animate-fade-up delay-200">
+              Discover how nations score on programmable infrastructure.
+              Click any highlighted country to see their full profile.
+            </p>
+          </div>
+
+          {/* Search Bar */}
+          <div className="max-w-md mb-8 animate-fade-up delay-300">
+            <SearchBar variant="full" />
+          </div>
+
+          {/* Map Container */}
+          <div className="card-soft p-4 sm:p-6 lg:p-8 animate-scale-in delay-400">
+            <ClientOnly
+              fallback={
+                <div className="w-full aspect-[2/1] flex items-center justify-center bg-ivory/50 rounded-xl">
+                  <div className="flex items-center gap-3 text-muted">
+                    <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    <span>Loading map...</span>
+                  </div>
+                </div>
+              }
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <WorldMap countries={data.countries} />
+            </ClientOnly>
+
+            {/* Legend */}
+            <div className="mt-6 flex justify-center">
+              <MapLegend />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Stats Section */}
+      <LeaderboardStats countries={data.countries} />
+
+      {/* Philosophy & Stats Section - Asymmetric grid */}
+      <section className="relative py-24 lg:py-32 bg-cream noise-overlay">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-6">
+            {/* Philosophy Card - Wider */}
+            <div className="lg:col-span-5 animate-slide-left">
+              <div className="card-soft card-accent p-8 h-full">
+                <span className="label-accent">Our Philosophy</span>
+                <h3 className="heading-serif text-3xl sm:text-4xl text-charcoal mt-4">
+                  Self-sovereignty
+                </h3>
+                <p className="mt-6 text-stone leading-relaxed">
+                  Governments should serve citizens, not the other way around.
+                  With cryptography as our foundation, self-sovereignty becomes
+                  the default.
+                </p>
+                <div className="mt-8 pt-6 border-t border-charcoal/10">
+                  <p className="heading-serif-italic text-xl text-charcoal">
+                    Belong anywhere. Thrive everywhere.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Center - Visual element with overlap */}
+            <div className="lg:col-span-3 flex items-center justify-center animate-scale-in delay-200">
+              <div className="relative w-full aspect-square max-w-[200px]">
+                {/* Accent ring */}
+                <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-pulse" style={{ animationDuration: '3s' }} />
+                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cream via-ivory to-peach flex items-center justify-center">
+                  <div className="text-center">
+                    <span className="stat-display text-5xl text-accent">20</span>
+                    <p className="mt-1 text-stone text-xs">Nations Tracked</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats - Compact */}
+            <div className="lg:col-span-4 animate-slide-right delay-300">
+              <div className="card-soft p-8 h-full">
+                <span className="label-accent">Status</span>
+
+                <div className="mt-6 space-y-6">
+                  {stats.map((stat, i) => (
+                    <div key={i} className="group">
+                      <span className="label-subtle text-xs">{stat.label}</span>
+                      <p className="stat-display text-3xl sm:text-4xl text-charcoal mt-1 group-hover:text-accent transition-colors">
+                        {stat.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/leaderboard"
+                  className="btn-pill btn-pill-primary mt-8 w-full"
+                >
+                  View Full Rankings
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Demand Section - More dynamic layout */}
+      <section className="relative py-20 lg:py-28 bg-ivory noise-overlay overflow-hidden">
+        {/* Decorative accent */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gradient-to-bl from-accent/5 to-transparent pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Text content */}
+            <div className="lg:sticky lg:top-32 animate-slide-left">
+              <span className="label-accent">Why This Matters</span>
+              <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-3">
+                Global Demand from{" "}
+                <span className="heading-serif-italic text-accent">Citizens</span>
+              </h2>
+              <p className="mt-6 text-stone text-lg leading-relaxed max-w-lg">
+                The call for a new model of governance is growing louder.
+                Millions from all over the world are seeking easier access
+                to visas, banking, and identity solutions.
+              </p>
+
+              {/* Country flags with stagger */}
+              <div className="mt-8 flex items-center gap-3">
+                {["ee", "sg", "ae", "jp", "gb"].map((flag, i) => (
+                  <div
+                    key={flag}
+                    className="w-11 h-11 rounded-full overflow-hidden border-2 border-white shadow-md animate-scale-in"
+                    style={{ animationDelay: `${400 + i * 100}ms` }}
+                  >
+                    <Image
+                      src={`https://flagcdn.com/w80/${flag}.png`}
+                      alt=""
+                      width={44}
+                      height={44}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+                <span className="text-muted text-sm ml-2">+15 more</span>
+              </div>
+            </div>
+
+            {/* Feature cards - staggered grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  title: "Context Continuity",
+                  desc: "Reuse verified identity across services without starting from scratch",
+                  delay: "delay-120"
+                },
+                {
+                  title: "User Sovereignty",
+                  desc: "Control your own data and grant granular consent",
+                  delay: "delay-250"
+                },
+                {
+                  title: "Programmability",
+                  desc: "API-driven, automatable services that work for developers",
+                  delay: "delay-350"
+                },
+                {
+                  title: "Interoperability",
+                  desc: "Data flows where you need it, across borders and systems",
+                  delay: "delay-450"
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`card-floating p-6 animate-fade-up ${item.delay}`}
+                >
+                  <h3 className="heading-serif text-xl text-charcoal">{item.title}</h3>
+                  <p className="mt-3 text-stone text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Bold and clear */}
+      <section className="relative py-28 lg:py-40 clouds-bg bg-cream overflow-hidden noise-overlay">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-transparent" />
+
+        <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <span className="label-accent animate-fade-in">Get Started</span>
+
+          <h2 className="heading-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal mt-4 animate-fade-up delay-100">
+            Create The Future With
+            <br />
+            <span className="heading-serif-italic text-accent">Onchain City</span>
+          </h2>
+
+          <p className="mt-6 text-stone text-lg max-w-xl mx-auto animate-fade-up delay-200">
+            Explore how nations are building programmable infrastructure
+            for global citizens.
           </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/leaderboard" className="btn-pill btn-pill-primary btn-pill-sweep animate-fade-up delay-250">
+              View Leaderboard
+            </Link>
+            <Link href="/compare" className="btn-pill btn-pill-outline animate-fade-up delay-350">
+              Compare Countries
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

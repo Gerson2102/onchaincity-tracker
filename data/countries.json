@@ -1,0 +1,669 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-01",
+    "totalCountries": 20
+  },
+  "countries": [
+    {
+      "id": "EST",
+      "name": "Estonia",
+      "region": "Europe",
+      "flag": "ee",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "Estonia's digital identity (e-ID) is reusable across 99% of government services and extends to private sector via Smart-ID. Citizens authenticate once and carry verified credentials seamlessly across tax, health, voting, and banking systems."
+        },
+        "userSovereignty": {
+          "rating": "High",
+          "summary": "Citizens have full visibility into who accesses their data via the X-Road data tracker. Consent is granular and revocable. The Personal Data Usage Monitor allows real-time audit of all government data queries."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "X-Road provides a unified API layer for all government services. Third-party developers can build on top of government infrastructure. The e-Residency program offers fully programmable business services."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "X-Road enables seamless data exchange between all government agencies and with private sector. Cross-border interoperability achieved with Finland and expanding to other EU nations."
+        },
+        "verifiableInfrastructure": {
+          "rating": "High",
+          "summary": "KSI Blockchain timestamps all government records, making tampering detectable. Digital signatures are legally binding and cryptographically verifiable. Health records, land registry, and court decisions all secured."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Land registry, business registry, health records, and educational credentials are fully digital. The e-Residency program enables digital-native business formation with no physical presence required."
+        }
+      }
+    },
+    {
+      "id": "SGP",
+      "name": "Singapore",
+      "region": "Asia-Pacific",
+      "flag": "sg",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "SingPass provides unified digital identity across 2,700+ government and private services. MyInfo enables one-click form filling with verified personal data across banking, insurance, and government applications."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "SingPass allows selective data sharing, but consent mechanisms are less granular than Estonia. Citizens can view transaction history but audit trails are not as comprehensive."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "APEX (API Exchange) provides 900+ APIs for government data and services. GovTech actively encourages third-party development through hackathons and sandbox environments."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "Strong internal interoperability via Singapore Government Tech Stack (SGTS). Active in ASEAN cross-border digital identity initiatives and bilateral agreements."
+        },
+        "verifiableInfrastructure": {
+          "rating": "High",
+          "summary": "OpenCerts provides blockchain-based verification for educational credentials. TradeTrust enables verifiable trade documents. Digital signatures widely accepted."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Comprehensive digital registries for business, property, and vehicles. Progressive regulatory framework for digital assets and tokenization under MAS oversight."
+        }
+      }
+    },
+    {
+      "id": "KOR",
+      "name": "South Korea",
+      "region": "Asia-Pacific",
+      "flag": "kr",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "National digital ID integrates with mobile drivers licenses and banking. Single sign-on across government portals and expanding to private sector through decentralized ID pilots."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "Strong data protection laws (PIPA) but consent management is service-by-service. MyData initiative piloting user-controlled data portability. Privacy awareness high but tools still maturing."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "Government24 portal offers 2,000+ digital services. Open API platform provides access to public datasets. Active promotion of RegTech and GovTech innovation."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "Strong internal data sharing between agencies. Leading APEC cross-border privacy rules. Interoperable with major trading partners through digital trade agreements."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Blockchain-based document verification expanding across government. Mobile drivers licenses cryptographically secured. Some agency records still lack full verification infrastructure."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Comprehensive real estate registry digitization. Business registrations fully digital. Clear regulatory framework for virtual assets under new legislation."
+        }
+      }
+    },
+    {
+      "id": "DNK",
+      "name": "Denmark",
+      "region": "Europe",
+      "flag": "dk",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "NemID/MitID provides universal digital identity across all government services and most banks. CPR number links records across agencies. Seamless authentication experience."
+        },
+        "userSovereignty": {
+          "rating": "High",
+          "summary": "Strong GDPR implementation with citizen-friendly consent portals. Borger.dk provides clear data access controls. Citizens can easily see and manage data sharing permissions."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "Comprehensive API strategy for government services. Open data portal with machine-readable datasets. Digital-by-default policy drives automation-friendly design."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "Full EU eIDAS compliance enables cross-border identity. Nordic interoperability agreements. Strong internal data sharing infrastructure between municipalities and national agencies."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Digital signatures legally recognized. PKI infrastructure mature. Blockchain verification pilots underway but not yet production-deployed across all registries."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Property registry fully digital since 1990s. Business registration instant and online. Health records, educational credentials all digitized with high data quality."
+        }
+      }
+    },
+    {
+      "id": "FIN",
+      "name": "Finland",
+      "region": "Europe",
+      "flag": "fi",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "Suomi.fi provides unified access to all government services with strong identity federation. Banking IDs accepted alongside national ID. Cross-service authentication seamless."
+        },
+        "userSovereignty": {
+          "rating": "High",
+          "summary": "MyData principles embedded in government strategy. Citizens control data sharing via Suomi.fi authorizations. Strong transparency about data usage across agencies."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "Growing API ecosystem via Suomi.fi palveluvayla. X-Road adoption from Estonia enables service interoperability. Some legacy systems still limit full programmability."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "X-Road deployment enables Estonian-Finnish cross-border services. Full EU eIDAS compliance. Strong Nordic cooperation on digital services."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Strong PKI infrastructure and digital signatures. Blockchain pilots for permits and credentials. Some registries still transitioning to fully verifiable formats."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Kanta health records system world-leading. Property and business registries fully digital. Educational credential digitization advanced."
+        }
+      }
+    },
+    {
+      "id": "USA",
+      "name": "United States",
+      "region": "Americas",
+      "flag": "us",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Low",
+          "summary": "No unified national digital identity. Login.gov provides federated access to some federal services but adoption limited. State IDs not interoperable. Citizens manage multiple identities."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "Strong sector-specific privacy laws (HIPAA, CCPA) but no comprehensive federal framework. Consent mechanisms vary widely by agency. Data portability rights inconsistent."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "API.gov and data.gov provide access to federal datasets. Some agencies have modern APIs but many lack programmatic access. Wide variation in digital maturity across agencies."
+        },
+        "interoperability": {
+          "rating": "Low",
+          "summary": "Federal-state data sharing fragmented. Interstate portability poor. Healthcare interoperability improving but still challenging. Siloed agency systems."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "PKI infrastructure exists for some applications. REAL ID improving identity verification. Blockchain pilots emerging but not mainstream in government records."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Strong fintech ecosystem with clear SEC/CFTC frameworks. Business registrations vary by state. Property records increasingly digital but not unified."
+        }
+      }
+    },
+    {
+      "id": "GBR",
+      "name": "United Kingdom",
+      "region": "Europe",
+      "flag": "gb",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "GOV.UK One Login expanding but not yet universal. Private identity providers certified for some services. No single unified digital identity across all services."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "UK GDPR provides strong framework. Consent mechanisms improving but fragmented across services. Data portability rights exist but implementation varies."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "Government Digital Service (GDS) sets strong API standards. GOV.UK APIs well-documented. Open data portal comprehensive. Design system promotes consistency."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Post-Brexit eIDAS equivalence still evolving. Internal government data sharing improving via GDS standards. Some legacy systems create barriers."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Digital signatures recognized. GOV.UK Verify winding down for One Login. Blockchain verification limited to pilots. Academic credentials verification advancing."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Land Registry digitization advanced. Companies House fully digital. FCA providing evolving crypto regulatory clarity. Healthcare records partially digital."
+        }
+      }
+    },
+    {
+      "id": "DEU",
+      "name": "Germany",
+      "region": "Europe",
+      "flag": "de",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "eID card (Personalausweis) enables digital identity but adoption below expectations. BundID expanding federal service access. Länder fragmentation creates inconsistency."
+        },
+        "userSovereignty": {
+          "rating": "High",
+          "summary": "Strong GDPR enforcement. Privacy-by-design culture. Granular consent mechanisms in many services. Data protection authorities active and well-resourced."
+        },
+        "serviceProgrammability": {
+          "rating": "Low",
+          "summary": "Online Access Act (OZG) mandates digital services but implementation delayed. API availability limited. Many services still require physical presence or paper forms."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "EU eIDAS compliance but federal-Länder coordination challenges. Data sharing across agencies improving slowly. Healthcare interoperability advancing via gematik."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Strong PKI and qualified electronic signatures. Blockchain pilots in supply chain and credentials. Government records verification infrastructure developing."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Comprehensive crypto regulatory framework (MiCA implementation). Land registry digitization varies by state. Business registration digital but processes lengthy."
+        }
+      }
+    },
+    {
+      "id": "JPN",
+      "name": "Japan",
+      "region": "Asia-Pacific",
+      "flag": "jp",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "My Number card adoption accelerating after slow start. Integration with health insurance and drivers license expanding. Still not universal across all services."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "APPI provides privacy framework. Consent mechanisms exist but can be complex. Data portability rights limited compared to GDPR. Citizens have access rights."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "Digital Agency driving modernization since 2021. e-Gov portal improving. API availability increasing but many services still require manual processes."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Internal government data sharing improving. Cross-border data transfer frameworks with key partners. Legacy systems still create integration challenges."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Hanko seals being replaced by digital signatures in many contexts. My Number verification cryptographically secured. Blockchain pilots in trade documents."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Progressive crypto regulatory framework. Real estate registry digital. Corporate registration online. Ahead in Central Bank Digital Currency research."
+        }
+      }
+    },
+    {
+      "id": "AUS",
+      "name": "Australia",
+      "region": "Asia-Pacific",
+      "flag": "au",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "myGovID provides federated identity for government services. Digital Identity program expanding. State-federal coordination improving but not seamless."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "Privacy Act under review for modernization. Consumer Data Right enables portability in banking, energy. Consent mechanisms improving but vary by sector."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "api.gov.au provides access to some services. myGov platform modernizing. Service NSW sets strong state-level example. Federal API availability expanding."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Federal-state data sharing agreements in place. Healthcare interoperability via My Health Record. Cross-border arrangements with New Zealand strong."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Digital signatures legally recognized. Document verification service operational. Blockchain pilots in supply chain and credentials. PKI infrastructure mature."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Token mapping framework for crypto regulation. Property registries vary by state. Business registration digital nationally. Digital asset custody rules developing."
+        }
+      }
+    },
+    {
+      "id": "IND",
+      "name": "India",
+      "region": "Asia-Pacific",
+      "flag": "in",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "Aadhaar provides universal digital identity for 1.4 billion people. Integration with banking, telecom, and government benefits widespread. eKYC enables instant verification."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data Protection Act still maturing. Aadhaar consent mechanisms exist but concerns about mandatory linkages. Privacy safeguards developing. Limited data portability rights."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "India Stack provides open APIs for identity (Aadhaar), payments (UPI), documents (DigiLocker). Third-party innovation encouraged. Highly programmable infrastructure."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "India Stack enables seamless data flow between government and private sector. UPI interoperability exemplary. DigiLocker links documents across agencies."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Aadhaar biometrics cryptographically secured. DigiLocker documents verifiable. Some state-level registries still lack full verification infrastructure."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Low",
+          "summary": "Crypto taxation established but regulatory clarity limited. Land registries digital in some states. Business registration digital via MCA21. Digital rupee piloting."
+        }
+      }
+    },
+    {
+      "id": "BRA",
+      "name": "Brazil",
+      "region": "Americas",
+      "flag": "br",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "Gov.br login unifying access to federal services. CPF number links records. Digital identity expansion underway but adoption varies across population."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "LGPD (Brazil's GDPR) provides privacy framework. Consent mechanisms mandated but enforcement developing. Data portability rights established."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "Gov.br platform modernizing federal services. Open banking APIs operational. Some services fully digital but many still require in-person steps."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Federal agencies increasingly connected. Open finance enabling data portability in financial sector. State-federal coordination improving."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Low",
+          "summary": "Digital signatures recognized via ICP-Brasil. Blockchain pilots limited. Many official records still lack cryptographic verification."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Crypto regulatory framework established. DREX (digital real) in development. Property registries partially digital. Business registration improving."
+        }
+      }
+    },
+    {
+      "id": "KEN",
+      "name": "Kenya",
+      "region": "Middle East & Africa",
+      "flag": "ke",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "Huduma Namba digital ID program expanding. Integration with M-Pesa demonstrates identity utility. Not yet universal across all government services."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data Protection Act 2019 provides framework but enforcement nascent. Consent mechanisms basic. Privacy awareness growing but infrastructure limited."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "eCitizen portal provides digital government services. M-Pesa APIs enable fintech innovation. Government APIs limited but mobile-first approach enables innovation."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Kenya Revenue Authority integrated with other agencies. M-Pesa ecosystem demonstrates private sector interoperability. Cross-agency data sharing developing."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Low",
+          "summary": "Digital signatures recognized but adoption limited. Land registry verification improving. Most government records lack cryptographic verification."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Mobile money leads globally. Crypto regulation developing. Land registry digitization underway. Business registration increasingly online."
+        }
+      }
+    },
+    {
+      "id": "NGA",
+      "name": "Nigeria",
+      "region": "Middle East & Africa",
+      "flag": "ng",
+      "overallRating": "Low",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Low",
+          "summary": "National Identity Number (NIN) program expanding but coverage incomplete. Multiple ID systems not fully integrated. Citizens manage fragmented identities."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data Protection Act 2023 provides new framework. Enforcement infrastructure developing. Consent mechanisms basic. Privacy culture emerging."
+        },
+        "serviceProgrammability": {
+          "rating": "Low",
+          "summary": "Some e-government portals exist but limited API availability. Many services remain paper-based. Fintech innovation advancing faster than government digitization."
+        },
+        "interoperability": {
+          "rating": "Low",
+          "summary": "Government agencies largely siloed. NIN integration progressing slowly. Limited data sharing between federal and state levels."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Low",
+          "summary": "Digital signatures not widely adopted. Record verification largely manual. Blockchain pilots minimal. Document authenticity verification challenging."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "eNaira CBDC launched. Crypto framework evolving after ban reversal. Property registries vary by state. Business registration portal operational."
+        }
+      }
+    },
+    {
+      "id": "IDN",
+      "name": "Indonesia",
+      "region": "Asia-Pacific",
+      "flag": "id",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "E-KTP (electronic ID) provides national coverage. Integration with government services expanding. Digital signature via e-KTP certificate available."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Personal Data Protection Law (2022) newly enacted. Enforcement building. Consent mechanisms developing. Data localization requirements in place."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "One Data Indonesia initiative standardizing APIs. Some ministries provide programmable access. Digital transformation strategy advancing rapidly."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "SATU Data policy aims to unify government data. Cross-agency integration improving. Coordination across archipelago challenging."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Low",
+          "summary": "Electronic certificates available but limited adoption. Blockchain pilots emerging. Many official documents still require physical verification."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Crypto regulated as commodity. Digital rupiah research underway. Property registries digitalizing. Business registration via OSS system online."
+        }
+      }
+    },
+    {
+      "id": "ARE",
+      "name": "United Arab Emirates",
+      "region": "Middle East & Africa",
+      "flag": "ae",
+      "overallRating": "High",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "High",
+          "summary": "UAE Pass provides unified digital identity across federal and emirate services. Face recognition enables passwordless authentication. Private sector integration strong."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "Federal Decree-Law on Data Protection established. Consent mechanisms in digital services. Privacy framework developing. Free zone regulations vary."
+        },
+        "serviceProgrammability": {
+          "rating": "High",
+          "summary": "Comprehensive API strategy across emirates. Smart Dubai and ADGM provide developer platforms. Government-as-a-Platform vision actively implemented."
+        },
+        "interoperability": {
+          "rating": "High",
+          "summary": "Strong coordination between federal government and emirates. Cross-border data sharing with GCC partners. Blockchain-based document attestation."
+        },
+        "verifiableInfrastructure": {
+          "rating": "High",
+          "summary": "Blockchain strategy implemented for government records. Dubai Land Department uses blockchain. Digital signatures widely accepted."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "VARA provides comprehensive crypto regulation in Dubai. ADGM framework for digital assets. Free zones attract crypto businesses. Registry digitization advanced."
+        }
+      }
+    },
+    {
+      "id": "THA",
+      "name": "Thailand",
+      "region": "Asia-Pacific",
+      "flag": "th",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "National Digital ID framework expanding. ThaID app enabling digital identity verification. Integration with government services progressing."
+        },
+        "userSovereignty": {
+          "rating": "Medium",
+          "summary": "PDPA (2019) provides privacy framework. Consent requirements mandated. Enforcement capacity building. Data localization requirements in some sectors."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "Digital Government Development Plan advancing API availability. PromptPay demonstrates payment programmability. e-Government portal modernizing."
+        },
+        "interoperability": {
+          "rating": "Medium",
+          "summary": "Government agencies increasingly connected. ASEAN digital economy agreements advancing. Internal data sharing improving."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Digital signatures legally recognized. Land department piloting blockchain. Document verification infrastructure developing."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "SEC regulates digital assets. Retail CBDC pilot conducted. Property registries digitalizing. Business registration online available."
+        }
+      }
+    },
+    {
+      "id": "BRB",
+      "name": "Barbados",
+      "region": "Americas",
+      "flag": "bb",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Medium",
+          "summary": "National ID system provides foundation. Digital government services expanding. Integration across services developing."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data protection framework developing. Consent mechanisms basic. Privacy infrastructure limited. CARICOM harmonization efforts underway."
+        },
+        "serviceProgrammability": {
+          "rating": "Low",
+          "summary": "E-government portal operational but API availability limited. Digital transformation ongoing. Many services still require in-person visits."
+        },
+        "interoperability": {
+          "rating": "Low",
+          "summary": "Limited cross-agency data sharing. CARICOM identity initiatives developing. Small scale enables faster coordination."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Exploring blockchain for land registry and government records. Digital signatures recognized. Verification infrastructure developing."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Medium",
+          "summary": "Early CBDC adopter with DCash participation. Crypto framework developing. Property and business registries partially digital."
+        }
+      }
+    },
+    {
+      "id": "TZA",
+      "name": "Tanzania",
+      "region": "Middle East & Africa",
+      "flag": "tz",
+      "overallRating": "Low",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Low",
+          "summary": "National ID (NIDA) coverage expanding. Integration with services limited. Most citizens still rely on paper documents."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data protection framework nascent. Consent mechanisms undefined in most services. Privacy awareness and infrastructure limited."
+        },
+        "serviceProgrammability": {
+          "rating": "Low",
+          "summary": "Limited government API availability. E-government initiatives early stage. Mobile money provides programmable payment infrastructure."
+        },
+        "interoperability": {
+          "rating": "Low",
+          "summary": "Government agencies largely disconnected. Limited data sharing frameworks. EAC regional cooperation developing slowly."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Low",
+          "summary": "Digital signatures not widely used. Record verification manual. No blockchain infrastructure for government records."
+        },
+        "digitalAssetMaturity": {
+          "rating": "Low",
+          "summary": "Restrictive stance on cryptocurrency. Mobile money dominant for digital transactions. Registries largely paper-based."
+        }
+      }
+    },
+    {
+      "id": "SLV",
+      "name": "El Salvador",
+      "region": "Americas",
+      "flag": "sv",
+      "overallRating": "Medium",
+      "metrics": {
+        "contextContinuity": {
+          "rating": "Low",
+          "summary": "DUI (national ID) provides basic identity. Digital identity infrastructure developing. Integration across services limited."
+        },
+        "userSovereignty": {
+          "rating": "Low",
+          "summary": "Data protection law exists but enforcement limited. Consent mechanisms basic. Privacy infrastructure underdeveloped."
+        },
+        "serviceProgrammability": {
+          "rating": "Medium",
+          "summary": "Government services digitizing gradually. Chivo wallet demonstrates digital payment APIs. E-government portal expanding capabilities."
+        },
+        "interoperability": {
+          "rating": "Low",
+          "summary": "Limited agency interoperability. SICA regional framework provides cooperation basis. Internal data sharing fragmented."
+        },
+        "verifiableInfrastructure": {
+          "rating": "Medium",
+          "summary": "Blockchain adoption for national purposes unique globally. Digital signatures recognized. Government exploring blockchain records."
+        },
+        "digitalAssetMaturity": {
+          "rating": "High",
+          "summary": "Bitcoin legal tender - unprecedented digital asset framework. Chivo wallet government-backed. Volcano bonds innovating sovereign finance. National Bitcoin reserve established."
+        }
+      }
+    }
+  ]
+}
