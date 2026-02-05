@@ -95,3 +95,6 @@ export interface MetricAnalysisData extends MetricDistribution {
   isStrongest: boolean;
   isWeakest: boolean;
 }
+
+/** Per-metric rank data for one country: metricKey -> rank (1-20) */
+export type CountryMetricRanks = Record<MetricKey, number>;

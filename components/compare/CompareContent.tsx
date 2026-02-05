@@ -109,7 +109,7 @@ export function CompareContent() {
           />
 
           {/* Detailed grid comparison */}
-          <section className="card-soft p-6 animate-fade-up delay-300">
+          <section className="card-soft card-flat p-6 animate-fade-up delay-300">
             <h2 className="heading-serif text-xl text-charcoal mb-6">
               Metric <span className="heading-serif-italic">Details</span>
             </h2>

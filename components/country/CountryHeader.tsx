@@ -5,9 +5,11 @@ import { RatingBadge } from "./RatingBadge";
 
 interface CountryHeaderProps {
   country: Country;
+  rank?: number;
+  totalCountries?: number;
 }
 
-export function CountryHeader({ country }: CountryHeaderProps) {
+export function CountryHeader({ country, rank, totalCountries }: CountryHeaderProps) {
   return (
     <div className="flex flex-col items-center text-center">
       {/* Flag */}
@@ -32,8 +34,19 @@ export function CountryHeader({ country }: CountryHeaderProps) {
         {country.region}
       </p>
 
+      {/* Overall Rank */}
+      {rank !== undefined && (
+        <div className="mt-6 flex flex-col items-center animate-fade-up delay-250">
+          <span className="label-subtle">Overall Rank</span>
+          <span className="inline-flex items-baseline" aria-label={`Ranked ${rank} of ${totalCountries ?? 20}`}>
+            <span className="stat-display text-7xl sm:text-8xl text-accent">{rank}</span>
+            <span className="text-xl sm:text-2xl text-muted font-light">/{totalCountries ?? 20}</span>
+          </span>
+        </div>
+      )}
+
       {/* Overall Rating Badge */}
-      <div className="mt-4 animate-fade-up delay-300">
+      <div className="mt-5 animate-fade-up delay-300">
         <RatingBadge rating={country.overallRating} size="lg" />
       </div>
     </div>

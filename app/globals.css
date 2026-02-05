@@ -136,6 +136,11 @@ body {
   transform: translateY(-3px) scale(1.005);
 }
 
+/* Disable hover lift on table containers to prevent scroll overflow */
+.card-soft.card-flat:hover {
+  transform: none;
+}
+
 /* Card with accent bar */
 .card-accent {
   position: relative;

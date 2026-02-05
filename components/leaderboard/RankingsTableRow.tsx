@@ -56,7 +56,7 @@ export function RankingsTableRow({
       {/* Country */}
       <td className="py-4 px-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0 group-hover:scale-110 transition-transform">
+          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
             <Image
               src={getFlagUrl(country.flag)}
               alt={`${country.name} flag`}

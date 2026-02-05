@@ -38,12 +38,12 @@ export function RankingsTable({
     <>
       {/* Desktop Table - hidden on mobile */}
       <div className="hidden md:block overflow-x-auto">
-        <div className="card-soft overflow-hidden">
+        <div className="card-soft card-flat overflow-hidden">
           <table className="w-full min-w-[900px]">
             <thead>
               <tr className="bg-ivory/50 border-b border-lavender/10">
                 <th className="py-3 px-4 text-center w-16">
-                  <span className="label-subtle text-muted">#</span>
+                  <span className="label-subtle text-muted">Rank</span>
                 </th>
                 <th className="py-3 px-4 text-left min-w-[200px]">
                   <SortableHeader

@@ -47,7 +47,7 @@ export default function ComparePage() {
 
       {/* Content */}
       <section className="relative py-20 bg-cream">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <Suspense fallback={<CompareLoading />}>
             <CompareContent />
           </Suspense>

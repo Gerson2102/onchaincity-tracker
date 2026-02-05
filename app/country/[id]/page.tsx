@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import countriesData from "@/data/countries.json";
 import type { TrackerData, MetricKey } from "@/lib/types";
+import { assignRanks, computeAllMetricRankings } from "@/lib/utils";
 import { CountryHeader, MetricCard, MetricsRadar } from "@/components/country";
 
 const data = countriesData as TrackerData;
@@ -50,6 +51,14 @@ export default async function CountryPage({ params }: PageProps) {
     notFound();
   }
 
+  // Compute overall rank
+  const rankedCountries = assignRanks(data.countries);
+  const overallRank = rankedCountries.find((c) => c.id === id)?.rank;
+
+  // Compute per-metric rankings
+  const metricRankings = computeAllMetricRankings(data.countries);
+  const countryMetricRanks = metricRankings.get(id);
+
   return (
     <main id="main-content" className="relative">
       {/* Hero Section */}
@@ -80,7 +89,7 @@ export default async function CountryPage({ params }: PageProps) {
           </Link>
 
           {/* Country Header */}
-          <CountryHeader country={country} />
+          <CountryHeader country={country} rank={overallRank} totalCountries={data.countries.length} />
         </div>
       </section>
 
@@ -102,7 +111,12 @@ export default async function CountryPage({ params }: PageProps) {
                 key={key}
                 className={`animate-fade-up delay-${(index + 1) * 100}`}
               >
-                <MetricCard metricKey={key} score={country.metrics[key]} />
+                <MetricCard
+                  metricKey={key}
+                  score={country.metrics[key]}
+                  metricRank={countryMetricRanks?.[key]}
+                  totalCountries={data.countries.length}
+                />
               </div>
             ))}
           </div>

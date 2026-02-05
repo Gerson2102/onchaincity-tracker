@@ -26,3 +26,8 @@ export {
   getMetricRatingDistribution,
   generateComparisonInsight,
 } from "./comparison";
+export {
+  rankCountriesByMetric,
+  computeAllMetricRankings,
+  getCountryMetricRank,
+} from "./metricRanking";
