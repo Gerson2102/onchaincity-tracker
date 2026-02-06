@@ -60,33 +60,23 @@ export default async function CountryPage({ params }: PageProps) {
   const countryMetricRanks = metricRankings.get(id);
 
   return (
-    <main id="main-content" className="relative">
+    <main id="main-content" tabIndex={-1} className="relative">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 gradient-dreamy" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cream to-transparent" />
 
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8">
-          {/* Back Link */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-stone hover:text-charcoal transition-colors mb-8"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5" />
-              <path d="M12 19l-7-7 7-7" />
-            </svg>
-            Back to Map
-          </Link>
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex items-center gap-1.5 text-sm text-stone">
+              <li><Link href="/" className="hover:text-charcoal transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-muted">/</li>
+              <li><Link href="/leaderboard" className="hover:text-charcoal transition-colors">Leaderboard</Link></li>
+              <li aria-hidden="true" className="text-muted">/</li>
+              <li aria-current="page" className="text-charcoal font-medium">{country.name}</li>
+            </ol>
+          </nav>
 
           {/* Country Header */}
           <CountryHeader country={country} rank={overallRank} totalCountries={data.countries.length} />
@@ -94,7 +84,7 @@ export default async function CountryPage({ params }: PageProps) {
       </section>
 
       {/* Metrics Section */}
-      <section className="relative py-20 bg-cream">
+      <section className="relative pt-12 pb-20 bg-cream">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           {/* Radar Chart */}
           <div className="card-soft p-8 mb-12 animate-fade-up">

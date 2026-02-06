@@ -31,9 +31,10 @@ export function SearchResults({
       {results.map((country, index) => (
         <div
           key={country.id}
+          id={`search-result-${country.id}`}
           className="search-result-item flex items-center gap-3"
           data-selected={index === selectedIndex}
-          onClick={() => onSelect(country)}
+          onMouseDown={(e) => { e.preventDefault(); onSelect(country); }}
           onMouseEnter={() => onHover(index)}
           role="option"
           aria-selected={index === selectedIndex}
@@ -42,7 +43,7 @@ export function SearchResults({
           <div className="w-8 h-8 rounded-full overflow-hidden border border-lavender/30 flex-shrink-0">
             <Image
               src={getFlagUrl(country.flag)}
-              alt=""
+              alt={`${country.name} flag`}
               width={32}
               height={32}
               className="w-full h-full object-cover"

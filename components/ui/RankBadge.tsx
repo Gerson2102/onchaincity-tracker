@@ -24,7 +24,7 @@ export function RankBadge({
         <>
           <span className="heading-serif text-sm text-stone">{rank}</span>
           {showTotal && (
-            <span className="text-[0.5rem] text-muted">/{total}</span>
+            <span className="text-[0.625rem] text-muted">/{total}</span>
           )}
         </>
       )}

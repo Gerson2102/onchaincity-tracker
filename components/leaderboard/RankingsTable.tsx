@@ -37,7 +37,9 @@ export function RankingsTable({
   return (
     <>
       {/* Desktop Table - hidden on mobile */}
-      <div className="hidden md:block overflow-x-auto">
+      <div className="hidden md:block overflow-x-auto relative group">
+        {/* Scroll shadow indicator */}
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-cream/80 to-transparent pointer-events-none opacity-0 group-[:has(.card-soft:hover)]:opacity-0 [.overflow-x-auto:not(:has(:last-child))_&]:opacity-100 z-10 transition-opacity" aria-hidden="true" />
         <div className="card-soft card-flat overflow-hidden">
           <table className="w-full min-w-[900px]">
             <thead>

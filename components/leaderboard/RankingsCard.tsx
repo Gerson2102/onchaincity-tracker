@@ -38,7 +38,8 @@ export function RankingsCard({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      role="link"
+      role="button"
+      aria-label={`View ${country.name} details`}
       className={cn(
         "card-soft p-5 cursor-pointer",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2",

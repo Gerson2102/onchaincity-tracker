@@ -198,7 +198,7 @@ export function CountrySelector({
         {isOpen && query && (
           <div
             id="country-selector-results"
-            className="search-dropdown absolute top-full left-0 right-0 mt-2 max-h-80 overflow-y-auto z-[100] shadow-lg"
+            className="search-dropdown absolute top-full left-0 right-0 mt-2 max-h-[min(320px,50vh)] overflow-y-auto z-[100] shadow-lg"
             role="listbox"
           >
             {results.length === 0 ? (

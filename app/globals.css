@@ -9,7 +9,7 @@
   /* Text colors */
   --color-charcoal: #1C1917;
   --color-stone: #57534E;
-  --color-muted: #A8A29E;
+  --color-muted: #78716C;
 
   /* Primary accent - deep terracotta for impact */
   --color-accent: #C4553D;
@@ -277,7 +277,7 @@ body {
 
 /* Keep subtle label but make it more refined */
 .label-subtle {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -403,6 +403,18 @@ body {
 .animate-scale-in {
   animation: scaleIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
+}
+
+/* Fallback: ensure content visible if animation doesn't run (e.g. JS disabled) */
+@supports not (animation-fill-mode: forwards) {
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-scale-in {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Uniform delays - kept for backwards compatibility */
@@ -607,9 +619,9 @@ body {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0s !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
     scroll-behavior: auto !important;
   }
 

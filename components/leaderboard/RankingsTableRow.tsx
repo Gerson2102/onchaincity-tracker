@@ -37,7 +37,7 @@ export function RankingsTableRow({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      role="link"
+      aria-label={`View ${country.name} details`}
       className={cn(
         "table-row-interactive bg-white/60 cursor-pointer",
         "border-b border-charcoal/5 last:border-b-0",

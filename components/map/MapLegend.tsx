@@ -17,7 +17,7 @@ export function MapLegend({ className }: MapLegendProps) {
       {legendItems.map((item) => (
         <div key={item.label} className="flex items-center gap-2">
           <span
-            className="w-3 h-3 rounded-full"
+            className="w-4 h-4 rounded-full"
             style={{ backgroundColor: item.color }}
           />
           <span className={cn("text-sm", item.muted ? "text-muted" : "text-stone")}>

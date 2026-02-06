@@ -25,12 +25,16 @@ export function FilterBar({
   totalCount,
   hasActiveFilters,
 }: FilterBarProps) {
-  const selectClasses = cn(
-    "appearance-none rounded-full bg-white/80 border border-lavender/30",
-    "px-4 py-2 pr-8 text-sm text-charcoal",
-    "focus:outline-none focus:ring-2 focus:ring-lavender focus:border-lavender",
-    "cursor-pointer transition-colors hover:border-lavender/50"
-  );
+  const getSelectClasses = (isActive: boolean) =>
+    cn(
+      "appearance-none rounded-full",
+      "px-4 py-2 pr-8 text-sm text-charcoal",
+      "focus:outline-none focus:ring-2 focus:ring-lavender focus:border-lavender",
+      "cursor-pointer transition-colors hover:border-lavender/50",
+      isActive
+        ? "border border-accent/40 bg-accent/5"
+        : "border border-lavender/30 bg-white/80"
+    );
 
   return (
     <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -43,7 +47,7 @@ export function FilterBar({
           id="region-filter"
           value={region}
           onChange={(e) => onRegionChange(e.target.value as RegionFilter)}
-          className={selectClasses}
+          className={getSelectClasses(region !== "all")}
         >
           <option value="all">All Regions</option>
           {REGIONS.map((r) => (
@@ -64,7 +68,7 @@ export function FilterBar({
           id="rating-filter"
           value={rating}
           onChange={(e) => onRatingChange(e.target.value as RatingFilter)}
-          className={selectClasses}
+          className={getSelectClasses(rating !== "all")}
         >
           <option value="all">All Ratings</option>
           <option value="High">High</option>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,34 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    menuButtonRef.current?.focus();
+  }, []);
+
+  // Document-level Escape handler + focus first link when menu opens
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Focus first interactive element in the menu
+    const firstLink = menuRef.current?.querySelector<HTMLElement>("input, a, button");
+    firstLink?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, closeMenu]);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -37,6 +65,7 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center"
+            aria-label="OnchainCity Tracker - Home"
           >
             {/* Circle logo mark - lavender only for brand identity */}
             <div className="w-9 h-9 rounded-full border border-charcoal/10 flex items-center justify-center bg-white/50">
@@ -52,6 +81,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
                   "relative text-sm transition-colors link-draw",
                   isActive(link.href)
@@ -77,12 +107,13 @@ export function Navbar() {
           </div>
 
           {/* Right side: Search */}
-          <div className="hidden md:block w-48">
+          <div className="hidden md:block w-64">
             <SearchBar variant="compact" />
           </div>
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
             type="button"
             className="md:hidden p-2 text-stone hover:text-charcoal transition-colors"
             onClick={() => setIsOpen(!isOpen)}
@@ -123,7 +154,8 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-cream/95 backdrop-blur-md border-t border-charcoal/6"
+            ref={menuRef}
+            className="md:hidden absolute top-full left-0 right-0 bg-cream backdrop-blur-md border-t border-charcoal/6"
           >
             <div className="px-6 py-6 space-y-4">
               {/* Mobile Search */}
@@ -136,6 +168,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                   className={cn(
                     "block px-4 py-3 rounded-xl text-sm transition-colors",
                     isActive(link.href)

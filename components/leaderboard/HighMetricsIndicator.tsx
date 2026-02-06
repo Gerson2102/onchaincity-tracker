@@ -13,7 +13,7 @@ export function HighMetricsIndicator({
 }: HighMetricsIndicatorProps) {
   return (
     <div
-      className={cn("flex items-center gap-1", className)}
+      className={cn("flex items-center gap-1.5", className)}
       title={`${count} of ${total} metrics rated High`}
       aria-label={`${count} of ${total} high metrics`}
     >
@@ -21,11 +21,12 @@ export function HighMetricsIndicator({
         <span
           key={i}
           className={cn(
-            "w-2 h-2 rounded-full transition-colors",
+            "w-2.5 h-2.5 rounded-full transition-colors",
             i < count ? "bg-[var(--color-rating-high)]" : "bg-lavender/30"
           )}
         />
       ))}
+      <span className="text-xs text-muted ml-0.5">{count}/{total}</span>
     </div>
   );
 }

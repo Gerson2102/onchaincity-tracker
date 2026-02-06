@@ -1,15 +1,15 @@
 import type { Rating, MetricKey } from "@/lib/types";
 
 export const RATING_COLORS: Record<Rating, string> = {
-  Low: "#EF4444",
-  Medium: "#F59E0B",
-  High: "#10B981",
+  Low: "#BE185D",
+  Medium: "#D97706",
+  High: "#115E59",
 };
 
 export const RATING_BG_COLORS: Record<Rating, string> = {
-  Low: "rgba(239, 68, 68, 0.15)",
-  Medium: "rgba(245, 158, 11, 0.15)",
-  High: "rgba(16, 185, 129, 0.15)",
+  Low: "rgba(190, 24, 93, 0.12)",
+  Medium: "rgba(217, 119, 6, 0.12)",
+  High: "rgba(17, 94, 89, 0.12)",
 };
 
 export const METRIC_DEFINITIONS: Record<

@@ -109,7 +109,18 @@ export function WorldMap({ countries }: WorldMapProps) {
   );
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" role="application" aria-label="Interactive world map showing country ratings">
+      {/* Keyboard-accessible country navigation */}
+      <nav className="sr-only" aria-label="Map countries">
+        <ul>
+          {countries.map((c) => (
+            <li key={c.id}>
+              <a href={`/country/${c.id}`}>{c.name} – rated {c.overallRating}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{
@@ -193,6 +204,11 @@ export function WorldMap({ countries }: WorldMapProps) {
         position={tooltipPosition}
         visible={!!hoveredCountry}
       />
+
+      {/* Visually-hidden text alternative for screen readers */}
+      <div className="sr-only">
+        <p>Interactive map of 20 countries rated by digital government infrastructure. Use Tab to navigate to individual countries, then Enter to view details.</p>
+      </div>
     </div>
   );
 }

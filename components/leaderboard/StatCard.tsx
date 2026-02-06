@@ -10,7 +10,7 @@ interface StatCardProps {
 
 const ratingColorClasses: Record<Rating, string> = {
   High: "text-[var(--color-rating-high)]",
-  Medium: "text-[var(--color-rating-medium)]",
+  Medium: "text-[#B45309] font-medium",
   Low: "text-[var(--color-rating-low)]",
 };
 

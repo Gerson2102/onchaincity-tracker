@@ -17,7 +17,7 @@ export function InsightCard({ insight, className }: InsightCardProps) {
       {/* Top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-accent" />
 
-      <h3 className="label-subtle mb-3">{insight.title}</h3>
+      <p className="label-subtle mb-3">{insight.title}</p>
       <p className="text-stone text-sm leading-relaxed">
         {insight.description}
       </p>

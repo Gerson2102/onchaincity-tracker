@@ -33,7 +33,7 @@ function LeaderboardLoading() {
 
 export default function LeaderboardPage() {
   return (
-    <main id="main-content" className="relative">
+    <main id="main-content" tabIndex={-1} className="relative">
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 gradient-dreamy" />

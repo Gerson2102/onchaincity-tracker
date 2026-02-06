@@ -10,7 +10,7 @@ const data = countriesData as TrackerData;
 
 export default function Home() {
   return (
-    <main id="main-content" className="relative">
+    <main id="main-content" tabIndex={-1} className="relative">
       {/* Hero Section - Asymmetric with large accent number */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Gradient background with noise */}
@@ -21,7 +21,7 @@ export default function Home() {
 
         {/* Large decorative number */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block">
-          <span className="stat-hero">20</span>
+          <span className="stat-hero" aria-hidden="true">20</span>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
@@ -170,7 +170,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className={`card-floating p-6 animate-fade-up ${item.delay}`}
+                  className={`card-soft p-6 animate-fade-up ${item.delay}`}
                 >
                   <h3 className="heading-serif text-xl text-charcoal">{item.title}</h3>
                   <p className="mt-3 text-stone text-sm leading-relaxed">{item.desc}</p>

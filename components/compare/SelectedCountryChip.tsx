@@ -41,7 +41,7 @@ export function SelectedCountryChip({
       <button
         type="button"
         onClick={onRemove}
-        className="ml-1 p-0.5 text-muted hover:text-charcoal transition-colors"
+        className="ml-1 p-2 -m-1.5 text-muted hover:text-charcoal transition-colors"
         aria-label={`Remove ${country.name}`}
       >
         <svg

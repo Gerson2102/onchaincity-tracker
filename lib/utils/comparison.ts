@@ -5,7 +5,7 @@ import { ratingToNumber } from "./tracker";
 /**
  * Parse country IDs from URL search params
  */
-export function parseCountryIdsFromUrl(searchParams: URLSearchParams): string[] {
+export function parseCountryIdsFromUrl(searchParams: { get(name: string): string | null }): string[] {
   const countriesParam = searchParams.get("countries");
   if (!countriesParam) return [];
   return countriesParam.split(",").filter(Boolean);

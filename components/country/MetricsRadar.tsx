@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { Country, MetricKey } from "@/lib/types";
-import { METRIC_DEFINITIONS } from "@/lib/constants/tracker";
+import { METRIC_DEFINITIONS, METRIC_SHORT_NAMES } from "@/lib/constants/tracker";
 import { ratingToNumber } from "@/lib/utils/tracker";
 
 interface MetricsRadarProps {
@@ -26,14 +26,16 @@ const metricKeys: MetricKey[] = [
 
 export function MetricsRadar({ country }: MetricsRadarProps) {
   const radarData = metricKeys.map((key) => ({
-    metric: METRIC_DEFINITIONS[key].displayName.split(" ")[0], // Short name for chart
+    metric: METRIC_SHORT_NAMES[key],
     fullName: METRIC_DEFINITIONS[key].displayName,
     value: ratingToNumber(country.metrics[key].rating),
     fullMark: 3,
   }));
 
+  const ariaLabel = `Radar chart for ${country.name}: ${radarData.map(d => `${d.fullName} ${country.metrics[metricKeys[radarData.indexOf(d)]].rating}`).join(', ')}`;
+
   return (
-    <div className="w-full h-80">
+    <div className="w-full h-80" role="img" aria-label={ariaLabel}>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
           <PolarGrid
@@ -42,7 +44,7 @@ export function MetricsRadar({ country }: MetricsRadarProps) {
           />
           <PolarAngleAxis
             dataKey="metric"
-            tick={{ fill: "#5C5753", fontSize: 11 }}
+            tick={{ fill: "#5C5753", fontSize: 12 }}
             tickLine={false}
           />
           <Radar

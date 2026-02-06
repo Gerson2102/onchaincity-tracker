@@ -28,10 +28,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Contact */}
           <div className="md:col-span-4">
-            <h3 className="label-subtle mb-4">Contact Us</h3>
+            <p className="label-subtle mb-4">Contact Us</p>
             <a
               href="mailto:hello@onchain.city"
-              className="heading-serif text-2xl sm:text-3xl text-charcoal hover:text-stone transition-colors"
+              className="heading-serif text-2xl sm:text-3xl text-charcoal hover:text-stone transition-colors min-h-[44px] inline-flex items-center"
             >
               hello@onchain.city
             </a>
@@ -39,7 +39,7 @@ export function Footer() {
 
           {/* Social */}
           <div className="md:col-span-3">
-            <h3 className="label-subtle mb-4">Social Media</h3>
+            <p className="label-subtle mb-4">Social Media</p>
             <ul className="space-y-2">
               {socialLinks.map((link) => (
                 <li key={link.href}>
@@ -47,7 +47,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-stone hover:text-charcoal text-sm transition-colors link-draw"
+                    className="text-stone hover:text-charcoal text-sm transition-colors link-draw min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                     <span className="sr-only"> (opens in new tab)</span>
@@ -59,13 +59,13 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <h3 className="label-subtle mb-4">Navigation</h3>
+            <p className="label-subtle mb-4">Navigation</p>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-stone hover:text-charcoal text-sm transition-colors link-draw"
+                    className="text-stone hover:text-charcoal text-sm transition-colors link-draw min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -76,12 +76,12 @@ export function Footer() {
 
           {/* External */}
           <div className="md:col-span-2">
-            <h3 className="label-subtle mb-4">External</h3>
+            <p className="label-subtle mb-4">External</p>
             <a
               href="https://onchain.city/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone hover:text-charcoal text-sm transition-colors link-draw"
+              className="text-stone hover:text-charcoal text-sm transition-colors link-draw min-h-[44px] inline-flex items-center"
             >
               onchain.city
               <span className="sr-only"> (opens in new tab)</span>

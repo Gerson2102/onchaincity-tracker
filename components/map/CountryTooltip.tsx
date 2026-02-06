@@ -48,8 +48,8 @@ export function CountryTooltip({ country, position, visible }: CountryTooltipPro
           transition={{ duration: 0.15 }}
           className="tooltip-soft px-4 py-3 pointer-events-none fixed z-50"
           style={{
-            left: position.x + 12,
-            top: position.y - 10,
+            left: Math.min(position.x + 12, typeof window !== "undefined" ? window.innerWidth - 220 : position.x + 12),
+            top: position.y < 100 ? position.y + 20 : position.y - 10,
           }}
         >
           {/* Header: Flag + Name + Rating */}
@@ -57,7 +57,7 @@ export function CountryTooltip({ country, position, visible }: CountryTooltipPro
             <div className="w-6 h-6 rounded-full overflow-hidden border border-lavender/30 flex-shrink-0">
               <Image
                 src={getFlagUrl(country.flag)}
-                alt=""
+                alt={`${country.name} flag`}
                 width={24}
                 height={24}
                 className="w-full h-full object-cover"

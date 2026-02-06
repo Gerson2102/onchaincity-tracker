@@ -11,7 +11,7 @@ const metricKeys = Object.keys(METRIC_DEFINITIONS) as MetricKey[];
 
 export default function AboutPage() {
   return (
-    <main id="main-content" className="relative">
+    <main id="main-content" tabIndex={-1} className="relative">
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 gradient-dreamy" />
@@ -19,7 +19,7 @@ export default function AboutPage() {
 
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="heading-serif text-5xl sm:text-6xl lg:text-7xl text-charcoal animate-fade-up">
-            What is the
+            What is the{" "}
             <br />
             <span className="heading-serif-italic">OnchainCity</span> Tracker?
           </h1>
@@ -34,7 +34,7 @@ export default function AboutPage() {
       <article className="relative py-20 bg-cream">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           {/* Section 1 */}
-          <section className="mb-20 animate-fade-up">
+          <section id="six-dimensions" className="mb-20 animate-fade-up">
             <p className="text-stone text-lg leading-relaxed">
               Unlike traditional e-government indexes that focus on whether
               services are online, we measure whether digital systems give
@@ -92,7 +92,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section 3: What Existing Indexes Miss */}
-          <section className="mb-20">
+          <section id="existing-indexes" className="mb-20">
             <h2 className="heading-serif text-3xl sm:text-4xl text-charcoal mb-8 animate-fade-up">
               What Existing <span className="heading-serif-italic">Indexes Miss</span>
             </h2>
@@ -140,7 +140,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section 4: Methodology */}
-          <section className="mb-20">
+          <section id="methodology" className="mb-20">
             <h2 className="heading-serif text-3xl sm:text-4xl text-charcoal mb-8 animate-fade-up">
               <span className="heading-serif-italic">Methodology</span>
             </h2>
@@ -149,17 +149,17 @@ export default function AboutPage() {
               <p>
                 Countries receive qualitative ratings of{" "}
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rating-low" />
+                  <span className="w-3 h-3 rounded-full bg-rating-low" aria-hidden="true" />
                   <strong className="text-charcoal">Low</strong>
                 </span>
                 ,{" "}
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rating-medium" />
+                  <span className="w-3 h-3 rounded-full bg-rating-medium" aria-hidden="true" />
                   <strong className="text-charcoal">Medium</strong>
                 </span>
                 , or{" "}
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rating-high" />
+                  <span className="w-3 h-3 rounded-full bg-rating-high" aria-hidden="true" />
                   <strong className="text-charcoal">High</strong>
                 </span>{" "}
                 for each of the six metrics.
@@ -194,7 +194,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section 5: About OnchainCity */}
-          <section>
+          <section id="about-onchaincity">
             <h2 className="heading-serif text-3xl sm:text-4xl text-charcoal mb-8 animate-fade-up">
               About <span className="heading-serif-italic">OnchainCity</span>
             </h2>

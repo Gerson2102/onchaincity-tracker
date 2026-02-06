@@ -34,7 +34,7 @@ export function Spotlight({ countries }: SpotlightProps) {
         </div>
 
         {/* Mobile horizontal scroll */}
-        <div className="sm:hidden -mx-6 px-6 overflow-x-auto scrollbar-hide">
+        <div className="sm:hidden -mx-6 px-6 overflow-x-auto" role="region" aria-label="Spotlight countries" tabIndex={0}>
           <div className="flex gap-4 pb-4">
             {spotlights.map((spotlight, index) => (
               <SpotlightCard

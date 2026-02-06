@@ -116,12 +116,9 @@ export function SearchBar({ variant = "full", onSelect, className }: SearchBarPr
   };
 
   const handleBlur = () => {
-    // Delay to allow click events on results
-    setTimeout(() => {
-      if (variant === "compact" && !query) {
-        setIsExpanded(false);
-      }
-    }, 200);
+    if (variant === "compact" && !query) {
+      setIsExpanded(false);
+    }
   };
 
   // Compact variant: show just icon when collapsed
@@ -192,6 +189,7 @@ export function SearchBar({ variant = "full", onSelect, className }: SearchBarPr
           aria-haspopup="listbox"
           aria-controls="search-results"
           aria-label="Search countries"
+          aria-activedescendant={isOpen && results[selectedIndex] ? `search-result-${results[selectedIndex].id}` : undefined}
         />
       </div>
 
