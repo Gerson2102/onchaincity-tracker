@@ -2,37 +2,16 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Country, MetricKey } from "@/lib/types";
-import { getFlagUrl } from "@/lib/utils";
-import { RatingBadge } from "@/components/country/RatingBadge";
+import type { Country } from "@/lib/types";
+import { getFlagUrl, getScoreColor } from "@/lib/utils";
+import { ALL_METRIC_KEYS } from "@/lib/constants/tracker";
+import { ScoreBadge } from "@/components/country";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface CountryTooltipProps {
   country: Country | null;
   position: { x: number; y: number };
   visible: boolean;
-}
-
-const metricKeys: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
-
-function getRatingDotColor(rating: string): string {
-  switch (rating) {
-    case "High":
-      return "var(--color-rating-high)";
-    case "Medium":
-      return "var(--color-rating-medium)";
-    case "Low":
-      return "var(--color-rating-low)";
-    default:
-      return "#E8E4E0";
-  }
 }
 
 export function CountryTooltip({ country, position, visible }: CountryTooltipProps) {
@@ -52,7 +31,7 @@ export function CountryTooltip({ country, position, visible }: CountryTooltipPro
             top: position.y < 100 ? position.y + 20 : position.y - 10,
           }}
         >
-          {/* Header: Flag + Name + Rating */}
+          {/* Header: Flag + Name + Score */}
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full overflow-hidden border border-lavender/30 flex-shrink-0">
               <Image
@@ -66,17 +45,17 @@ export function CountryTooltip({ country, position, visible }: CountryTooltipPro
             <span className="heading-serif text-base text-charcoal">
               {country.name}
             </span>
-            <RatingBadge rating={country.overallRating} size="sm" />
+            <ScoreBadge score={country.overallScore} size="sm" />
           </div>
 
           {/* Mini metric indicators */}
-          <div className="flex items-center gap-1.5 mt-2">
-            {metricKeys.map((key) => (
+          <div className="flex items-center gap-1 mt-2">
+            {ALL_METRIC_KEYS.map((key) => (
               <span
                 key={key}
                 className="w-2 h-2 rounded-full"
                 style={{
-                  backgroundColor: getRatingDotColor(country.metrics[key].rating),
+                  backgroundColor: getScoreColor(country.metrics[key].score),
                 }}
                 title={key}
               />

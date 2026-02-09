@@ -15,7 +15,7 @@ export function LeaderboardContent({ countries }: LeaderboardContentProps) {
     filters,
     sortState,
     setRegion,
-    setRating,
+    setScoreTier,
     setSort,
     clearAll,
     hasActiveFilters,
@@ -27,9 +27,9 @@ export function LeaderboardContent({ countries }: LeaderboardContentProps) {
     <>
       <FilterBar
         region={filters.region}
-        rating={filters.rating}
+        scoreTier={filters.scoreTier}
         onRegionChange={setRegion}
-        onRatingChange={setRating}
+        onScoreTierChange={setScoreTier}
         onClearAll={clearAll}
         filteredCount={rankedCountries.length}
         totalCount={countries.length}

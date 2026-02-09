@@ -8,11 +8,11 @@ interface MetricBarProps {
 
 export function MetricBar({ data, className }: MetricBarProps) {
   const { displayName, counts, isStrongest, isWeakest } = data;
-  const { High, Medium, Low, total } = counts;
+  const { strong, moderate, low, total } = counts;
 
-  const highPercent = (High / total) * 100;
-  const mediumPercent = (Medium / total) * 100;
-  const lowPercent = (Low / total) * 100;
+  const strongPercent = (strong / total) * 100;
+  const moderatePercent = (moderate / total) * 100;
+  const lowPercent = (low / total) * 100;
 
   const isHighlighted = isStrongest || isWeakest;
   const highlightLabel = isStrongest ? "Strongest" : isWeakest ? "Most Room to Grow" : null;
@@ -46,15 +46,15 @@ export function MetricBar({ data, className }: MetricBarProps) {
         <div
           className="h-3 rounded-full overflow-hidden flex"
           role="img"
-          aria-label={`${displayName}: ${High} High, ${Medium} Medium, ${Low} Low`}
+          aria-label={`${displayName}: ${strong} High Performers, ${moderate} Developing, ${low} Emerging`}
         >
           <div
             className="bg-[var(--color-rating-high)] transition-all duration-500"
-            style={{ width: `${highPercent}%` }}
+            style={{ width: `${strongPercent}%` }}
           />
           <div
             className="bg-[var(--color-rating-medium)] transition-all duration-500"
-            style={{ width: `${mediumPercent}%` }}
+            style={{ width: `${moderatePercent}%` }}
           />
           <div
             className="bg-[var(--color-rating-low)] transition-all duration-500"
@@ -65,11 +65,11 @@ export function MetricBar({ data, className }: MetricBarProps) {
 
       {/* Counts */}
       <div className="w-24 flex-shrink-0 flex justify-end gap-2 text-xs text-muted">
-        <span className="text-[var(--color-rating-high)]">{High}</span>
+        <span className="text-[var(--color-rating-high)]">{strong}</span>
         <span>/</span>
-        <span className="text-[var(--color-rating-medium)]">{Medium}</span>
+        <span className="text-[var(--color-rating-medium)]">{moderate}</span>
         <span>/</span>
-        <span className="text-[var(--color-rating-low)]">{Low}</span>
+        <span className="text-[var(--color-rating-low)]">{low}</span>
       </div>
     </div>
   );

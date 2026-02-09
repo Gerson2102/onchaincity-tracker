@@ -70,7 +70,7 @@ export default function Home() {
               The World at a Glance
             </h2>
             <p className="mt-4 text-stone text-lg animate-fade-up delay-200">
-              Discover how nations score on programmable infrastructure.
+              Discover how nations score on digital infrastructure.
               Click any highlighted country to see their full profile.
             </p>
           </div>
@@ -148,23 +148,23 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
-                  title: "Context Continuity",
-                  desc: "Reuse verified identity across services without starting from scratch",
+                  title: "Digital Identity Infrastructure",
+                  desc: "Secure, portable digital IDs that work across borders and services",
                   delay: "delay-120"
                 },
                 {
-                  title: "User Sovereignty",
-                  desc: "Control your own data and grant granular consent",
+                  title: "Legal Clarity for Digital Assets",
+                  desc: "Clear frameworks for digital assets, smart contracts, and DAOs",
                   delay: "delay-250"
                 },
                 {
-                  title: "Programmability",
-                  desc: "API-driven, automatable services that work for developers",
+                  title: "Stablecoin Adoption",
+                  desc: "Growing stablecoin presence powering commerce and cross-border transfers",
                   delay: "delay-350"
                 },
                 {
-                  title: "Interoperability",
-                  desc: "Data flows where you need it, across borders and systems",
+                  title: "Tokenized RWA Maturity",
+                  desc: "Real-world assets on-chain — real estate, bonds, and equities tokenized at scale",
                   delay: "delay-450"
                 },
               ].map((item, i) => (

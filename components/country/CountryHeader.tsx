@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Country } from "@/lib/types";
 import { getFlagUrl } from "@/lib/utils";
-import { RatingBadge } from "./RatingBadge";
+import { ScoreBadge } from "./ScoreBadge";
 
 interface CountryHeaderProps {
   country: Country;
@@ -45,9 +45,9 @@ export function CountryHeader({ country, rank, totalCountries }: CountryHeaderPr
         </div>
       )}
 
-      {/* Overall Rating Badge */}
+      {/* Overall Score Badge */}
       <div className="mt-5 animate-fade-up delay-300">
-        <RatingBadge rating={country.overallRating} size="lg" />
+        <ScoreBadge score={country.overallScore} size="lg" showLabel />
       </div>
     </div>
   );

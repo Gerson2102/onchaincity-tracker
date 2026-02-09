@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { RankedCountry, MetricKey } from "@/lib/types";
-import { RatingBadge } from "@/components/country/RatingBadge";
+import { ScoreBadge } from "@/components/country/ScoreBadge";
 import { cn, getFlagUrl } from "@/lib/utils";
 import { HighMetricsIndicator } from "./HighMetricsIndicator";
-import { countHighMetrics } from "@/lib/utils/analytics";
+import { countStrongMetrics } from "@/lib/utils/analytics";
 
 interface RankingsTableRowProps {
   country: RankedCountry;
@@ -47,26 +47,26 @@ export function RankingsTableRow({
       )}
     >
       {/* Rank */}
-      <td className="py-4 px-4 text-center">
+      <td className="sticky-col sticky-col-rank bg-white group-hover:bg-[#faf6f0] py-3 px-3 text-center">
         <span className="heading-serif text-xl text-charcoal group-hover:text-accent transition-colors">
           {country.rank}
         </span>
       </td>
 
       {/* Country */}
-      <td className="py-4 px-4">
+      <td className="sticky-col sticky-col-country bg-white group-hover:bg-[#faf6f0] py-3 px-3">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
+          <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
             <Image
               src={getFlagUrl(country.flag)}
               alt={`${country.name} flag`}
-              width={36}
-              height={36}
+              width={32}
+              height={32}
               className="w-full h-full object-cover"
             />
           </div>
           <div>
-            <span className="font-medium text-charcoal group-hover:text-accent transition-colors">
+            <span className="font-medium text-charcoal group-hover:text-accent transition-colors text-sm">
               {country.name}
             </span>
             <span className="block text-xs text-muted">{country.region}</span>
@@ -74,20 +74,20 @@ export function RankingsTableRow({
         </div>
       </td>
 
-      {/* Overall Rating - Use bar variant for emphasis */}
-      <td className="py-4 px-4 text-center">
-        <RatingBadge rating={country.overallRating} variant="bar" />
+      {/* Overall Score */}
+      <td className="sticky-col sticky-col-overall bg-white group-hover:bg-[#faf6f0] py-3 px-2 text-center">
+        <ScoreBadge score={country.overallScore} variant="bar" />
       </td>
 
-      {/* High Metrics Indicator */}
-      <td className="py-4 px-3 text-center">
-        <HighMetricsIndicator count={countHighMetrics(country)} />
+      {/* Strong Metrics Indicator */}
+      <td className="sticky-col sticky-col-hp bg-white group-hover:bg-[#faf6f0] py-3 px-2 text-center">
+        <HighMetricsIndicator count={countStrongMetrics(country)} />
       </td>
 
-      {/* Metric Ratings */}
+      {/* Metric Scores */}
       {metricKeys.map((key) => (
-        <td key={key} className="py-4 px-3 text-center">
-          <RatingBadge rating={country.metrics[key].rating} size="sm" />
+        <td key={key} className="py-3 px-2 text-center">
+          <ScoreBadge score={country.metrics[key].score} size="sm" />
         </td>
       ))}
     </tr>

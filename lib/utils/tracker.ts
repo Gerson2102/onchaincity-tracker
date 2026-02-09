@@ -1,56 +1,52 @@
-import type { Rating, MetricKey, MetricScore, Country, TrackerData } from "@/lib/types";
-import { RATING_COLORS, RATING_BG_COLORS } from "@/lib/constants/tracker";
+import type { MetricKey, MetricScore, Country, TrackerData, ScoreTier } from "@/lib/types";
+import { SCORE_TIER_COLORS, SCORE_TIER_BG_COLORS } from "@/lib/constants/tracker";
 
 /**
- * Convert a rating to a numeric value for calculations
+ * Get the tier for a numeric score
  */
-export function ratingToNumber(rating: Rating): number {
-  switch (rating) {
-    case "Low":
-      return 1;
-    case "Medium":
-      return 2;
-    case "High":
-      return 3;
+export function getScoreTier(score: number): ScoreTier {
+  if (score >= 7) return "strong";
+  if (score >= 4) return "moderate";
+  return "low";
+}
+
+/**
+ * Get a display label for a score tier
+ */
+export function getScoreTierLabel(tier: ScoreTier): string {
+  switch (tier) {
+    case "strong": return "High Performers";
+    case "moderate": return "Developing";
+    case "low": return "Emerging";
   }
 }
 
 /**
- * Convert a numeric value back to a rating
+ * Get the hex color for a score
  */
-export function numberToRating(n: number): Rating {
-  if (n < 1.67) return "Low";
-  if (n <= 2.33) return "Medium";
-  return "High";
+export function getScoreColor(score: number): string {
+  return SCORE_TIER_COLORS[getScoreTier(score)];
 }
 
 /**
- * Calculate overall rating from metrics
+ * Get the background color (with opacity) for a score
  */
-export function calculateOverallRating(
+export function getScoreBgColor(score: number): string {
+  return SCORE_TIER_BG_COLORS[getScoreTier(score)];
+}
+
+/**
+ * Calculate overall score as the average of all metric scores
+ */
+export function calculateOverallScore(
   metrics: Record<MetricKey, MetricScore>
-): Rating {
+): number {
   const metricKeys = Object.keys(metrics) as MetricKey[];
   const sum = metricKeys.reduce(
-    (acc, key) => acc + ratingToNumber(metrics[key].rating),
+    (acc, key) => acc + metrics[key].score,
     0
   );
-  const average = sum / metricKeys.length;
-  return numberToRating(average);
-}
-
-/**
- * Get the hex color for a rating
- */
-export function getRatingColor(rating: Rating): string {
-  return RATING_COLORS[rating];
-}
-
-/**
- * Get the background color (with opacity) for a rating
- */
-export function getRatingBgColor(rating: Rating): string {
-  return RATING_BG_COLORS[rating];
+  return Math.round((sum / metricKeys.length) * 10) / 10;
 }
 
 /**

@@ -1,5 +1,5 @@
 import type { Country } from "@/lib/types";
-import { getCountsByRating } from "@/lib/utils/analytics";
+import { getCountsByScoreTier } from "@/lib/utils/analytics";
 import { StatCard } from "./StatCard";
 import { DistributionBar } from "./DistributionBar";
 
@@ -8,7 +8,7 @@ interface AtAGlanceProps {
 }
 
 export function AtAGlance({ countries }: AtAGlanceProps) {
-  const counts = getCountsByRating(countries);
+  const counts = getCountsByScoreTier(countries);
 
   return (
     <div>
@@ -23,9 +23,9 @@ export function AtAGlance({ countries }: AtAGlanceProps) {
         {/* Stats grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
           <StatCard label="Countries Tracked" value={counts.total} />
-          <StatCard label="High Performers" value={counts.High} rating="High" />
-          <StatCard label="Developing" value={counts.Medium} rating="Medium" />
-          <StatCard label="Emerging" value={counts.Low} rating="Low" />
+          <StatCard label="High Performers (7-10)" value={counts.strong} scoreTier="strong" />
+          <StatCard label="Developing (4-6)" value={counts.moderate} scoreTier="moderate" />
+          <StatCard label="Emerging (0-3)" value={counts.low} scoreTier="low" />
         </div>
 
         {/* Distribution bar */}

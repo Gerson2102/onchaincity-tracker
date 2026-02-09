@@ -5,9 +5,9 @@ interface MapLegendProps {
 }
 
 const legendItems = [
-  { label: "High", color: "#115E59" },
-  { label: "Medium", color: "#D97706" },
-  { label: "Low", color: "#BE185D" },
+  { label: "High Performers (7-10)", color: "#115E59" },
+  { label: "Developing (4-6)", color: "#D97706" },
+  { label: "Emerging (0-3)", color: "#BE185D" },
   { label: "Not tracked", color: "#E8E4E0", muted: true },
 ];
 

@@ -1,17 +1,17 @@
-import type { RatingCounts } from "@/lib/types";
+import type { ScoreTierCounts } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 interface DistributionBarProps {
-  counts: RatingCounts;
+  counts: ScoreTierCounts;
   className?: string;
 }
 
 export function DistributionBar({ counts, className }: DistributionBarProps) {
-  const { High, Medium, Low, total } = counts;
+  const { strong, moderate, low, total } = counts;
 
-  const highPercent = (High / total) * 100;
-  const mediumPercent = (Medium / total) * 100;
-  const lowPercent = (Low / total) * 100;
+  const strongPercent = (strong / total) * 100;
+  const moderatePercent = (moderate / total) * 100;
+  const lowPercent = (low / total) * 100;
 
   return (
     <div className={cn("space-y-3", className)}>
@@ -19,22 +19,22 @@ export function DistributionBar({ counts, className }: DistributionBarProps) {
       <div
         className="h-3 rounded-full overflow-hidden flex"
         role="img"
-        aria-label={`Distribution: ${High} High, ${Medium} Medium, ${Low} Low`}
+        aria-label={`Distribution: ${strong} High Performers, ${moderate} Developing, ${low} Emerging`}
       >
         <div
           className="bg-[var(--color-rating-high)] transition-all duration-500"
-          style={{ width: `${highPercent}%` }}
-          title={`High: ${High} countries (${Math.round(highPercent)}%)`}
+          style={{ width: `${strongPercent}%` }}
+          title={`High Performers: ${strong} countries (${Math.round(strongPercent)}%)`}
         />
         <div
           className="bg-[var(--color-rating-medium)] transition-all duration-500"
-          style={{ width: `${mediumPercent}%` }}
-          title={`Medium: ${Medium} countries (${Math.round(mediumPercent)}%)`}
+          style={{ width: `${moderatePercent}%` }}
+          title={`Developing: ${moderate} countries (${Math.round(moderatePercent)}%)`}
         />
         <div
           className="bg-[var(--color-rating-low)] transition-all duration-500"
           style={{ width: `${lowPercent}%` }}
-          title={`Low: ${Low} countries (${Math.round(lowPercent)}%)`}
+          title={`Emerging: ${low} countries (${Math.round(lowPercent)}%)`}
         />
       </div>
 
@@ -42,15 +42,15 @@ export function DistributionBar({ counts, className }: DistributionBarProps) {
       <div className="flex justify-center gap-6 text-xs">
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-high)]" />
-          <span className="text-muted">High ({Math.round(highPercent)}%)</span>
+          <span className="text-muted">High Performers ({Math.round(strongPercent)}%)</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-medium)]" />
-          <span className="text-muted">Medium ({Math.round(mediumPercent)}%)</span>
+          <span className="text-muted">Developing ({Math.round(moderatePercent)}%)</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-low)]" />
-          <span className="text-muted">Low ({Math.round(lowPercent)}%)</span>
+          <span className="text-muted">Emerging ({Math.round(lowPercent)}%)</span>
         </div>
       </div>
     </div>

@@ -5,24 +5,23 @@ import type {
   SortDirection,
   SortableColumn,
   LeaderboardFilters,
-  MetricKey,
+  ScoreTierCounts,
 } from "@/lib/types";
-import { ratingToNumber } from "./tracker";
-
-const METRIC_KEYS: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
+import { ALL_METRIC_KEYS } from "@/lib/constants/tracker";
+import { getScoreTier } from "./tracker";
 
 /**
- * Count how many metrics a country has at High rating
+ * Count how many metrics a country has at Strong tier (score >= 7)
  */
-function countHighMetrics(country: Country): number {
-  return METRIC_KEYS.filter(key => country.metrics[key].rating === "High").length;
+function countStrongMetrics(country: Country): number {
+  return ALL_METRIC_KEYS.filter(key => country.metrics[key].score >= 7).length;
+}
+
+/**
+ * Get total metric score for a country
+ */
+function totalMetricScore(country: Country): number {
+  return ALL_METRIC_KEYS.reduce((sum, key) => sum + country.metrics[key].score, 0);
 }
 
 /**
@@ -42,15 +41,14 @@ function getSortValue(country: Country, column: SortableColumn): number | string
     return country.name.toLowerCase();
   }
   if (column === "overall") {
-    return ratingToNumber(country.overallRating);
+    return country.overallScore;
   }
   // It's a metric key
-  return ratingToNumber(country.metrics[column].rating);
+  return country.metrics[column].score;
 }
 
 /**
  * Sort countries based on sort state
- * Uses tri-state sorting: null (default by overall desc) → desc → asc → null
  */
 export function sortCountries(
   countries: Country[],
@@ -58,16 +56,12 @@ export function sortCountries(
 ): Country[] {
   const sorted = [...countries];
 
-  // If no explicit sort, default to overall rating descending
+  // If no explicit sort, default to overall score descending
   if (sortState.column === null || sortState.direction === null) {
     return sorted.sort((a, b) => {
-      const aValue = ratingToNumber(a.overallRating);
-      const bValue = ratingToNumber(b.overallRating);
-      // Secondary sort by name for stable ordering
-      if (bValue === aValue) {
-        return a.name.localeCompare(b.name);
-      }
-      return bValue - aValue;
+      const diff = b.overallScore - a.overallScore;
+      if (diff !== 0) return diff;
+      return a.name.localeCompare(b.name);
     });
   }
 
@@ -82,10 +76,8 @@ export function sortCountries(
       return multiplier * aValue.localeCompare(bValue);
     }
 
-    // Numeric comparison
     const diff = (aValue as number) - (bValue as number);
     if (diff === 0) {
-      // Secondary sort by name for stable ordering
       return a.name.localeCompare(b.name);
     }
     return multiplier * diff;
@@ -93,19 +85,17 @@ export function sortCountries(
 }
 
 /**
- * Filter countries by region and/or rating
+ * Filter countries by region and/or score tier
  */
 export function filterCountries(
   countries: Country[],
   filters: LeaderboardFilters
 ): Country[] {
   return countries.filter((country) => {
-    // Region filter
     if (filters.region !== "all" && country.region !== filters.region) {
       return false;
     }
-    // Rating filter
-    if (filters.rating !== "all" && country.overallRating !== filters.rating) {
+    if (filters.scoreTier !== "all" && getScoreTier(country.overallScore) !== filters.scoreTier) {
       return false;
     }
     return true;
@@ -114,24 +104,26 @@ export function filterCountries(
 
 /**
  * Assign unique sequential ranks to countries
- * Sort by: overall rating (desc) → high metrics count (desc) → name (alpha)
+ * Sort by: overall score (desc) → total metric score (desc) → strong metrics count (desc) → name (alpha)
  */
 export function assignRanks(countries: Country[]): RankedCountry[] {
-  // Sort with tiebreakers for unique ranks
   const sorted = [...countries].sort((a, b) => {
-    // Primary: overall rating descending
-    const ratingDiff = ratingToNumber(b.overallRating) - ratingToNumber(a.overallRating);
-    if (ratingDiff !== 0) return ratingDiff;
+    // Primary: overall score descending
+    const overallDiff = b.overallScore - a.overallScore;
+    if (Math.abs(overallDiff) > 0.001) return overallDiff;
 
-    // Secondary: high metrics count descending
-    const highDiff = countHighMetrics(b) - countHighMetrics(a);
-    if (highDiff !== 0) return highDiff;
+    // Secondary: total metric score descending
+    const totalDiff = totalMetricScore(b) - totalMetricScore(a);
+    if (Math.abs(totalDiff) > 0.001) return totalDiff;
 
-    // Tertiary: alphabetical by name
+    // Tertiary: strong metrics count descending
+    const strongDiff = countStrongMetrics(b) - countStrongMetrics(a);
+    if (strongDiff !== 0) return strongDiff;
+
+    // Quaternary: alphabetical by name
     return a.name.localeCompare(b.name);
   });
 
-  // Assign sequential ranks 1, 2, 3... (no ties)
   return sorted.map((country, index) => ({
     ...country,
     rank: index + 1,
@@ -146,25 +138,21 @@ export function getLeaderboardData(
   filters: LeaderboardFilters,
   sortState: SortState
 ): RankedCountry[] {
-  // First filter
   const filtered = filterCountries(countries, filters);
-  // Assign ranks based on filtered set
   const ranked = assignRanks(filtered);
-  // Then sort (preserving ranks)
   const sorted = sortCountries(ranked, sortState);
 
   return sorted as RankedCountry[];
 }
 
 /**
- * Count countries by rating
+ * Count countries by score tier
  */
-export function countByRating(countries: Country[]): Record<string, number> {
-  return countries.reduce(
-    (acc, country) => {
-      acc[country.overallRating] = (acc[country.overallRating] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>
-  );
+export function countByScoreTier(countries: Country[]): ScoreTierCounts {
+  const counts: ScoreTierCounts = { strong: 0, moderate: 0, low: 0, total: countries.length };
+  for (const country of countries) {
+    const tier = getScoreTier(country.overallScore);
+    counts[tier]++;
+  }
+  return counts;
 }

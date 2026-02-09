@@ -1,6 +1,6 @@
 import type { MetricKey, MetricScore } from "@/lib/types";
 import { METRIC_DEFINITIONS } from "@/lib/constants/tracker";
-import { RatingBadge } from "./RatingBadge";
+import { ScoreBadge } from "./ScoreBadge";
 import { RankBadge } from "@/components/ui/RankBadge";
 
 interface MetricCardProps {
@@ -15,7 +15,7 @@ export function MetricCard({ metricKey, score, metricRank, totalCountries }: Met
 
   return (
     <div className="card-soft p-6">
-      {/* Header: Name + Rating */}
+      {/* Header: Name + Score */}
       <div className="flex items-start justify-between gap-4">
         <h3 className="heading-serif text-lg text-charcoal">
           {definition.displayName}
@@ -24,7 +24,7 @@ export function MetricCard({ metricKey, score, metricRank, totalCountries }: Met
           {metricRank !== undefined && (
             <RankBadge rank={metricRank} total={totalCountries} size="sm" />
           )}
-          <RatingBadge rating={score.rating} size="sm" />
+          <ScoreBadge score={score.score} size="sm" />
         </div>
       </div>
 

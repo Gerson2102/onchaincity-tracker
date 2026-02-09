@@ -1,6 +1,6 @@
-import type { Country, MetricKey, Rating } from "@/lib/types";
-import { METRIC_DEFINITIONS } from "@/lib/constants/tracker";
-import { ratingToNumber } from "./tracker";
+import type { Country, MetricKey } from "@/lib/types";
+import { METRIC_DEFINITIONS, ALL_METRIC_KEYS } from "@/lib/constants/tracker";
+import { getScoreTier } from "./tracker";
 
 /**
  * Parse country IDs from URL search params
@@ -20,34 +20,30 @@ export function buildCompareUrl(countryIds: string[]): string {
 }
 
 /**
- * Get metrics where all compared countries have "High" rating
+ * Get metrics where all compared countries score >= 7 (Strong)
  */
 export function getSharedHighMetrics(countries: Country[]): MetricKey[] {
   if (countries.length < 2) return [];
 
-  const metricKeys = Object.keys(METRIC_DEFINITIONS) as MetricKey[];
-
-  return metricKeys.filter((key) =>
-    countries.every((country) => country.metrics[key].rating === "High")
+  return ALL_METRIC_KEYS.filter((key) =>
+    countries.every((country) => country.metrics[key].score >= 7)
   );
 }
 
 /**
- * Get the metric with the largest rating spread (most divergence)
+ * Get the metric with the largest score spread (most divergence)
  */
 export function getBiggestDivergence(
   countries: Country[]
 ): { metric: MetricKey; displayName: string; spread: number } | null {
   if (countries.length < 2) return null;
 
-  const metricKeys = Object.keys(METRIC_DEFINITIONS) as MetricKey[];
-
   let maxSpread = 0;
   let divergentMetric: MetricKey | null = null;
 
-  for (const key of metricKeys) {
-    const ratings = countries.map((c) => ratingToNumber(c.metrics[key].rating));
-    const spread = Math.max(...ratings) - Math.min(...ratings);
+  for (const key of ALL_METRIC_KEYS) {
+    const scores = countries.map((c) => c.metrics[key].score);
+    const spread = Math.max(...scores) - Math.min(...scores);
 
     if (spread > maxSpread) {
       maxSpread = spread;
@@ -65,30 +61,13 @@ export function getBiggestDivergence(
 }
 
 /**
- * Check if a metric has divergent ratings across countries
+ * Check if a metric has divergent scores across countries
  */
 export function hasMetricDivergence(countries: Country[], metricKey: MetricKey): boolean {
   if (countries.length < 2) return false;
 
-  const ratings = new Set(countries.map((c) => c.metrics[metricKey].rating));
-  return ratings.size > 1;
-}
-
-/**
- * Get rating distribution for a metric across compared countries
- */
-export function getMetricRatingDistribution(
-  countries: Country[],
-  metricKey: MetricKey
-): Record<Rating, number> {
-  const distribution: Record<Rating, number> = { High: 0, Medium: 0, Low: 0 };
-
-  for (const country of countries) {
-    const rating = country.metrics[metricKey].rating;
-    distribution[rating]++;
-  }
-
-  return distribution;
+  const tiers = new Set(countries.map((c) => getScoreTier(c.metrics[metricKey].score)));
+  return tiers.size > 1;
 }
 
 /**
@@ -112,9 +91,9 @@ export function generateComparisonInsight(countries: Country[]): string {
       .map((key) => METRIC_DEFINITIONS[key].displayName);
 
     if (sharedHigh.length === 1) {
-      parts.push(`All countries excel in ${metricNames[0]}.`);
-    } else if (sharedHigh.length === 6) {
-      parts.push("All countries achieve High ratings across every metric - a remarkable alignment of digital infrastructure excellence.");
+      parts.push(`All countries score High Performer in ${metricNames[0]}.`);
+    } else if (sharedHigh.length === ALL_METRIC_KEYS.length) {
+      parts.push("All countries score High Performer across every index — a remarkable alignment of digital infrastructure excellence.");
     } else {
       parts.push(`Shared strengths: ${metricNames.join(", ")}.`);
     }
@@ -123,10 +102,10 @@ export function generateComparisonInsight(countries: Country[]): string {
   // Divergence
   if (divergence) {
     const highCountries = countries
-      .filter((c) => c.metrics[divergence.metric].rating === "High")
+      .filter((c) => c.metrics[divergence.metric].score >= 7)
       .map((c) => c.name);
     const lowCountries = countries
-      .filter((c) => c.metrics[divergence.metric].rating === "Low")
+      .filter((c) => c.metrics[divergence.metric].score < 4)
       .map((c) => c.name);
 
     if (highCountries.length > 0 && lowCountries.length > 0) {
@@ -134,15 +113,15 @@ export function generateComparisonInsight(countries: Country[]): string {
         `Biggest contrast in ${divergence.displayName}: ${highCountries.join(", ")} lead${highCountries.length === 1 ? "s" : ""} while ${lowCountries.join(", ")} trail${lowCountries.length === 1 ? "s" : ""}.`
       );
     } else if (divergence.spread > 0) {
-      parts.push(`${divergence.displayName} shows the most variation across these countries.`);
+      parts.push(`${divergence.displayName} shows the most variation across these countries (${divergence.spread.toFixed(1)} point spread).`);
     }
   }
 
   // Overall pattern
-  const highPerformers = countries.filter((c) => c.overallRating === "High");
-  if (highPerformers.length === countries.length) {
-    parts.push("This comparison features top-tier digital nations - differences are in implementation details rather than capability.");
-  } else if (highPerformers.length === 0) {
+  const strongPerformers = countries.filter((c) => getScoreTier(c.overallScore) === "strong");
+  if (strongPerformers.length === countries.length) {
+    parts.push("This comparison features top-tier digital nations — differences are in implementation details rather than capability.");
+  } else if (strongPerformers.length === 0) {
     parts.push("These nations are developing their digital infrastructure with varying approaches and priorities.");
   }
 

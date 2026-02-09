@@ -6,7 +6,7 @@ import type { Country } from "@/lib/types";
 import countriesData from "@/data/countries.json";
 import type { TrackerData } from "@/lib/types";
 import { cn, getFlagUrl } from "@/lib/utils";
-import { RatingBadge } from "@/components/country/RatingBadge";
+import { ScoreBadge } from "@/components/country";
 import { COMPARISON_COLORS } from "@/lib/constants/tracker";
 import { SelectedCountryChip } from "./SelectedCountryChip";
 
@@ -238,8 +238,8 @@ export function CountrySelector({
                       </div>
                     </div>
 
-                    {/* Rating */}
-                    <RatingBadge rating={country.overallRating} size="sm" />
+                    {/* Score */}
+                    <ScoreBadge score={country.overallScore} size="sm" />
                   </div>
                 ))}
               </div>

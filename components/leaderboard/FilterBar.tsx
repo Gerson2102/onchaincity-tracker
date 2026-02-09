@@ -1,14 +1,14 @@
 "use client";
 
-import type { RegionFilter, RatingFilter } from "@/lib/types";
+import type { RegionFilter, ScoreTierFilter } from "@/lib/types";
 import { REGIONS } from "@/lib/constants/tracker";
 import { cn } from "@/lib/utils";
 
 interface FilterBarProps {
   region: RegionFilter;
-  rating: RatingFilter;
+  scoreTier: ScoreTierFilter;
   onRegionChange: (region: RegionFilter) => void;
-  onRatingChange: (rating: RatingFilter) => void;
+  onScoreTierChange: (tier: ScoreTierFilter) => void;
   onClearAll: () => void;
   filteredCount: number;
   totalCount: number;
@@ -17,9 +17,9 @@ interface FilterBarProps {
 
 export function FilterBar({
   region,
-  rating,
+  scoreTier,
   onRegionChange,
-  onRatingChange,
+  onScoreTierChange,
   onClearAll,
   filteredCount,
   totalCount,
@@ -59,21 +59,21 @@ export function FilterBar({
         <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted" />
       </div>
 
-      {/* Rating Filter */}
+      {/* Score Tier Filter */}
       <div className="relative">
-        <label htmlFor="rating-filter" className="sr-only">
-          Filter by rating
+        <label htmlFor="tier-filter" className="sr-only">
+          Filter by score tier
         </label>
         <select
-          id="rating-filter"
-          value={rating}
-          onChange={(e) => onRatingChange(e.target.value as RatingFilter)}
-          className={getSelectClasses(rating !== "all")}
+          id="tier-filter"
+          value={scoreTier}
+          onChange={(e) => onScoreTierChange(e.target.value as ScoreTierFilter)}
+          className={getSelectClasses(scoreTier !== "all")}
         >
-          <option value="all">All Ratings</option>
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
+          <option value="all">All Tiers</option>
+          <option value="strong">High Performers (7-10)</option>
+          <option value="moderate">Developing (4-6)</option>
+          <option value="low">Emerging (0-3)</option>
         </select>
         <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted" />
       </div>

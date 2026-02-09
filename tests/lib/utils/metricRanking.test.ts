@@ -5,19 +5,11 @@ import {
   computeAllMetricRankings,
   getCountryMetricRank,
 } from "@/lib/utils/metricRanking";
+import { ALL_METRIC_KEYS } from "@/lib/constants/tracker";
 import countriesData from "@/data/countries.json";
 import type { TrackerData } from "@/lib/types";
 
 const data = countriesData as TrackerData;
-
-const METRIC_KEYS: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
 
 function makeCountry(
   overrides: Partial<Country> & { id: string; name: string }
@@ -27,14 +19,18 @@ function makeCountry(
     name: overrides.name,
     region: "Europe",
     flag: "xx",
-    overallRating: "Medium",
+    overallScore: 5.0,
     metrics: {
-      contextContinuity: { rating: "Medium", summary: "" },
-      userSovereignty: { rating: "Medium", summary: "" },
-      serviceProgrammability: { rating: "Medium", summary: "" },
-      interoperability: { rating: "Medium", summary: "" },
-      verifiableInfrastructure: { rating: "Medium", summary: "" },
-      digitalAssetMaturity: { rating: "Medium", summary: "" },
+      eGovServiceDepth: { score: 5.0, summary: "" },
+      digitalIdentityInfra: { score: 5.0, summary: "" },
+      govInteroperability: { score: 5.0, summary: "" },
+      legalClarityDigitalAssets: { score: 5.0, summary: "" },
+      stablecoinAdoption: { score: 5.0, summary: "" },
+      onOffRampAccess: { score: 5.0, summary: "" },
+      tokenizedRwaMaturity: { score: 5.0, summary: "" },
+      crossBorderPayments: { score: 5.0, summary: "" },
+      digitalNomadFriendliness: { score: 5.0, summary: "" },
+      cryptoDigitalLiteracy: { score: 5.0, summary: "" },
     },
   };
   return {
@@ -45,78 +41,82 @@ function makeCountry(
 }
 
 describe("rankCountriesByMetric", () => {
-  it("ranks High > Medium > Low", () => {
+  it("ranks higher scores first", () => {
     const countries: Country[] = [
       makeCountry({
         id: "LOW",
         name: "LowLand",
-        metrics: { contextContinuity: { rating: "Low", summary: "" } } as Country["metrics"],
+        metrics: { eGovServiceDepth: { score: 2.0, summary: "" } } as Country["metrics"],
       }),
       makeCountry({
         id: "HIGH",
         name: "HighLand",
-        metrics: { contextContinuity: { rating: "High", summary: "" } } as Country["metrics"],
+        metrics: { eGovServiceDepth: { score: 9.0, summary: "" } } as Country["metrics"],
       }),
       makeCountry({
         id: "MED",
         name: "MedLand",
-        metrics: { contextContinuity: { rating: "Medium", summary: "" } } as Country["metrics"],
+        metrics: { eGovServiceDepth: { score: 5.5, summary: "" } } as Country["metrics"],
       }),
     ];
 
-    const ranked = rankCountriesByMetric(countries, "contextContinuity");
+    const ranked = rankCountriesByMetric(countries, "eGovServiceDepth");
     expect(ranked[0]).toEqual({ countryId: "HIGH", rank: 1 });
     expect(ranked[1]).toEqual({ countryId: "MED", rank: 2 });
     expect(ranked[2]).toEqual({ countryId: "LOW", rank: 3 });
   });
 
-  it("breaks ties by overall rating (desc)", () => {
+  it("breaks ties by overall score (desc)", () => {
     const countries: Country[] = [
       makeCountry({
         id: "A",
         name: "Alpha",
-        overallRating: "Medium",
-        metrics: { contextContinuity: { rating: "High", summary: "" } } as Country["metrics"],
+        overallScore: 5.5,
+        metrics: { eGovServiceDepth: { score: 8.0, summary: "" } } as Country["metrics"],
       }),
       makeCountry({
         id: "B",
         name: "Beta",
-        overallRating: "High",
-        metrics: { contextContinuity: { rating: "High", summary: "" } } as Country["metrics"],
+        overallScore: 7.5,
+        metrics: { eGovServiceDepth: { score: 8.0, summary: "" } } as Country["metrics"],
       }),
     ];
 
-    const ranked = rankCountriesByMetric(countries, "contextContinuity");
+    const ranked = rankCountriesByMetric(countries, "eGovServiceDepth");
     expect(ranked[0].countryId).toBe("B");
     expect(ranked[1].countryId).toBe("A");
   });
 
-  it("breaks ties by high metric count (desc)", () => {
+  it("breaks ties by total metric score (desc)", () => {
     const a = makeCountry({
       id: "A",
       name: "Alpha",
-      overallRating: "High",
+      overallScore: 7.0,
     });
-    // A has 0 High metrics (all Medium from defaults)
+    // A has all metrics at 5.0 (total = 50)
 
     const b = makeCountry({
       id: "B",
       name: "Beta",
-      overallRating: "High",
+      overallScore: 7.0,
       metrics: {
-        contextContinuity: { rating: "Medium", summary: "" },
-        userSovereignty: { rating: "High", summary: "" },
-        serviceProgrammability: { rating: "High", summary: "" },
-        interoperability: { rating: "Medium", summary: "" },
-        verifiableInfrastructure: { rating: "Medium", summary: "" },
-        digitalAssetMaturity: { rating: "Medium", summary: "" },
+        eGovServiceDepth: { score: 5.0, summary: "" },
+        digitalIdentityInfra: { score: 8.0, summary: "" },
+        govInteroperability: { score: 8.0, summary: "" },
+        legalClarityDigitalAssets: { score: 5.0, summary: "" },
+        stablecoinAdoption: { score: 5.0, summary: "" },
+        onOffRampAccess: { score: 5.0, summary: "" },
+        tokenizedRwaMaturity: { score: 5.0, summary: "" },
+        crossBorderPayments: { score: 5.0, summary: "" },
+        digitalNomadFriendliness: { score: 5.0, summary: "" },
+        cryptoDigitalLiteracy: { score: 5.0, summary: "" },
       },
     });
-    // B has 2 High metrics
+    // B has total = 56
 
-    // Both have same contextContinuity (Medium) and same overall (High)
-    const ranked = rankCountriesByMetric([a, b], "contextContinuity");
-    expect(ranked[0].countryId).toBe("B"); // more High metrics
+    // Both have same eGovServiceDepth (5.0) and same overall (7.0)
+    const ranked = rankCountriesByMetric([a, b], "eGovServiceDepth");
+    expect(ranked[0].countryId).toBe("B"); // higher total metric score
     expect(ranked[1].countryId).toBe("A");
   });
 
@@ -124,7 +124,7 @@ describe("rankCountriesByMetric", () => {
     const a = makeCountry({ id: "ZZZ", name: "Zeta" });
     const b = makeCountry({ id: "AAA", name: "Alpha" });
 
-    const ranked = rankCountriesByMetric([a, b], "contextContinuity");
+    const ranked = rankCountriesByMetric([a, b], "eGovServiceDepth");
     expect(ranked[0].countryId).toBe("AAA"); // Alpha < Zeta
     expect(ranked[1].countryId).toBe("ZZZ");
   });
@@ -138,14 +138,14 @@ describe("rankCountriesByMetric", () => {
       makeCountry({ id: "E", name: "E" }),
     ];
 
-    const ranked = rankCountriesByMetric(countries, "contextContinuity");
+    const ranked = rankCountriesByMetric(countries, "eGovServiceDepth");
     const ranks = ranked.map((r) => r.rank);
     expect(ranks).toEqual([1, 2, 3, 4, 5]);
   });
 });
 
 describe("computeAllMetricRankings", () => {
-  it("returns entries for all countries with all 6 metrics", () => {
+  it("returns entries for all countries with all 10 metrics", () => {
     const countries = [
       makeCountry({ id: "A", name: "Alpha" }),
       makeCountry({ id: "B", name: "Beta" }),
@@ -156,7 +156,7 @@ describe("computeAllMetricRankings", () => {
     expect(rankings.size).toBe(3);
 
     for (const [, ranks] of rankings) {
-      for (const key of METRIC_KEYS) {
+      for (const key of ALL_METRIC_KEYS) {
         expect(ranks[key]).toBeGreaterThanOrEqual(1);
         expect(ranks[key]).toBeLessThanOrEqual(3);
       }
@@ -167,7 +167,7 @@ describe("computeAllMetricRankings", () => {
     const rankings = computeAllMetricRankings(data.countries);
     expect(rankings.size).toBe(20);
 
-    for (const metricKey of METRIC_KEYS) {
+    for (const metricKey of ALL_METRIC_KEYS) {
       const ranks = Array.from(rankings.values()).map((r) => r[metricKey]);
       ranks.sort((a, b) => a - b);
       expect(ranks).toEqual(
@@ -180,14 +180,14 @@ describe("computeAllMetricRankings", () => {
 describe("getCountryMetricRank", () => {
   it("returns the correct rank for a known country and metric", () => {
     const rankings = computeAllMetricRankings(data.countries);
-    const estRank = getCountryMetricRank(rankings, "EST", "contextContinuity");
+    const estRank = getCountryMetricRank(rankings, "EST", "eGovServiceDepth");
     expect(estRank).toBeGreaterThanOrEqual(1);
     expect(estRank).toBeLessThanOrEqual(20);
   });
 
   it("returns undefined for an unknown country", () => {
     const rankings = computeAllMetricRankings(data.countries);
-    const rank = getCountryMetricRank(rankings, "UNKNOWN", "contextContinuity");
+    const rank = getCountryMetricRank(rankings, "UNKNOWN", "eGovServiceDepth");
     expect(rank).toBeUndefined();
   });
 });

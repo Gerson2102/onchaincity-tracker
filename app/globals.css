@@ -770,6 +770,53 @@ body {
   border-left-color: var(--color-accent);
 }
 
+/* Sticky columns for horizontal-scroll table */
+.sticky-col {
+  position: sticky;
+  z-index: 2;
+}
+
+.sticky-col-rank {
+  left: 0;
+  width: 60px;
+  min-width: 60px;
+}
+
+.sticky-col-country {
+  left: 60px;
+  width: 200px;
+  min-width: 200px;
+}
+
+.sticky-col-overall {
+  left: 260px;
+  width: 90px;
+  min-width: 90px;
+}
+
+.sticky-col-hp {
+  left: 350px;
+  width: 100px;
+  min-width: 100px;
+}
+
+/* Shadow edge on last sticky column */
+.sticky-col-hp::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -8px;
+  width: 8px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.06), transparent);
+  pointer-events: none;
+}
+
+/* Sticky header cells sit above sticky body cells */
+thead .sticky-col {
+  z-index: 4;
+}
+
 /* ============================================
    IMAGE STYLES
    ============================================ */

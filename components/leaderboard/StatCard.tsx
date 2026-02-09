@@ -1,26 +1,26 @@
-import type { Rating } from "@/lib/types";
+import type { ScoreTier } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 interface StatCardProps {
   label: string;
   value: number;
-  rating?: Rating;
+  scoreTier?: ScoreTier;
   className?: string;
 }
 
-const ratingColorClasses: Record<Rating, string> = {
-  High: "text-[var(--color-rating-high)]",
-  Medium: "text-[#B45309] font-medium",
-  Low: "text-[var(--color-rating-low)]",
+const tierColorClasses: Record<ScoreTier, string> = {
+  strong: "text-[var(--color-rating-high)]",
+  moderate: "text-[#B45309] font-medium",
+  low: "text-[var(--color-rating-low)]",
 };
 
-export function StatCard({ label, value, rating, className }: StatCardProps) {
+export function StatCard({ label, value, scoreTier, className }: StatCardProps) {
   return (
     <div className={cn("text-center", className)}>
       <p
         className={cn(
           "stat-display text-5xl mb-2",
-          rating ? ratingColorClasses[rating] : "text-charcoal"
+          scoreTier ? tierColorClasses[scoreTier] : "text-charcoal"
         )}
       >
         {value}

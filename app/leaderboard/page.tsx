@@ -74,7 +74,7 @@ export default function LeaderboardPage() {
           {/* Methodology note */}
           <div className="mt-12 text-center">
             <p className="text-sm text-muted">
-              Rankings are based on our six-dimension evaluation framework.{" "}
+              Rankings are based on ten indexes across three pillars.{" "}
               <Link
                 href="/about"
                 className="text-stone hover:text-charcoal underline underline-offset-2 transition-colors"

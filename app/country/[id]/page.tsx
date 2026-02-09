@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import countriesData from "@/data/countries.json";
-import type { TrackerData, MetricKey } from "@/lib/types";
+import type { TrackerData } from "@/lib/types";
 import { assignRanks, computeAllMetricRankings } from "@/lib/utils";
+import { METRIC_KEYS_BY_PILLAR, PILLAR_DEFINITIONS, METRIC_DEFINITIONS } from "@/lib/constants/tracker";
 import { CountryHeader, MetricCard, MetricsRadar } from "@/components/country";
 
 const data = countriesData as TrackerData;
@@ -30,18 +31,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${country.name} - OnchainCity Tracker`,
-    description: `See how ${country.name} scores on programmability, interoperability, user sovereignty, and other digital infrastructure metrics.`,
+    description: `See how ${country.name} scores across ten digital infrastructure indexes including e-government, digital identity, and crypto literacy.`,
   };
 }
-
-const metricKeys: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
 
 export default async function CountryPage({ params }: PageProps) {
   const { id } = await params;
@@ -58,6 +50,10 @@ export default async function CountryPage({ params }: PageProps) {
   // Compute per-metric rankings
   const metricRankings = computeAllMetricRankings(data.countries);
   const countryMetricRanks = metricRankings.get(id);
+
+  const pillarEntries = Object.entries(METRIC_KEYS_BY_PILLAR) as Array<
+    [keyof typeof PILLAR_DEFINITIONS, (keyof typeof METRIC_DEFINITIONS)[]]
+  >;
 
   return (
     <main id="main-content" tabIndex={-1} className="relative">
@@ -94,22 +90,32 @@ export default async function CountryPage({ params }: PageProps) {
             <MetricsRadar country={country} />
           </div>
 
-          {/* Metric Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {metricKeys.map((key, index) => (
-              <div
-                key={key}
-                className={`animate-fade-up delay-${(index + 1) * 100}`}
-              >
-                <MetricCard
-                  metricKey={key}
-                  score={country.metrics[key]}
-                  metricRank={countryMetricRanks?.[key]}
-                  totalCountries={data.countries.length}
-                />
+          {/* Metric Cards grouped by Pillar */}
+          {pillarEntries.map(([pillar, keys], pillarIndex) => (
+            <div key={pillar} className="mb-12 last:mb-0">
+              <h2 className="heading-serif text-2xl text-charcoal mb-2 animate-fade-up">
+                {pillar}
+              </h2>
+              <p className="text-stone text-sm mb-6 animate-fade-up delay-50">
+                {PILLAR_DEFINITIONS[pillar].description}
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                {keys.map((key, index) => (
+                  <div
+                    key={key}
+                    className={`animate-fade-up delay-${((pillarIndex * 3 + index + 1) % 5) * 100}`}
+                  >
+                    <MetricCard
+                      metricKey={key}
+                      score={country.metrics[key]}
+                      metricRank={countryMetricRanks?.[key]}
+                      totalCountries={data.countries.length}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
 
           {/* Compare CTA */}
           <div className="mt-12 text-center animate-fade-up delay-600">

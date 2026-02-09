@@ -8,36 +8,25 @@ import {
   Radar,
   ResponsiveContainer,
 } from "recharts";
-import type { Country, MetricKey } from "@/lib/types";
-import { METRIC_DEFINITIONS, METRIC_SHORT_NAMES, COMPARISON_COLORS } from "@/lib/constants/tracker";
-import { ratingToNumber } from "@/lib/utils/tracker";
+import type { Country } from "@/lib/types";
+import { METRIC_SHORT_NAMES, COMPARISON_COLORS, ALL_METRIC_KEYS } from "@/lib/constants/tracker";
 
 interface ComparisonRadarProps {
   countries: Country[];
 }
 
-const metricKeys: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
-
 export function ComparisonRadar({ countries }: ComparisonRadarProps) {
   const [hiddenCountries, setHiddenCountries] = useState<Set<string>>(new Set());
 
   // Prepare radar data with all countries' values
-  const radarData = metricKeys.map((key) => {
+  const radarData = ALL_METRIC_KEYS.map((key) => {
     const dataPoint: Record<string, string | number> = {
       metric: METRIC_SHORT_NAMES[key],
-      fullName: METRIC_DEFINITIONS[key].displayName,
-      fullMark: 3,
+      fullMark: 10,
     };
 
     countries.forEach((country) => {
-      dataPoint[country.id] = ratingToNumber(country.metrics[key].rating);
+      dataPoint[country.id] = country.metrics[key].score;
     });
 
     return dataPoint;
@@ -96,14 +85,14 @@ export function ComparisonRadar({ countries }: ComparisonRadarProps) {
     <div className="w-full">
       <div className="w-full h-96 sm:h-80" role="img" aria-label={`Comparison radar chart for ${countries.map(c => c.name).join(', ')}`}>
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="75%" data={radarData}>
+          <RadarChart cx="50%" cy="50%" outerRadius="65%" data={radarData}>
             <PolarGrid
               stroke="rgba(201, 184, 212, 0.3)"
               strokeDasharray="3 3"
             />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: "#5C5753", fontSize: 12 }}
+              tick={{ fill: "#5C5753", fontSize: 10 }}
               tickLine={false}
             />
             {countries.map((country, index) => {

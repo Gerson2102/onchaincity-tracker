@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-02-01",
+    "version": "2.0.0",
+    "lastUpdated": "2026-02-09",
     "totalCountries": 20
   },
   "countries": [
@@ -10,32 +10,18 @@
       "name": "Estonia",
       "region": "Europe",
       "flag": "ee",
-      "overallRating": "High",
+      "overallScore": 7.3,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "Estonia's digital identity (e-ID) is reusable across 99% of government services and extends to private sector via Smart-ID. Citizens authenticate once and carry verified credentials seamlessly across tax, health, voting, and banking systems."
-        },
-        "userSovereignty": {
-          "rating": "High",
-          "summary": "Citizens have full visibility into who accesses their data via the X-Road data tracker. Consent is granular and revocable. The Personal Data Usage Monitor allows real-time audit of all government data queries."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "X-Road provides a unified API layer for all government services. Third-party developers can build on top of government infrastructure. The e-Residency program offers fully programmable business services."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "X-Road enables seamless data exchange between all government agencies and with private sector. Cross-border interoperability achieved with Finland and expanding to other EU nations."
-        },
-        "verifiableInfrastructure": {
-          "rating": "High",
-          "summary": "KSI Blockchain timestamps all government records, making tampering detectable. Digital signatures are legally binding and cryptographically verifiable. Health records, land registry, and court decisions all secured."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Land registry, business registry, health records, and educational credentials are fully digital. The e-Residency program enables digital-native business formation with no physical presence required."
-        }
+        "eGovServiceDepth": { "score": 9.2, "summary": "99% of government services available online via e-Estonia. X-Road backbone connects all agencies. Paperless cabinet meetings since 2000." },
+        "digitalIdentityInfra": { "score": 9.5, "summary": "e-ID and Smart-ID provide universal digital identity across government and private services. e-Residency extends digital ID to non-residents globally." },
+        "govInteroperability": { "score": 9.0, "summary": "X-Road data exchange layer is a global model for interoperability, connecting 900+ organizations. All government agencies share data via standardized APIs. Open-source and exported to Finland and other nations." },
+        "legalClarityDigitalAssets": { "score": 7.0, "summary": "EU MiCA framework applies. Previously liberal licensing tightened in 2022. Clear definitions for virtual asset service providers." },
+        "stablecoinAdoption": { "score": 5.5, "summary": "Moderate stablecoin usage among e-Residency holders and cross-border freelancers. EUR-pegged stablecoins gaining traction in the Baltics. Regulatory clarity under MiCA supports growth." },
+        "onOffRampAccess": { "score": 7.0, "summary": "Multiple licensed exchanges operate under Estonian VASP regime. Banking integration possible but some banks remain cautious. e-Residency facilitates crypto-fiat operations for remote entrepreneurs." },
+        "tokenizedRwaMaturity": { "score": 3.5, "summary": "Early-stage exploration of tokenized assets. A few e-Residency-linked startups experimenting with tokenized equity. No dedicated security token framework yet beyond MiCA provisions." },
+        "crossBorderPayments": { "score": 7.2, "summary": "SEPA zone member with low-cost EUR transfers. Growing stablecoin adoption among e-Residents. Wise and other fintechs headquartered here." },
+        "digitalNomadFriendliness": { "score": 8.0, "summary": "First country to launch a Digital Nomad Visa (2020). Strong coworking scene in Tallinn. Excellent internet infrastructure nationwide." },
+        "cryptoDigitalLiteracy": { "score": 6.8, "summary": "Active blockchain developer community via e-Residency program. Moderate retail crypto adoption. Home to multiple Web3 startups." }
       }
     },
     {
@@ -43,32 +29,18 @@
       "name": "Singapore",
       "region": "Asia-Pacific",
       "flag": "sg",
-      "overallRating": "High",
+      "overallScore": 8.0,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "SingPass provides unified digital identity across 2,700+ government and private services. MyInfo enables one-click form filling with verified personal data across banking, insurance, and government applications."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "SingPass allows selective data sharing, but consent mechanisms are less granular than Estonia. Citizens can view transaction history but audit trails are not as comprehensive."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "APEX (API Exchange) provides 900+ APIs for government data and services. GovTech actively encourages third-party development through hackathons and sandbox environments."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "Strong internal interoperability via Singapore Government Tech Stack (SGTS). Active in ASEAN cross-border digital identity initiatives and bilateral agreements."
-        },
-        "verifiableInfrastructure": {
-          "rating": "High",
-          "summary": "OpenCerts provides blockchain-based verification for educational credentials. TradeTrust enables verifiable trade documents. Digital signatures widely accepted."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Comprehensive digital registries for business, property, and vehicles. Progressive regulatory framework for digital assets and tokenization under MAS oversight."
-        }
+        "eGovServiceDepth": { "score": 9.3, "summary": "LifeSG super-app consolidates 100+ government services. GovTech builds world-class digital infrastructure. Consistently ranked #1 in e-gov indexes." },
+        "digitalIdentityInfra": { "score": 9.0, "summary": "SingPass provides unified digital identity for 2,700+ government and private services. MyInfo enables verified data sharing across banking and insurance." },
+        "govInteroperability": { "score": 8.0, "summary": "CODEX platform enables secure cross-agency data sharing via government APIs. GovTech promotes API-first architecture across ministries. Smart Nation initiative drives end-to-end interoperability." },
+        "legalClarityDigitalAssets": { "score": 8.5, "summary": "MAS provides comprehensive regulatory framework for digital payment tokens. Clear licensing under Payment Services Act. Sandbox for innovation." },
+        "stablecoinAdoption": { "score": 7.5, "summary": "MAS stablecoin framework established in 2023 with clear reserve and redemption requirements. Major stablecoin issuers seeking Singapore licenses. Institutional adoption growing in trade finance." },
+        "onOffRampAccess": { "score": 8.5, "summary": "Multiple MAS-licensed exchanges with full banking integration. Seamless SGD on/off-ramps via DBS, OCBC partnerships. Institutional-grade custody and settlement infrastructure." },
+        "tokenizedRwaMaturity": { "score": 7.0, "summary": "Project Guardian driving institutional tokenization of bonds and funds with JPMorgan and DBS. MAS actively piloting tokenized government securities. Asia's leading hub for RWA tokenization." },
+        "crossBorderPayments": { "score": 8.5, "summary": "Project Ubin advanced cross-border CBDC research. Partnership with BIS on multi-CBDC platform. Low remittance costs to ASEAN neighbors." },
+        "digitalNomadFriendliness": { "score": 6.0, "summary": "No dedicated nomad visa but ONE Pass for top talent. Excellent coworking infrastructure. World-class internet connectivity." },
+        "cryptoDigitalLiteracy": { "score": 7.5, "summary": "Major crypto hub in Asia. High awareness among professionals. Home to many exchanges and Web3 companies. Strong developer ecosystem." }
       }
     },
     {
@@ -76,32 +48,18 @@
       "name": "South Korea",
       "region": "Asia-Pacific",
       "flag": "kr",
-      "overallRating": "High",
+      "overallScore": 6.7,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "National digital ID integrates with mobile drivers licenses and banking. Single sign-on across government portals and expanding to private sector through decentralized ID pilots."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "Strong data protection laws (PIPA) but consent management is service-by-service. MyData initiative piloting user-controlled data portability. Privacy awareness high but tools still maturing."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "Government24 portal offers 2,000+ digital services. Open API platform provides access to public datasets. Active promotion of RegTech and GovTech innovation."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "Strong internal data sharing between agencies. Leading APEC cross-border privacy rules. Interoperable with major trading partners through digital trade agreements."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Blockchain-based document verification expanding across government. Mobile drivers licenses cryptographically secured. Some agency records still lack full verification infrastructure."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Comprehensive real estate registry digitization. Business registrations fully digital. Clear regulatory framework for virtual assets under new legislation."
-        }
+        "eGovServiceDepth": { "score": 8.8, "summary": "Government24 portal offers 2,000+ digital services. High broadband penetration. UN E-Government Index top 3 consistently." },
+        "digitalIdentityInfra": { "score": 8.0, "summary": "National digital ID integrates with mobile licenses and banking. Decentralized ID pilots expanding. DID Alliance driving standards." },
+        "govInteroperability": { "score": 7.5, "summary": "Government Integrated Data Center connects ministries with shared infrastructure. Open Data Portal provides API access to 80,000+ public datasets. MyData initiative piloting user-controlled data portability." },
+        "legalClarityDigitalAssets": { "score": 6.5, "summary": "Virtual Asset Users Protection Act enacted 2024. Licensing framework established. Some regulatory uncertainty remains for DeFi and NFTs." },
+        "stablecoinAdoption": { "score": 5.0, "summary": "Limited stablecoin market due to strict real-name banking rules for crypto exchanges. KRW-pegged stablecoins emerging cautiously. Institutional interest growing post-regulatory clarity." },
+        "onOffRampAccess": { "score": 7.0, "summary": "Major exchanges like Upbit and Bithumb offer seamless KRW on-ramps via real-name verified bank accounts. Tight banking partnerships required by law. High liquidity but limited exchange competition." },
+        "tokenizedRwaMaturity": { "score": 3.5, "summary": "Korea Exchange exploring tokenized securities. Financial Services Commission piloting security token sandbox. Early-stage but strong institutional interest from chaebols." },
+        "crossBorderPayments": { "score": 6.5, "summary": "Strong domestic payment rails. Cross-border crypto corridors growing. Bank of Korea CBDC research advanced." },
+        "digitalNomadFriendliness": { "score": 5.5, "summary": "Workcation visa launched 2024. Good coworking infrastructure in Seoul. Excellent internet but language barrier remains." },
+        "cryptoDigitalLiteracy": { "score": 8.2, "summary": "Extremely high retail crypto adoption. Kimchi premium phenomenon. Active trading population. Growing Web3 developer community." }
       }
     },
     {
@@ -109,32 +67,18 @@
       "name": "Denmark",
       "region": "Europe",
       "flag": "dk",
-      "overallRating": "High",
+      "overallScore": 6.4,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "NemID/MitID provides universal digital identity across all government services and most banks. CPR number links records across agencies. Seamless authentication experience."
-        },
-        "userSovereignty": {
-          "rating": "High",
-          "summary": "Strong GDPR implementation with citizen-friendly consent portals. Borger.dk provides clear data access controls. Citizens can easily see and manage data sharing permissions."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "Comprehensive API strategy for government services. Open data portal with machine-readable datasets. Digital-by-default policy drives automation-friendly design."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "Full EU eIDAS compliance enables cross-border identity. Nordic interoperability agreements. Strong internal data sharing infrastructure between municipalities and national agencies."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Digital signatures legally recognized. PKI infrastructure mature. Blockchain verification pilots underway but not yet production-deployed across all registries."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Property registry fully digital since 1990s. Business registration instant and online. Health records, educational credentials all digitized with high data quality."
-        }
+        "eGovServiceDepth": { "score": 9.0, "summary": "Borger.dk provides seamless access to all government services. Digital-by-default since 2014. Over 90% of citizen-government interactions are digital." },
+        "digitalIdentityInfra": { "score": 8.8, "summary": "MitID provides universal digital identity across government and banking. CPR number links all records. Seamless cross-service authentication." },
+        "govInteroperability": { "score": 8.5, "summary": "Shared government IT infrastructure via Statens IT. Standardized APIs across municipal and federal systems. Danish Basic Data Program ensures interoperability across registries for addresses, businesses, and citizens." },
+        "legalClarityDigitalAssets": { "score": 6.5, "summary": "EU MiCA framework applies. Danish FSA provides guidance. Regulatory approach cautious but clear within EU harmonization." },
+        "stablecoinAdoption": { "score": 4.0, "summary": "Low stablecoin adoption; strong banking system and low-cost digital krone transfers reduce demand. MiCA compliance preparing ground for regulated issuance. Niche use in cross-border B2B payments." },
+        "onOffRampAccess": { "score": 6.0, "summary": "Limited domestic crypto exchange options. Danish banks generally cautious toward crypto clients. EU-licensed exchanges accessible but with higher friction than Nordic peers." },
+        "tokenizedRwaMaturity": { "score": 3.0, "summary": "Nascent tokenization landscape. Danish fintech ecosystem exploring tokenized green bonds. No dedicated security token regulation beyond MiCA. Small number of pilot projects." },
+        "crossBorderPayments": { "score": 7.0, "summary": "SEPA zone with efficient EUR transfers. Strong banking infrastructure. MobilePay widely adopted domestically." },
+        "digitalNomadFriendliness": { "score": 6.5, "summary": "No dedicated nomad visa but EU mobility helps. Copenhagen coworking scene growing. Excellent internet and work infrastructure." },
+        "cryptoDigitalLiteracy": { "score": 5.0, "summary": "Moderate crypto awareness. Smaller but growing blockchain community. Some enterprise adoption. Not a major retail trading market." }
       }
     },
     {
@@ -142,32 +86,18 @@
       "name": "Finland",
       "region": "Europe",
       "flag": "fi",
-      "overallRating": "High",
+      "overallScore": 6.3,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "Suomi.fi provides unified access to all government services with strong identity federation. Banking IDs accepted alongside national ID. Cross-service authentication seamless."
-        },
-        "userSovereignty": {
-          "rating": "High",
-          "summary": "MyData principles embedded in government strategy. Citizens control data sharing via Suomi.fi authorizations. Strong transparency about data usage across agencies."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "Growing API ecosystem via Suomi.fi palveluvayla. X-Road adoption from Estonia enables service interoperability. Some legacy systems still limit full programmability."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "X-Road deployment enables Estonian-Finnish cross-border services. Full EU eIDAS compliance. Strong Nordic cooperation on digital services."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Strong PKI infrastructure and digital signatures. Blockchain pilots for permits and credentials. Some registries still transitioning to fully verifiable formats."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Kanta health records system world-leading. Property and business registries fully digital. Educational credential digitization advanced."
-        }
+        "eGovServiceDepth": { "score": 8.8, "summary": "Suomi.fi provides unified access to all government services. Strong identity federation. X-Road adopted from Estonia for data exchange." },
+        "digitalIdentityInfra": { "score": 8.5, "summary": "Finnish Trust Network enables strong digital identity. Banking IDs accepted alongside national ID. Cross-service authentication seamless." },
+        "govInteroperability": { "score": 8.5, "summary": "Adopted Estonia's X-Road for cross-agency data exchange. Suomi.fi Data Exchange Layer connects hundreds of government APIs. MyData principles embedded in government data strategy for citizen-controlled portability." },
+        "legalClarityDigitalAssets": { "score": 6.5, "summary": "EU MiCA framework applies. FIN-FSA provides regulatory guidance. Virtual currency providers must register." },
+        "stablecoinAdoption": { "score": 4.0, "summary": "Minimal stablecoin adoption. Strong domestic banking and efficient EUR payment systems reduce demand. Interest limited to niche DeFi participants and cross-border freelancers." },
+        "onOffRampAccess": { "score": 5.5, "summary": "Few domestic crypto exchanges; most users rely on EU-wide platforms. Finnish banks generally neutral toward crypto. FIN-FSA registration requirement adds compliance overhead for providers." },
+        "tokenizedRwaMaturity": { "score": 2.5, "summary": "Very early stage. Helsinki fintech community exploring tokenized fund shares. No dedicated regulatory framework for security tokens. Academic research leading practice." },
+        "crossBorderPayments": { "score": 7.0, "summary": "SEPA zone member. Efficient EUR transfers. Growing fintech ecosystem. Cross-border cooperation with Estonia via X-Road." },
+        "digitalNomadFriendliness": { "score": 6.5, "summary": "No specific nomad visa but residence permits available for entrepreneurs. Good coworking in Helsinki. Excellent internet." },
+        "cryptoDigitalLiteracy": { "score": 5.2, "summary": "Moderate crypto adoption. Active blockchain research community. Some notable startups but not a major crypto hub." }
       }
     },
     {
@@ -175,32 +105,18 @@
       "name": "United States",
       "region": "Americas",
       "flag": "us",
-      "overallRating": "Medium",
+      "overallScore": 6.5,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Low",
-          "summary": "No unified national digital identity. Login.gov provides federated access to some federal services but adoption limited. State IDs not interoperable. Citizens manage multiple identities."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "Strong sector-specific privacy laws (HIPAA, CCPA) but no comprehensive federal framework. Consent mechanisms vary widely by agency. Data portability rights inconsistent."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "API.gov and data.gov provide access to federal datasets. Some agencies have modern APIs but many lack programmatic access. Wide variation in digital maturity across agencies."
-        },
-        "interoperability": {
-          "rating": "Low",
-          "summary": "Federal-state data sharing fragmented. Interstate portability poor. Healthcare interoperability improving but still challenging. Siloed agency systems."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "PKI infrastructure exists for some applications. REAL ID improving identity verification. Blockchain pilots emerging but not mainstream in government records."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Strong fintech ecosystem with clear SEC/CFTC frameworks. Business registrations vary by state. Property records increasingly digital but not unified."
-        }
+        "eGovServiceDepth": { "score": 6.0, "summary": "Federal services digitizing via Login.gov but adoption limited. Wide variation across states. USDS modernizing legacy systems gradually." },
+        "digitalIdentityInfra": { "score": 4.5, "summary": "No unified national digital identity. REAL ID improving verification. State IDs not interoperable. SSN as de facto ID has major limitations." },
+        "govInteroperability": { "score": 5.0, "summary": "Federal agencies operate largely siloed systems. Data.gov provides API access to public datasets but cross-agency data sharing is limited. State-federal interoperability remains a major challenge." },
+        "legalClarityDigitalAssets": { "score": 6.0, "summary": "SEC and CFTC jurisdiction disputes create uncertainty. FIT21 legislation advancing. Evolving but still fragmented framework." },
+        "stablecoinAdoption": { "score": 8.5, "summary": "Largest stablecoin market globally; USDC and USDT dominate with hundreds of billions in circulation. Stablecoin legislation advancing in Congress. Widely used for trading, DeFi, and increasingly for payments." },
+        "onOffRampAccess": { "score": 8.5, "summary": "Deepest crypto exchange market globally with Coinbase, Kraken, and numerous platforms. Full banking integration via ACH and wire. Institutional custody from Fidelity, BNY Mellon. State-by-state licensing adds some friction." },
+        "tokenizedRwaMaturity": { "score": 5.5, "summary": "BlackRock BUIDL fund and Franklin Templeton tokenized funds leading institutional adoption. SEC providing gradual clarity on security tokens. Growing market for tokenized treasuries and private credit." },
+        "crossBorderPayments": { "score": 7.5, "summary": "Major USD payment rails. SWIFT hub. Growing stablecoin adoption for remittances. FedNow launched for domestic instant payments." },
+        "digitalNomadFriendliness": { "score": 5.0, "summary": "No digital nomad visa. Complex immigration system. Excellent coworking infrastructure. World-class internet in metro areas." },
+        "cryptoDigitalLiteracy": { "score": 8.5, "summary": "Largest crypto market globally. High retail and institutional adoption. Major exchanges headquartered here. Vibrant Web3 developer ecosystem." }
       }
     },
     {
@@ -208,32 +124,18 @@
       "name": "United Kingdom",
       "region": "Europe",
       "flag": "gb",
-      "overallRating": "Medium",
+      "overallScore": 6.7,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "GOV.UK One Login expanding but not yet universal. Private identity providers certified for some services. No single unified digital identity across all services."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "UK GDPR provides strong framework. Consent mechanisms improving but fragmented across services. Data portability rights exist but implementation varies."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "Government Digital Service (GDS) sets strong API standards. GOV.UK APIs well-documented. Open data portal comprehensive. Design system promotes consistency."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Post-Brexit eIDAS equivalence still evolving. Internal government data sharing improving via GDS standards. Some legacy systems create barriers."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Digital signatures recognized. GOV.UK Verify winding down for One Login. Blockchain verification limited to pilots. Academic credentials verification advancing."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Land Registry digitization advanced. Companies House fully digital. FCA providing evolving crypto regulatory clarity. Healthcare records partially digital."
-        }
+        "eGovServiceDepth": { "score": 8.0, "summary": "GOV.UK widely regarded as gold standard for digital government design. GDS sets strong API standards. Most services available online." },
+        "digitalIdentityInfra": { "score": 6.0, "summary": "GOV.UK One Login expanding but not yet universal. Private identity providers certified for some services. Post-Brexit eIDAS gap." },
+        "govInteroperability": { "score": 7.5, "summary": "Government Digital Service promotes API standards and open data. GOV.UK Notify and Pay provide shared cross-agency services. Open Banking model extends interoperability to financial sector." },
+        "legalClarityDigitalAssets": { "score": 7.0, "summary": "FCA providing evolving regulatory clarity. Financial Services and Markets Act 2023 covers crypto. Travel rule implemented." },
+        "stablecoinAdoption": { "score": 6.0, "summary": "FCA developing regulatory regime for fiat-backed stablecoins. GBP-pegged stablecoin projects emerging. Moderate institutional interest. London fintech ecosystem driving experimentation." },
+        "onOffRampAccess": { "score": 7.5, "summary": "Major exchanges like Coinbase and Kraken operate with FCA registration. Faster Payments integration enables quick GBP on-ramps. Some banks restrict crypto transfers but improving." },
+        "tokenizedRwaMaturity": { "score": 4.5, "summary": "FCA sandbox projects exploring tokenized funds and bonds. Bank of England researching digital securities settlement. London Stock Exchange exploring tokenized asset listings." },
+        "crossBorderPayments": { "score": 7.5, "summary": "GBP/EUR corridors efficient. London as global finance hub. UK Faster Payments model. Open Banking driving innovation." },
+        "digitalNomadFriendliness": { "score": 5.5, "summary": "No dedicated nomad visa. Complex immigration post-Brexit. Excellent coworking in London. Good internet infrastructure." },
+        "cryptoDigitalLiteracy": { "score": 7.0, "summary": "Strong crypto adoption. London major fintech and crypto hub. Active trading population. Growing Web3 scene." }
       }
     },
     {
@@ -241,32 +143,18 @@
       "name": "Germany",
       "region": "Europe",
       "flag": "de",
-      "overallRating": "Medium",
+      "overallScore": 6.0,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "eID card (Personalausweis) enables digital identity but adoption below expectations. BundID expanding federal service access. Länder fragmentation creates inconsistency."
-        },
-        "userSovereignty": {
-          "rating": "High",
-          "summary": "Strong GDPR enforcement. Privacy-by-design culture. Granular consent mechanisms in many services. Data protection authorities active and well-resourced."
-        },
-        "serviceProgrammability": {
-          "rating": "Low",
-          "summary": "Online Access Act (OZG) mandates digital services but implementation delayed. API availability limited. Many services still require physical presence or paper forms."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "EU eIDAS compliance but federal-Länder coordination challenges. Data sharing across agencies improving slowly. Healthcare interoperability advancing via gematik."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Strong PKI and qualified electronic signatures. Blockchain pilots in supply chain and credentials. Government records verification infrastructure developing."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Comprehensive crypto regulatory framework (MiCA implementation). Land registry digitization varies by state. Business registration digital but processes lengthy."
-        }
+        "eGovServiceDepth": { "score": 5.5, "summary": "Online Access Act (OZG) mandates digital services but implementation delayed. Many services still require physical presence. Fax culture persists." },
+        "digitalIdentityInfra": { "score": 6.0, "summary": "eID card (Personalausweis) enables digital identity but adoption below expectations. BundID expanding. Länder fragmentation creates gaps." },
+        "govInteroperability": { "score": 5.5, "summary": "16 federal states operate largely independent IT systems creating interoperability challenges. FIT-Connect platform being rolled out to standardize cross-agency data exchange. FITKO coordinating federal IT cooperation." },
+        "legalClarityDigitalAssets": { "score": 7.5, "summary": "Comprehensive MiCA implementation. BaFin provides clear guidance. Electronic Securities Act enables tokenized securities. Progressive framework." },
+        "stablecoinAdoption": { "score": 5.0, "summary": "Moderate stablecoin usage primarily in institutional and DeFi contexts. EUR-stablecoin projects emerging under MiCA. Conservative banking culture limits retail adoption." },
+        "onOffRampAccess": { "score": 7.0, "summary": "BaFin-licensed exchanges including Bison and domestic platforms operate with SEPA integration. Major international exchanges accessible. German banks increasingly crypto-friendly, with Commerzbank obtaining crypto custody license." },
+        "tokenizedRwaMaturity": { "score": 5.0, "summary": "Electronic Securities Act (eWpG) enables tokenized bonds and fund shares. DZ Bank and Deutsche Börse piloting tokenized securities. One of Europe's most advanced tokenization regulatory frameworks." },
+        "crossBorderPayments": { "score": 7.0, "summary": "SEPA zone with efficient EUR transfers. Deutsche Bundesbank active in wholesale CBDC pilots. Strong banking infrastructure." },
+        "digitalNomadFriendliness": { "score": 5.5, "summary": "Freelancer visa available but bureaucratic. Berlin popular with nomads. Good coworking infrastructure. Internet speed improving." },
+        "cryptoDigitalLiteracy": { "score": 6.0, "summary": "Growing crypto adoption. Berlin and Frankfurt emerging as blockchain hubs. Enterprise interest in institutional DeFi." }
       }
     },
     {
@@ -274,32 +162,18 @@
       "name": "Japan",
       "region": "Asia-Pacific",
       "flag": "jp",
-      "overallRating": "Medium",
+      "overallScore": 6.4,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "My Number card adoption accelerating after slow start. Integration with health insurance and drivers license expanding. Still not universal across all services."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "APPI provides privacy framework. Consent mechanisms exist but can be complex. Data portability rights limited compared to GDPR. Citizens have access rights."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "Digital Agency driving modernization since 2021. e-Gov portal improving. API availability increasing but many services still require manual processes."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Internal government data sharing improving. Cross-border data transfer frameworks with key partners. Legacy systems still create integration challenges."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Hanko seals being replaced by digital signatures in many contexts. My Number verification cryptographically secured. Blockchain pilots in trade documents."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Progressive crypto regulatory framework. Real estate registry digital. Corporate registration online. Ahead in Central Bank Digital Currency research."
-        }
+        "eGovServiceDepth": { "score": 7.0, "summary": "Digital Agency driving modernization since 2021. My Number Portal improving. Legacy systems being replaced. Paper-heavy processes declining." },
+        "digitalIdentityInfra": { "score": 6.5, "summary": "My Number card adoption accelerating after mandate. Integration with health insurance and licenses. Still not universal across all services." },
+        "govInteroperability": { "score": 5.5, "summary": "Digital Agency working to break ministry silos with unified cloud infrastructure (Gov-Cloud). Base Registry system standardizing address and corporate data. Legacy mainframe systems slowing cross-agency integration." },
+        "legalClarityDigitalAssets": { "score": 8.0, "summary": "JFSA progressive regulatory framework. First major economy to regulate crypto exchanges (2017). Clear licensing and consumer protections." },
+        "stablecoinAdoption": { "score": 5.5, "summary": "2023 stablecoin law enables bank and trust company issuance of JPY-pegged stablecoins. MUFG and other banks exploring issuance. Market still nascent but regulatory clarity attractive." },
+        "onOffRampAccess": { "score": 7.0, "summary": "Licensed exchanges like bitFlyer and Coincheck offer JPY on-ramps with full banking integration. Strict regulatory requirements ensure consumer protection. High compliance costs limit number of providers." },
+        "tokenizedRwaMaturity": { "score": 4.5, "summary": "SBI Holdings and Nomura subsidiary Laser Digital advancing tokenized securities. Japan Exchange Group exploring digital securities platform. Regulatory framework under Financial Instruments and Exchange Act supports STO issuance." },
+        "crossBorderPayments": { "score": 6.5, "summary": "JPY major global currency. Domestic payments efficient. Cross-border costs moderate. Bank of Japan CBDC research advanced." },
+        "digitalNomadFriendliness": { "score": 6.0, "summary": "Digital nomad visa launched 2024 (6-month stay). Excellent internet. Growing coworking scene. Language barrier for non-Japanese speakers." },
+        "cryptoDigitalLiteracy": { "score": 7.5, "summary": "Early crypto adopter. High awareness and trading activity. Mt. Gox history. Major exchanges regulated. Active NFT/gaming scene." }
       }
     },
     {
@@ -307,32 +181,18 @@
       "name": "Australia",
       "region": "Asia-Pacific",
       "flag": "au",
-      "overallRating": "Medium",
+      "overallScore": 6.2,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "myGovID provides federated identity for government services. Digital Identity program expanding. State-federal coordination improving but not seamless."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "Privacy Act under review for modernization. Consumer Data Right enables portability in banking, energy. Consent mechanisms improving but vary by sector."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "api.gov.au provides access to some services. myGov platform modernizing. Service NSW sets strong state-level example. Federal API availability expanding."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Federal-state data sharing agreements in place. Healthcare interoperability via My Health Record. Cross-border arrangements with New Zealand strong."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Digital signatures legally recognized. Document verification service operational. Blockchain pilots in supply chain and credentials. PKI infrastructure mature."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Token mapping framework for crypto regulation. Property registries vary by state. Business registration digital nationally. Digital asset custody rules developing."
-        }
+        "eGovServiceDepth": { "score": 7.5, "summary": "myGov portal consolidates federal services. Service NSW strong state-level example. Digital transformation strategy progressing." },
+        "digitalIdentityInfra": { "score": 6.5, "summary": "myGovID provides federated identity. Digital Identity program expanding. State-federal coordination improving but not seamless." },
+        "govInteroperability": { "score": 6.5, "summary": "Consumer Data Right enables cross-sector data portability in banking, energy, and telecom. Whole-of-government API gateway progressing. State-federal data exchange improving but fragmented across jurisdictions." },
+        "legalClarityDigitalAssets": { "score": 6.5, "summary": "Token mapping framework for regulation. ASIC providing guidance. Comprehensive framework still in development. Progressing steadily." },
+        "stablecoinAdoption": { "score": 5.0, "summary": "ANZ issued A$DC (AUD stablecoin) in 2022, an early bank-issued stablecoin. Regulatory framework still being defined. Limited retail adoption but institutional pilots gaining traction." },
+        "onOffRampAccess": { "score": 7.0, "summary": "Exchanges like Independent Reserve and CoinSpot offer AUD on-ramps via PayID and bank transfers. Big four banks cautiously engaging. De-banking of crypto firms remains an occasional friction point." },
+        "tokenizedRwaMaturity": { "score": 3.5, "summary": "ASX exploring blockchain-based settlement after CHESS replacement delays. RBA piloting tokenized CBDC use cases. Small number of tokenized fund pilots in institutional space." },
+        "crossBorderPayments": { "score": 6.5, "summary": "AUD payment rails efficient. NPP for domestic instant payments. Cross-border costs to Asia reasonable. CBDC research via Project Atom." },
+        "digitalNomadFriendliness": { "score": 6.0, "summary": "Working Holiday Visa popular but age-limited. No dedicated nomad visa. Excellent coworking in major cities. Fast internet." },
+        "cryptoDigitalLiteracy": { "score": 7.0, "summary": "Strong crypto adoption. Active trading and DeFi community. Australia-based exchanges growing. University research programs." }
       }
     },
     {
@@ -340,32 +200,18 @@
       "name": "India",
       "region": "Asia-Pacific",
       "flag": "in",
-      "overallRating": "Medium",
+      "overallScore": 5.5,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "Aadhaar provides universal digital identity for 1.4 billion people. Integration with banking, telecom, and government benefits widespread. eKYC enables instant verification."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data Protection Act still maturing. Aadhaar consent mechanisms exist but concerns about mandatory linkages. Privacy safeguards developing. Limited data portability rights."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "India Stack provides open APIs for identity (Aadhaar), payments (UPI), documents (DigiLocker). Third-party innovation encouraged. Highly programmable infrastructure."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "India Stack enables seamless data flow between government and private sector. UPI interoperability exemplary. DigiLocker links documents across agencies."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Aadhaar biometrics cryptographically secured. DigiLocker documents verifiable. Some state-level registries still lack full verification infrastructure."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Low",
-          "summary": "Crypto taxation established but regulatory clarity limited. Land registries digital in some states. Business registration digital via MCA21. Digital rupee piloting."
-        }
+        "eGovServiceDepth": { "score": 7.0, "summary": "India Stack provides open APIs for identity, payments, and documents. DigiLocker links documents across agencies. Rapid digitization across states." },
+        "digitalIdentityInfra": { "score": 8.5, "summary": "Aadhaar provides universal digital identity for 1.4 billion people. eKYC enables instant verification. Integration with banking and telecom widespread." },
+        "govInteroperability": { "score": 7.0, "summary": "India Stack is a world-leading open API ecosystem connecting identity (Aadhaar), payments (UPI), and documents (DigiLocker). Open Government Data Platform provides 600,000+ datasets. Interoperability strong in payments but uneven across states." },
+        "legalClarityDigitalAssets": { "score": 4.0, "summary": "No comprehensive crypto regulation yet. RBI skepticism persists. Crypto not banned but not formally embraced. Regulatory uncertainty high." },
+        "stablecoinAdoption": { "score": 3.0, "summary": "Stablecoin usage restricted by hostile regulatory environment. No INR-pegged stablecoin permitted. P2P usage exists but banking channels blocked. RBI digital rupee CBDC competing for use cases." },
+        "onOffRampAccess": { "score": 4.0, "summary": "Crypto exchanges operate but face recurring banking access challenges. UPI integration with exchanges intermittent due to RBI pressure. 1% TDS and 30% tax create significant friction." },
+        "tokenizedRwaMaturity": { "score": 2.0, "summary": "Virtually no tokenized RWA market due to regulatory uncertainty. SEBI exploring tokenized securities concept. Blockchain experimentation limited to enterprise supply chain applications." },
+        "crossBorderPayments": { "score": 7.5, "summary": "UPI interoperability exemplary domestically. UPI expanding to international corridors (Singapore, UAE). Low-cost remittance corridors growing." },
+        "digitalNomadFriendliness": { "score": 4.0, "summary": "No digital nomad visa. Tourist visa used by some nomads. Excellent coworking in Bangalore/Goa. Internet quality varies significantly." },
+        "cryptoDigitalLiteracy": { "score": 7.5, "summary": "Large retail crypto adoption. One of highest user counts globally. Active Web3 developer community. Blockchain innovation hubs." }
       }
     },
     {
@@ -373,32 +219,18 @@
       "name": "Brazil",
       "region": "Americas",
       "flag": "br",
-      "overallRating": "Medium",
+      "overallScore": 6.0,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "Gov.br login unifying access to federal services. CPF number links records. Digital identity expansion underway but adoption varies across population."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "LGPD (Brazil's GDPR) provides privacy framework. Consent mechanisms mandated but enforcement developing. Data portability rights established."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "Gov.br platform modernizing federal services. Open banking APIs operational. Some services fully digital but many still require in-person steps."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Federal agencies increasingly connected. Open finance enabling data portability in financial sector. State-federal coordination improving."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Low",
-          "summary": "Digital signatures recognized via ICP-Brasil. Blockchain pilots limited. Many official records still lack cryptographic verification."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Crypto regulatory framework established. DREX (digital real) in development. Property registries partially digital. Business registration improving."
-        }
+        "eGovServiceDepth": { "score": 6.5, "summary": "Gov.br portal unifying federal services. CPF number links records. Digital transformation advancing but unevenly across regions." },
+        "digitalIdentityInfra": { "score": 6.0, "summary": "Gov.br digital ID expanding. CPF serves as foundational identifier. New national ID card with biometrics rolling out." },
+        "govInteroperability": { "score": 5.5, "summary": "Gov.br integrating federal services via API-driven architecture. PIX payment system demonstrates successful cross-bank interoperability. State-federal data exchange improving but digital divide across municipalities persists." },
+        "legalClarityDigitalAssets": { "score": 6.0, "summary": "Crypto regulatory framework established 2023. Central Bank as regulator. Clear licensing requirements for exchanges." },
+        "stablecoinAdoption": { "score": 6.0, "summary": "Growing stablecoin adoption driven by BRL volatility hedging. Tether (USDT) widely used for cross-border transactions. DREX (digital real CBDC) may compete with or complement stablecoins." },
+        "onOffRampAccess": { "score": 6.5, "summary": "Mercado Bitcoin and Binance Brazil offer BRL on-ramps via PIX. Banking integration improving under new regulatory framework. PIX instant payments make fiat-crypto conversion fast and cheap." },
+        "tokenizedRwaMaturity": { "score": 3.0, "summary": "DREX CBDC platform designed to support tokenized deposits and DeFi. CVM exploring tokenized securities regulation. Small but growing number of tokenized receivables and agribusiness tokens." },
+        "crossBorderPayments": { "score": 6.5, "summary": "PIX instant payment system revolutionary domestically. DREX (digital real) in development. Cross-border remittance costs declining." },
+        "digitalNomadFriendliness": { "score": 7.0, "summary": "Digital Nomad Visa available (1 year). Popular destinations like Florianopolis, Sao Paulo. Growing coworking scene. Variable internet." },
+        "cryptoDigitalLiteracy": { "score": 7.0, "summary": "Third-largest crypto market globally. High retail adoption. Active trading community. Largest market in Latin America." }
       }
     },
     {
@@ -406,32 +238,18 @@
       "name": "Kenya",
       "region": "Middle East & Africa",
       "flag": "ke",
-      "overallRating": "Medium",
+      "overallScore": 4.7,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "Huduma Namba digital ID program expanding. Integration with M-Pesa demonstrates identity utility. Not yet universal across all government services."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data Protection Act 2019 provides framework but enforcement nascent. Consent mechanisms basic. Privacy awareness growing but infrastructure limited."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "eCitizen portal provides digital government services. M-Pesa APIs enable fintech innovation. Government APIs limited but mobile-first approach enables innovation."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Kenya Revenue Authority integrated with other agencies. M-Pesa ecosystem demonstrates private sector interoperability. Cross-agency data sharing developing."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Low",
-          "summary": "Digital signatures recognized but adoption limited. Land registry verification improving. Most government records lack cryptographic verification."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Mobile money leads globally. Crypto regulation developing. Land registry digitization underway. Business registration increasingly online."
-        }
+        "eGovServiceDepth": { "score": 5.5, "summary": "eCitizen portal provides growing digital services. Mobile-first government approach. Integration with M-Pesa demonstrates utility." },
+        "digitalIdentityInfra": { "score": 5.0, "summary": "Huduma Namba digital ID program expanding. Integration with M-Pesa. Not yet universal across all government services." },
+        "govInteroperability": { "score": 3.5, "summary": "Limited cross-agency data sharing infrastructure. eCitizen portal consolidates some services but backend systems remain siloed. M-Pesa integration provides de facto interoperability for payments." },
+        "legalClarityDigitalAssets": { "score": 3.5, "summary": "No comprehensive crypto regulation. Central Bank warnings but no ban. Capital Markets Authority exploring framework. Regulatory gap." },
+        "stablecoinAdoption": { "score": 4.5, "summary": "Growing stablecoin usage for remittances and cross-border payments, particularly USDT via P2P channels. M-Pesa users beginning to bridge into crypto-backed stablecoins. No regulatory framework yet." },
+        "onOffRampAccess": { "score": 4.5, "summary": "P2P platforms like Paxful and Binance P2P dominate. No licensed local exchanges with direct bank integration. M-Pesa serves as informal on-ramp. Banking sector remains cautious toward crypto." },
+        "tokenizedRwaMaturity": { "score": 1.5, "summary": "Very early exploration. Some blockchain-based land registry pilots. Nairobi tech scene aware of tokenization but no frameworks or institutional pilots yet." },
+        "crossBorderPayments": { "score": 7.0, "summary": "M-Pesa revolutionized mobile payments. Cross-border mobile money corridors to East Africa. Low-cost remittance channels via mobile." },
+        "digitalNomadFriendliness": { "score": 5.0, "summary": "No dedicated nomad visa. East Africa tourist visa usable. Nairobi iHub and coworking scene growing. Internet improving." },
+        "cryptoDigitalLiteracy": { "score": 7.0, "summary": "High P2P crypto adoption for remittances. M-Pesa users transitioning to crypto. Active community. Leading in Africa for crypto usage." }
       }
     },
     {
@@ -439,32 +257,18 @@
       "name": "Nigeria",
       "region": "Middle East & Africa",
       "flag": "ng",
-      "overallRating": "Low",
+      "overallScore": 4.1,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Low",
-          "summary": "National Identity Number (NIN) program expanding but coverage incomplete. Multiple ID systems not fully integrated. Citizens manage fragmented identities."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data Protection Act 2023 provides new framework. Enforcement infrastructure developing. Consent mechanisms basic. Privacy culture emerging."
-        },
-        "serviceProgrammability": {
-          "rating": "Low",
-          "summary": "Some e-government portals exist but limited API availability. Many services remain paper-based. Fintech innovation advancing faster than government digitization."
-        },
-        "interoperability": {
-          "rating": "Low",
-          "summary": "Government agencies largely siloed. NIN integration progressing slowly. Limited data sharing between federal and state levels."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Low",
-          "summary": "Digital signatures not widely adopted. Record verification largely manual. Blockchain pilots minimal. Document authenticity verification challenging."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "eNaira CBDC launched. Crypto framework evolving after ban reversal. Property registries vary by state. Business registration portal operational."
-        }
+        "eGovServiceDepth": { "score": 3.0, "summary": "E-government portals exist but limited functionality. Many services remain paper-based. NIN integration progressing slowly." },
+        "digitalIdentityInfra": { "score": 3.5, "summary": "National Identity Number (NIN) program expanding but coverage incomplete. Multiple ID systems not fully integrated." },
+        "govInteroperability": { "score": 2.5, "summary": "Government agencies operate largely independently with minimal data sharing. NIN integration across agencies proceeding slowly. Technical infrastructure and funding constraints limit interoperability efforts." },
+        "legalClarityDigitalAssets": { "score": 3.5, "summary": "Crypto framework evolving after 2021 bank ban reversal. SEC attempting to regulate. eNaira CBDC launched. Uncertain environment." },
+        "stablecoinAdoption": { "score": 6.5, "summary": "High stablecoin adoption driven by naira volatility and FX restrictions. USDT dominant on P2P markets as dollar proxy. Used widely for cross-border commerce and remittances despite regulatory ambiguity." },
+        "onOffRampAccess": { "score": 3.5, "summary": "Banks prohibited from servicing crypto exchanges directly. P2P trading dominates via Binance P2P and local platforms. Informal M-Pesa and bank transfer channels fill gaps. High friction environment." },
+        "tokenizedRwaMaturity": { "score": 1.5, "summary": "No tokenization framework or institutional activity. SEC focused on foundational crypto regulation first. Lagos tech ecosystem aware but no active projects." },
+        "crossBorderPayments": { "score": 6.0, "summary": "High remittance corridor (diaspora). P2P crypto fills gap from restrictive FX policies. eNaira attempting to modernize." },
+        "digitalNomadFriendliness": { "score": 3.0, "summary": "No digital nomad visa. Complex visa processes. Lagos tech scene vibrant. Internet connectivity inconsistent." },
+        "cryptoDigitalLiteracy": { "score": 8.0, "summary": "Second-highest global crypto adoption rate. Massive P2P trading volume. Youth-driven. Used for remittances and commerce." }
       }
     },
     {
@@ -472,32 +276,18 @@
       "name": "Indonesia",
       "region": "Asia-Pacific",
       "flag": "id",
-      "overallRating": "Medium",
+      "overallScore": 5.1,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "E-KTP (electronic ID) provides national coverage. Integration with government services expanding. Digital signature via e-KTP certificate available."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Personal Data Protection Law (2022) newly enacted. Enforcement building. Consent mechanisms developing. Data localization requirements in place."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "One Data Indonesia initiative standardizing APIs. Some ministries provide programmable access. Digital transformation strategy advancing rapidly."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "SATU Data policy aims to unify government data. Cross-agency integration improving. Coordination across archipelago challenging."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Low",
-          "summary": "Electronic certificates available but limited adoption. Blockchain pilots emerging. Many official documents still require physical verification."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Crypto regulated as commodity. Digital rupiah research underway. Property registries digitalizing. Business registration via OSS system online."
-        }
+        "eGovServiceDepth": { "score": 5.5, "summary": "One Data Indonesia initiative standardizing government data. Some ministries digitized. Archipelago geography creates connectivity challenges." },
+        "digitalIdentityInfra": { "score": 5.5, "summary": "E-KTP provides national electronic ID coverage. Digital signature via e-KTP certificate available. Integration with services expanding." },
+        "govInteroperability": { "score": 4.0, "summary": "One Data Indonesia policy mandates data standardization but implementation uneven across ministries. SATU Data platform being developed for cross-agency exchange. 17,000-island archipelago complicates infrastructure rollout." },
+        "legalClarityDigitalAssets": { "score": 5.0, "summary": "Crypto regulated as commodity by Bappebti. Transition to OJK oversight. Framework exists but evolving with new regulations." },
+        "stablecoinAdoption": { "score": 4.0, "summary": "Limited stablecoin adoption. Crypto treated as commodity with exchange-based trading dominant. USDT used on P2P channels for cross-border payments. Bank Indonesia CBDC (digital rupiah) in research phase." },
+        "onOffRampAccess": { "score": 5.5, "summary": "Local exchanges like Indodax and Tokocrypto provide IDR on-ramps via bank transfer. Banking integration functional but limited. Regulatory transition from Bappebti to OJK creating temporary uncertainty." },
+        "tokenizedRwaMaturity": { "score": 2.0, "summary": "No tokenization framework. OJK beginning to consider digital securities regulation. Blockchain experimentation limited to fintech startups. Institutional interest very early." },
+        "crossBorderPayments": { "score": 5.5, "summary": "Growing fintech ecosystem. GoPay and OVO leading domestically. Cross-border remittance costs declining. Digital rupiah research underway." },
+        "digitalNomadFriendliness": { "score": 7.0, "summary": "Bali second home visa and B211A visa popular with nomads. World-class coworking in Bali. Affordable lifestyle. Variable internet." },
+        "cryptoDigitalLiteracy": { "score": 6.5, "summary": "Large and growing crypto adoption. Commodity futures exchange regulates trading. Active retail participation. Web3 community developing." }
       }
     },
     {
@@ -505,32 +295,18 @@
       "name": "United Arab Emirates",
       "region": "Middle East & Africa",
       "flag": "ae",
-      "overallRating": "High",
+      "overallScore": 7.8,
       "metrics": {
-        "contextContinuity": {
-          "rating": "High",
-          "summary": "UAE Pass provides unified digital identity across federal and emirate services. Face recognition enables passwordless authentication. Private sector integration strong."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "Federal Decree-Law on Data Protection established. Consent mechanisms in digital services. Privacy framework developing. Free zone regulations vary."
-        },
-        "serviceProgrammability": {
-          "rating": "High",
-          "summary": "Comprehensive API strategy across emirates. Smart Dubai and ADGM provide developer platforms. Government-as-a-Platform vision actively implemented."
-        },
-        "interoperability": {
-          "rating": "High",
-          "summary": "Strong coordination between federal government and emirates. Cross-border data sharing with GCC partners. Blockchain-based document attestation."
-        },
-        "verifiableInfrastructure": {
-          "rating": "High",
-          "summary": "Blockchain strategy implemented for government records. Dubai Land Department uses blockchain. Digital signatures widely accepted."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "VARA provides comprehensive crypto regulation in Dubai. ADGM framework for digital assets. Free zones attract crypto businesses. Registry digitization advanced."
-        }
+        "eGovServiceDepth": { "score": 8.5, "summary": "Smart Dubai and ADGM provide advanced digital government. Government-as-a-Platform vision. UAE Pass for unified access." },
+        "digitalIdentityInfra": { "score": 8.0, "summary": "UAE Pass provides unified digital identity across federal and emirate services. Face recognition for passwordless authentication. Private sector integration." },
+        "govInteroperability": { "score": 7.0, "summary": "Smart Dubai Platform enables cross-emirate data sharing. UAE National Data Strategy promoting government API standardization. Separate DIFC and ADGM frameworks complicate regulatory interoperability." },
+        "legalClarityDigitalAssets": { "score": 9.0, "summary": "VARA provides world-leading comprehensive crypto regulation in Dubai. ADGM framework for digital assets. Free zones attract global crypto businesses." },
+        "stablecoinAdoption": { "score": 7.5, "summary": "AED-pegged stablecoin (AE Coin) development advancing. Tether establishing regional operations. VARA framework explicitly covers stablecoin regulation. High institutional and retail adoption for cross-border trade." },
+        "onOffRampAccess": { "score": 8.0, "summary": "Multiple VARA-licensed exchanges with AED banking integration. Rain, BitOasis, and Binance Dubai offer seamless fiat on-ramps. Banks including Emirates NBD increasingly crypto-friendly." },
+        "tokenizedRwaMaturity": { "score": 6.5, "summary": "ADGM positioning as tokenization hub with dedicated DLT Foundations framework. Dubai Land Department piloting tokenized real estate. DIFC Innovation Hub hosting tokenization startups. Regional leader." },
+        "crossBorderPayments": { "score": 8.0, "summary": "Major remittance hub. Stablecoin adoption growing. Cross-border CBDC pilots with Saudi Arabia (Aber). Dubai as finance crossroads." },
+        "digitalNomadFriendliness": { "score": 8.0, "summary": "Virtual Working Programme (1-year remote work visa). Excellent coworking and infrastructure. World-class connectivity. Expat-friendly." },
+        "cryptoDigitalLiteracy": { "score": 7.5, "summary": "Dubai positioning as global crypto capital. High awareness among expat and business community. Multiple crypto events and conferences." }
       }
     },
     {
@@ -538,32 +314,18 @@
       "name": "Thailand",
       "region": "Asia-Pacific",
       "flag": "th",
-      "overallRating": "Medium",
+      "overallScore": 5.8,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "National Digital ID framework expanding. ThaID app enabling digital identity verification. Integration with government services progressing."
-        },
-        "userSovereignty": {
-          "rating": "Medium",
-          "summary": "PDPA (2019) provides privacy framework. Consent requirements mandated. Enforcement capacity building. Data localization requirements in some sectors."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "Digital Government Development Plan advancing API availability. PromptPay demonstrates payment programmability. e-Government portal modernizing."
-        },
-        "interoperability": {
-          "rating": "Medium",
-          "summary": "Government agencies increasingly connected. ASEAN digital economy agreements advancing. Internal data sharing improving."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Digital signatures legally recognized. Land department piloting blockchain. Document verification infrastructure developing."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "SEC regulates digital assets. Retail CBDC pilot conducted. Property registries digitalizing. Business registration online available."
-        }
+        "eGovServiceDepth": { "score": 5.5, "summary": "Digital Government Development Plan advancing. PromptPay demonstrates payment innovation. E-government modernizing but many services still manual." },
+        "digitalIdentityInfra": { "score": 5.5, "summary": "ThaID app enabling digital identity verification. National Digital ID framework expanding. Integration with government services progressing." },
+        "govInteroperability": { "score": 4.5, "summary": "Government Data Exchange Center (GDX) connecting agencies gradually. PromptPay infrastructure shows interoperability potential. Many government databases still disconnected and ministry-specific." },
+        "legalClarityDigitalAssets": { "score": 6.5, "summary": "SEC and Bank of Thailand regulate crypto. Digital Asset Business decree clear. Emergency Decree for Digital Assets. Evolving but structured." },
+        "stablecoinAdoption": { "score": 5.0, "summary": "Moderate stablecoin usage on licensed exchanges. Bank of Thailand cautious on stablecoins after banning some crypto payments. USDT used for cross-border transfers via P2P. Retail CBDC pilot explored as alternative." },
+        "onOffRampAccess": { "score": 6.5, "summary": "Licensed exchanges like Bitkub and Satang Pro offer THB on-ramps via bank transfer. Banking integration established through SEC-regulated platforms. Accessible but limited number of licensed operators." },
+        "tokenizedRwaMaturity": { "score": 3.0, "summary": "SEC approved investment token framework. Siam Commercial Bank exploring tokenized bonds. Small number of tokenized real estate projects. Regulatory openness ahead of most ASEAN peers." },
+        "crossBorderPayments": { "score": 6.0, "summary": "PromptPay linked with Singapore PayNow. Cross-border QR payments in ASEAN. Remittance corridors improving. Retail CBDC pilot conducted." },
+        "digitalNomadFriendliness": { "score": 8.0, "summary": "Long-Term Resident (LTR) visa for remote workers. Chiang Mai and Bangkok nomad capitals. Excellent coworking. Great value lifestyle." },
+        "cryptoDigitalLiteracy": { "score": 7.0, "summary": "Active crypto trading community. SEC regulates digital assets. Retail adoption growing. Thai exchanges well-established." }
       }
     },
     {
@@ -571,32 +333,18 @@
       "name": "Barbados",
       "region": "Americas",
       "flag": "bb",
-      "overallRating": "Medium",
+      "overallScore": 4.6,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Medium",
-          "summary": "National ID system provides foundation. Digital government services expanding. Integration across services developing."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data protection framework developing. Consent mechanisms basic. Privacy infrastructure limited. CARICOM harmonization efforts underway."
-        },
-        "serviceProgrammability": {
-          "rating": "Low",
-          "summary": "E-government portal operational but API availability limited. Digital transformation ongoing. Many services still require in-person visits."
-        },
-        "interoperability": {
-          "rating": "Low",
-          "summary": "Limited cross-agency data sharing. CARICOM identity initiatives developing. Small scale enables faster coordination."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Exploring blockchain for land registry and government records. Digital signatures recognized. Verification infrastructure developing."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Medium",
-          "summary": "Early CBDC adopter with DCash participation. Crypto framework developing. Property and business registries partially digital."
-        }
+        "eGovServiceDepth": { "score": 5.0, "summary": "E-government portal operational but limited. Digital transformation ongoing. Small scale enables faster coordination when prioritized." },
+        "digitalIdentityInfra": { "score": 4.5, "summary": "National ID system provides foundation. Digital government services expanding. Cross-service integration developing." },
+        "govInteroperability": { "score": 3.5, "summary": "Small government scale aids coordination but technical infrastructure limited. No formal API exchange layer between agencies. CARICOM-level interoperability discussions underway but nascent." },
+        "legalClarityDigitalAssets": { "score": 5.0, "summary": "Financial Services Commission exploring crypto framework. DCash pilot demonstrates openness. Regulatory clarity still developing." },
+        "stablecoinAdoption": { "score": 3.5, "summary": "DCash CBDC pilot provided some stablecoin-like functionality in the Eastern Caribbean. Limited private stablecoin usage. Small market size constrains adoption." },
+        "onOffRampAccess": { "score": 4.0, "summary": "Very limited local crypto exchange options. Most users rely on international platforms. Banking integration for crypto nonexistent. Small market makes it uneconomical for major exchanges." },
+        "tokenizedRwaMaturity": { "score": 2.0, "summary": "No tokenization activity or framework. Financial Services Commission focused on foundational crypto regulation first. Some interest in tokenized sovereign debt concepts." },
+        "crossBorderPayments": { "score": 5.0, "summary": "DCash CBDC participation. Traditional remittance costs high. Limited fintech infrastructure. CARICOM payment integration nascent." },
+        "digitalNomadFriendliness": { "score": 8.0, "summary": "Barbados Welcome Stamp (12-month remote work visa) was one of the first globally. Beautiful island lifestyle. Growing coworking." },
+        "cryptoDigitalLiteracy": { "score": 5.0, "summary": "Growing crypto awareness. DCash (CBDC) participation. Small but engaged community. Fintech interest rising." }
       }
     },
     {
@@ -604,32 +352,18 @@
       "name": "Tanzania",
       "region": "Middle East & Africa",
       "flag": "tz",
-      "overallRating": "Low",
+      "overallScore": 2.8,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Low",
-          "summary": "National ID (NIDA) coverage expanding. Integration with services limited. Most citizens still rely on paper documents."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data protection framework nascent. Consent mechanisms undefined in most services. Privacy awareness and infrastructure limited."
-        },
-        "serviceProgrammability": {
-          "rating": "Low",
-          "summary": "Limited government API availability. E-government initiatives early stage. Mobile money provides programmable payment infrastructure."
-        },
-        "interoperability": {
-          "rating": "Low",
-          "summary": "Government agencies largely disconnected. Limited data sharing frameworks. EAC regional cooperation developing slowly."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Low",
-          "summary": "Digital signatures not widely used. Record verification manual. No blockchain infrastructure for government records."
-        },
-        "digitalAssetMaturity": {
-          "rating": "Low",
-          "summary": "Restrictive stance on cryptocurrency. Mobile money dominant for digital transactions. Registries largely paper-based."
-        }
+        "eGovServiceDepth": { "score": 3.0, "summary": "E-government initiatives early stage. NIDA providing national ID coverage. Limited online service delivery. Mobile money fills gaps." },
+        "digitalIdentityInfra": { "score": 3.0, "summary": "National ID (NIDA) coverage expanding. Integration with services limited. Most citizens still rely on paper documents." },
+        "govInteroperability": { "score": 2.0, "summary": "Minimal government data sharing infrastructure. Agencies operate independently with paper-based processes. Tanzania National e-Government Agency (eGA) established but technical capacity limited." },
+        "legalClarityDigitalAssets": { "score": 2.0, "summary": "No crypto regulatory framework. Central Bank stance cautious. No formal ban but no formal recognition. Legal vacuum." },
+        "stablecoinAdoption": { "score": 2.0, "summary": "Negligible stablecoin adoption. No regulatory framework. Some informal USDT P2P trading among tech-savvy urban youth. Mobile money dominant for digital value transfer." },
+        "onOffRampAccess": { "score": 2.0, "summary": "No licensed crypto exchanges. P2P trading only option. Banking system not integrated with any crypto platforms. Mobile money (M-Pesa, Tigo Pesa) serves as informal bridge." },
+        "tokenizedRwaMaturity": { "score": 1.0, "summary": "No tokenization activity, framework, or institutional interest. Focus remains on basic financial inclusion via mobile money. Blockchain awareness limited to small tech community." },
+        "crossBorderPayments": { "score": 5.0, "summary": "Mobile money dominant (M-Pesa, Tigo Pesa). EAC cross-border mobile money growing. Remittance costs declining via mobile channels." },
+        "digitalNomadFriendliness": { "score": 3.5, "summary": "No digital nomad visa. Tourist visa available. Zanzibar attracting some nomads. Internet connectivity limited outside cities." },
+        "cryptoDigitalLiteracy": { "score": 4.0, "summary": "Growing crypto awareness among youth. P2P trading increasing. Mobile money users exploring crypto. Small developer community." }
       }
     },
     {
@@ -637,32 +371,18 @@
       "name": "El Salvador",
       "region": "Americas",
       "flag": "sv",
-      "overallRating": "Medium",
+      "overallScore": 5.5,
       "metrics": {
-        "contextContinuity": {
-          "rating": "Low",
-          "summary": "DUI (national ID) provides basic identity. Digital identity infrastructure developing. Integration across services limited."
-        },
-        "userSovereignty": {
-          "rating": "Low",
-          "summary": "Data protection law exists but enforcement limited. Consent mechanisms basic. Privacy infrastructure underdeveloped."
-        },
-        "serviceProgrammability": {
-          "rating": "Medium",
-          "summary": "Government services digitizing gradually. Chivo wallet demonstrates digital payment APIs. E-government portal expanding capabilities."
-        },
-        "interoperability": {
-          "rating": "Low",
-          "summary": "Limited agency interoperability. SICA regional framework provides cooperation basis. Internal data sharing fragmented."
-        },
-        "verifiableInfrastructure": {
-          "rating": "Medium",
-          "summary": "Blockchain adoption for national purposes unique globally. Digital signatures recognized. Government exploring blockchain records."
-        },
-        "digitalAssetMaturity": {
-          "rating": "High",
-          "summary": "Bitcoin legal tender - unprecedented digital asset framework. Chivo wallet government-backed. Volcano bonds innovating sovereign finance. National Bitcoin reserve established."
-        }
+        "eGovServiceDepth": { "score": 4.0, "summary": "Government services digitizing gradually. Chivo wallet demonstrates digital government payment capability. E-government portal expanding." },
+        "digitalIdentityInfra": { "score": 3.5, "summary": "DUI provides basic national ID. Digital identity infrastructure developing. Integration across services limited." },
+        "govInteroperability": { "score": 3.0, "summary": "Limited cross-agency data sharing. Chivo wallet integration shows government digital capability. Most agencies operate independently with minimal technical coordination." },
+        "legalClarityDigitalAssets": { "score": 7.5, "summary": "Most progressive Bitcoin legal framework globally. Bitcoin legal tender. National Bitcoin reserve. Clear regulatory stance even if controversial." },
+        "stablecoinAdoption": { "score": 7.0, "summary": "Bitcoin legal tender status drives broader crypto acceptance. USDT and USDC used alongside Bitcoin for commerce. Growing stablecoin usage in remittance corridors from the US. Lightning Network enables stablecoin-like speed." },
+        "onOffRampAccess": { "score": 7.0, "summary": "Chivo wallet provides government-backed Bitcoin on-ramp. Bitcoin ATMs widespread. Multiple local and international exchanges operating. Banking integration evolving post-Bitcoin Law." },
+        "tokenizedRwaMaturity": { "score": 2.5, "summary": "National Bitcoin Office exploring tokenized government bonds (Volcano Bonds concept). Regulatory openness to innovation. No institutional tokenization projects live yet." },
+        "crossBorderPayments": { "score": 7.0, "summary": "Lightning Network reducing remittance costs from US. Bitcoin enabling cheaper cross-border transfers. Traditional channels still dominant." },
+        "digitalNomadFriendliness": { "score": 5.5, "summary": "Growing nomad scene in El Zonte (Bitcoin Beach). No dedicated visa but easy entry. Affordable. Surf and nature lifestyle." },
+        "cryptoDigitalLiteracy": { "score": 8.0, "summary": "Bitcoin legal tender since 2021—unprecedented global experiment. Chivo wallet distributed nationally. High awareness. Growing Lightning Network usage." }
       }
     }
   ]

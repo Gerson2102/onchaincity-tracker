@@ -8,7 +8,7 @@ import type {
   SortableColumn,
   LeaderboardFilters,
   RegionFilter,
-  RatingFilter,
+  ScoreTierFilter,
 } from "@/lib/types";
 import { getNextSortDirection } from "@/lib/utils";
 
@@ -20,17 +20,21 @@ const VALID_REGIONS: RegionFilter[] = [
   "Middle East & Africa",
 ];
 
-const VALID_RATINGS: RatingFilter[] = ["all", "High", "Medium", "Low"];
+const VALID_SCORE_TIERS: ScoreTierFilter[] = ["all", "strong", "moderate", "low"];
 
 const VALID_COLUMNS: SortableColumn[] = [
   "name",
   "overall",
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
+  "eGovServiceDepth",
+  "digitalIdentityInfra",
+  "govInteroperability",
+  "legalClarityDigitalAssets",
+  "stablecoinAdoption",
+  "onOffRampAccess",
+  "tokenizedRwaMaturity",
+  "crossBorderPayments",
+  "digitalNomadFriendliness",
+  "cryptoDigitalLiteracy",
 ];
 
 const VALID_DIRECTIONS: SortDirection[] = ["asc", "desc", null];
@@ -39,8 +43,8 @@ function isValidRegion(value: string | null): value is RegionFilter {
   return value !== null && VALID_REGIONS.includes(value as RegionFilter);
 }
 
-function isValidRating(value: string | null): value is RatingFilter {
-  return value !== null && VALID_RATINGS.includes(value as RatingFilter);
+function isValidScoreTier(value: string | null): value is ScoreTierFilter {
+  return value !== null && VALID_SCORE_TIERS.includes(value as ScoreTierFilter);
 }
 
 function isValidColumn(value: string | null): value is SortableColumn {
@@ -56,7 +60,7 @@ export interface UseLeaderboardFiltersReturn {
   filters: LeaderboardFilters;
   sortState: SortState;
   setRegion: (region: RegionFilter) => void;
-  setRating: (rating: RatingFilter) => void;
+  setScoreTier: (tier: ScoreTierFilter) => void;
   setSort: (column: SortableColumn) => void;
   clearAll: () => void;
   hasActiveFilters: boolean;
@@ -69,11 +73,11 @@ export function useLeaderboardFilters(): UseLeaderboardFiltersReturn {
   // Parse filters from URL
   const filters = useMemo<LeaderboardFilters>(() => {
     const regionParam = searchParams.get("region");
-    const ratingParam = searchParams.get("rating");
+    const tierParam = searchParams.get("tier");
 
     return {
       region: isValidRegion(regionParam) ? regionParam : "all",
-      rating: isValidRating(ratingParam) ? ratingParam : "all",
+      scoreTier: isValidScoreTier(tierParam) ? tierParam : "all",
     };
   }, [searchParams]);
 
@@ -114,17 +118,15 @@ export function useLeaderboardFilters(): UseLeaderboardFiltersReturn {
     [updateParams]
   );
 
-  const setRating = useCallback(
-    (rating: RatingFilter) => {
-      updateParams({ rating: rating === "all" ? null : rating });
+  const setScoreTier = useCallback(
+    (tier: ScoreTierFilter) => {
+      updateParams({ tier: tier === "all" ? null : tier });
     },
     [updateParams]
   );
 
   const setSort = useCallback(
     (column: SortableColumn) => {
-      // If clicking the same column, cycle direction
-      // If clicking a different column, start with desc
       let newDirection: SortDirection;
       if (sortState.column === column) {
         newDirection = getNextSortDirection(sortState.direction);
@@ -146,14 +148,14 @@ export function useLeaderboardFilters(): UseLeaderboardFiltersReturn {
 
   const hasActiveFilters =
     filters.region !== "all" ||
-    filters.rating !== "all" ||
+    filters.scoreTier !== "all" ||
     sortState.column !== null;
 
   return {
     filters,
     sortState,
     setRegion,
-    setRating,
+    setScoreTier,
     setSort,
     clearAll,
     hasActiveFilters,

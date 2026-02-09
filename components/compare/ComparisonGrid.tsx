@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import type { Country, MetricKey } from "@/lib/types";
+import type { Country } from "@/lib/types";
 import {
   COMPARISON_COLORS,
   METRIC_DEFINITIONS,
+  ALL_METRIC_KEYS,
 } from "@/lib/constants/tracker";
-import { RatingBadge } from "@/components/country/RatingBadge";
+import { ScoreBadge } from "@/components/country";
 import { getFlagUrl } from "@/lib/utils";
 import { hasMetricDivergence } from "@/lib/utils/comparison";
 import { cn } from "@/lib/utils";
@@ -15,15 +16,6 @@ import { ComparisonGridRow } from "./ComparisonGridRow";
 interface ComparisonGridProps {
   countries: Country[];
 }
-
-const metricKeys: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
 
 export function ComparisonGrid({ countries }: ComparisonGridProps) {
   return (
@@ -64,7 +56,7 @@ export function ComparisonGrid({ countries }: ComparisonGridProps) {
                   </span>
                 </div>
                 <div className="mt-1">
-                  <RatingBadge rating={country.overallRating} size="sm" />
+                  <ScoreBadge score={country.overallScore} size="sm" />
                 </div>
               </div>
             </div>
@@ -72,7 +64,7 @@ export function ComparisonGrid({ countries }: ComparisonGridProps) {
         </div>
 
         {/* Metric rows */}
-        {metricKeys.map((key) => (
+        {ALL_METRIC_KEYS.map((key) => (
           <ComparisonGridRow
             key={key}
             metricKey={key}
@@ -83,7 +75,7 @@ export function ComparisonGrid({ countries }: ComparisonGridProps) {
 
       {/* Mobile stacked card layout */}
       <div className="md:hidden space-y-4">
-        {metricKeys.map((key) => {
+        {ALL_METRIC_KEYS.map((key) => {
           const metricDef = METRIC_DEFINITIONS[key];
           const isDivergent = hasMetricDivergence(countries, key);
 
@@ -102,7 +94,7 @@ export function ComparisonGrid({ countries }: ComparisonGridProps) {
                 </h3>
                 {isDivergent && (
                   <span className="text-xs text-amber-700 font-medium">
-                    Ratings differ
+                    Scores differ
                   </span>
                 )}
               </div>
@@ -136,13 +128,13 @@ export function ComparisonGrid({ countries }: ComparisonGridProps) {
                         />
                       </div>
 
-                      {/* Name + rating + summary */}
+                      {/* Name + score + summary */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-sm font-medium text-charcoal">
                             {country.name}
                           </span>
-                          <RatingBadge rating={metric.rating} size="sm" />
+                          <ScoreBadge score={metric.score} size="sm" />
                         </div>
                         <p className="text-xs text-stone leading-relaxed line-clamp-2">
                           {metric.summary}

@@ -13,19 +13,16 @@ export function MetricAnalysis({ countries }: MetricAnalysisProps) {
 
   return (
     <section className="animate-fade-up delay-400">
-      {/* Section Header */}
       <div className="mb-8">
         <h2 className="heading-serif text-3xl text-charcoal mb-2">
           Metric <span className="heading-serif-italic">Analysis</span>
         </h2>
         <p className="text-stone">
-          Global performance distribution across each evaluation dimension.
+          Global performance distribution across each evaluation index.
         </p>
       </div>
 
-      {/* Metrics Card */}
       <div className="card-soft p-6 mb-6">
-        {/* Metric Bars */}
         <div className="space-y-1">
           {metricsData.map((data, index) => (
             <MetricBar
@@ -40,20 +37,19 @@ export function MetricAnalysis({ countries }: MetricAnalysisProps) {
         <div className="flex justify-center gap-6 text-xs mt-6 pt-4 border-t border-lavender/10">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-high)]" />
-            <span className="text-muted">High</span>
+            <span className="text-muted">High Performers (7-10)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-medium)]" />
-            <span className="text-muted">Medium</span>
+            <span className="text-muted">Developing (4-6)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm bg-[var(--color-rating-low)]" />
-            <span className="text-muted">Low</span>
+            <span className="text-muted">Emerging (0-3)</span>
           </div>
         </div>
       </div>
 
-      {/* Insight Callout */}
       <InsightCard
         insight={{
           id: "metric-insight",

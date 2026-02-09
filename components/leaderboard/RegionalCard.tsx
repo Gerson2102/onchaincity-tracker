@@ -9,32 +9,30 @@ interface RegionalCardProps {
 }
 
 export function RegionalCard({ stats, className }: RegionalCardProps) {
-  const { region, countryCount, highCount, mediumCount, lowCount, topPerformer } = stats;
+  const { region, countryCount, strongCount, moderateCount, lowCount, topPerformer } = stats;
   const total = countryCount;
 
-  const highPercent = (highCount / total) * 100;
-  const mediumPercent = (mediumCount / total) * 100;
+  const strongPercent = (strongCount / total) * 100;
+  const moderatePercent = (moderateCount / total) * 100;
   const lowPercent = (lowCount / total) * 100;
 
   return (
     <article className={cn("card-soft p-6", className)}>
-      {/* Region Header */}
       <h3 className="heading-serif text-xl text-charcoal mb-4">{region}</h3>
 
-      {/* Stats Row */}
       <div className="flex items-center gap-3 mb-3">
         <span className="text-sm text-stone">{countryCount} countries</span>
         <div className="flex items-center gap-1.5">
-          {highCount > 0 && (
+          {strongCount > 0 && (
             <div className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-[var(--color-rating-high)]" />
-              <span className="text-xs text-muted">{highCount}</span>
+              <span className="text-xs text-muted">{strongCount}</span>
             </div>
           )}
-          {mediumCount > 0 && (
+          {moderateCount > 0 && (
             <div className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-[var(--color-rating-medium)]" />
-              <span className="text-xs text-muted">{mediumCount}</span>
+              <span className="text-xs text-muted">{moderateCount}</span>
             </div>
           )}
           {lowCount > 0 && (
@@ -46,19 +44,18 @@ export function RegionalCard({ stats, className }: RegionalCardProps) {
         </div>
       </div>
 
-      {/* Mini Distribution Bar */}
       <div
         className="h-2 rounded-full overflow-hidden flex mb-5"
         role="img"
-        aria-label={`${region} distribution: ${highCount} High, ${mediumCount} Medium, ${lowCount} Low`}
+        aria-label={`${region} distribution: ${strongCount} High Performers, ${moderateCount} Developing, ${lowCount} Emerging`}
       >
         <div
           className="bg-[var(--color-rating-high)] transition-all duration-500"
-          style={{ width: `${highPercent}%` }}
+          style={{ width: `${strongPercent}%` }}
         />
         <div
           className="bg-[var(--color-rating-medium)] transition-all duration-500"
-          style={{ width: `${mediumPercent}%` }}
+          style={{ width: `${moderatePercent}%` }}
         />
         <div
           className="bg-[var(--color-rating-low)] transition-all duration-500"
@@ -66,7 +63,6 @@ export function RegionalCard({ stats, className }: RegionalCardProps) {
         />
       </div>
 
-      {/* Regional Leader */}
       {topPerformer && (
         <div className="pt-4 border-t border-lavender/10">
           <span className="label-subtle text-muted block mb-2">Regional Leader</span>

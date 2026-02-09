@@ -2,7 +2,7 @@
 
 import type { Country, MetricKey } from "@/lib/types";
 import { METRIC_DEFINITIONS, COMPARISON_COLORS } from "@/lib/constants/tracker";
-import { RatingBadge } from "@/components/country/RatingBadge";
+import { ScoreBadge } from "@/components/country";
 import { hasMetricDivergence } from "@/lib/utils/comparison";
 import { cn } from "@/lib/utils";
 
@@ -37,24 +37,24 @@ export function ComparisonGridRow({
         </span>
         {isDivergent && (
           <span className="text-xs text-amber-700 mt-0.5">
-            Ratings differ
+            Scores differ
           </span>
         )}
       </div>
 
-      {/* Country ratings */}
+      {/* Country scores */}
       {countries.map((country, index) => {
         const metric = country.metrics[metricKey];
 
         return (
           <div key={country.id} className="flex flex-col gap-2">
-            {/* Color indicator + Rating */}
+            {/* Color indicator + Score */}
             <div className="flex items-center gap-2">
               <span
                 className="w-2 h-2 rounded-full flex-shrink-0"
                 style={{ backgroundColor: COMPARISON_COLORS[index].hex }}
               />
-              <RatingBadge rating={metric.rating} size="sm" />
+              <ScoreBadge score={metric.score} size="sm" />
             </div>
 
             {/* Summary (truncated on mobile) */}

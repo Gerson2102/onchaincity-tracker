@@ -1,43 +1,34 @@
 import type { Country, MetricKey, CountryMetricRanks } from "@/lib/types";
-import { ratingToNumber } from "./tracker";
+import { ALL_METRIC_KEYS } from "@/lib/constants/tracker";
 
-const METRIC_KEYS: MetricKey[] = [
-  "contextContinuity",
-  "userSovereignty",
-  "serviceProgrammability",
-  "interoperability",
-  "verifiableInfrastructure",
-  "digitalAssetMaturity",
-];
+function countStrongMetrics(country: Country): number {
+  return ALL_METRIC_KEYS.filter((key) => country.metrics[key].score >= 7).length;
+}
 
-function countHighMetrics(country: Country): number {
-  return METRIC_KEYS.filter((key) => country.metrics[key].rating === "High").length;
+function totalMetricScore(country: Country): number {
+  return ALL_METRIC_KEYS.reduce((sum, key) => sum + country.metrics[key].score, 0);
 }
 
 /**
  * Rank all countries for a single metric.
- * Tiebreakers: metric rating desc → overall rating desc → high count desc → name asc.
- * Returns sequential unique ranks 1..N.
+ * Tiebreakers: metric score desc → overall score desc → total score desc → name asc.
  */
 export function rankCountriesByMetric(
   countries: Country[],
   metricKey: MetricKey
 ): Array<{ countryId: string; rank: number }> {
   const sorted = [...countries].sort((a, b) => {
-    // Primary: metric rating descending
-    const metricDiff =
-      ratingToNumber(b.metrics[metricKey].rating) -
-      ratingToNumber(a.metrics[metricKey].rating);
-    if (metricDiff !== 0) return metricDiff;
+    // Primary: metric score descending
+    const metricDiff = b.metrics[metricKey].score - a.metrics[metricKey].score;
+    if (Math.abs(metricDiff) > 0.001) return metricDiff;
 
-    // Secondary: overall rating descending
-    const overallDiff =
-      ratingToNumber(b.overallRating) - ratingToNumber(a.overallRating);
-    if (overallDiff !== 0) return overallDiff;
+    // Secondary: overall score descending
+    const overallDiff = b.overallScore - a.overallScore;
+    if (Math.abs(overallDiff) > 0.001) return overallDiff;
 
-    // Tertiary: high metrics count descending
-    const highDiff = countHighMetrics(b) - countHighMetrics(a);
-    if (highDiff !== 0) return highDiff;
+    // Tertiary: total metric score descending
+    const totalDiff = totalMetricScore(b) - totalMetricScore(a);
+    if (Math.abs(totalDiff) > 0.001) return totalDiff;
 
     // Quaternary: alphabetical by name ascending
     return a.name.localeCompare(b.name);
@@ -50,21 +41,18 @@ export function rankCountriesByMetric(
 }
 
 /**
- * Compute per-metric rankings for all countries across all 6 metrics.
- * Returns a Map keyed by country ID → CountryMetricRanks.
+ * Compute per-metric rankings for all countries across all 10 metrics.
  */
 export function computeAllMetricRankings(
   countries: Country[]
 ): Map<string, CountryMetricRanks> {
   const result = new Map<string, CountryMetricRanks>();
 
-  // Initialize entries for all countries
   for (const country of countries) {
     result.set(country.id, {} as CountryMetricRanks);
   }
 
-  // Rank each metric and fill in
-  for (const metricKey of METRIC_KEYS) {
+  for (const metricKey of ALL_METRIC_KEYS) {
     const ranked = rankCountriesByMetric(countries, metricKey);
     for (const { countryId, rank } of ranked) {
       const entry = result.get(countryId);

@@ -1,15 +1,21 @@
-export type Rating = "Low" | "Medium" | "High";
+export type ScoreTier = "strong" | "moderate" | "low";
+
+export type Pillar = "Digital Government" | "Legal & Financial" | "Lifestyle & Mobility";
 
 export type MetricKey =
-  | "contextContinuity"
-  | "userSovereignty"
-  | "serviceProgrammability"
-  | "interoperability"
-  | "verifiableInfrastructure"
-  | "digitalAssetMaturity";
+  | "eGovServiceDepth"
+  | "digitalIdentityInfra"
+  | "govInteroperability"
+  | "legalClarityDigitalAssets"
+  | "stablecoinAdoption"
+  | "onOffRampAccess"
+  | "tokenizedRwaMaturity"
+  | "crossBorderPayments"
+  | "digitalNomadFriendliness"
+  | "cryptoDigitalLiteracy";
 
 export interface MetricScore {
-  rating: Rating;
+  score: number;
   summary: string;
 }
 
@@ -18,7 +24,7 @@ export interface Country {
   name: string;
   region: string; // "Europe" | "Asia-Pacific" | "Americas" | "Middle East & Africa"
   flag: string; // ISO 3166-1 alpha-2 lowercase (e.g., "ee")
-  overallRating: Rating;
+  overallScore: number;
   metrics: Record<MetricKey, MetricScore>;
 }
 
@@ -41,11 +47,11 @@ export interface SortState {
 }
 
 export type RegionFilter = "all" | "Europe" | "Asia-Pacific" | "Americas" | "Middle East & Africa";
-export type RatingFilter = "all" | Rating;
+export type ScoreTierFilter = "all" | ScoreTier;
 
 export interface LeaderboardFilters {
   region: RegionFilter;
-  rating: RatingFilter;
+  scoreTier: ScoreTierFilter;
 }
 
 export interface RankedCountry extends Country {
@@ -53,24 +59,25 @@ export interface RankedCountry extends Country {
 }
 
 // Analytics types for Insights Dashboard
-export interface RatingCounts {
-  High: number;
-  Medium: number;
-  Low: number;
+export interface ScoreTierCounts {
+  strong: number;
+  moderate: number;
+  low: number;
   total: number;
 }
 
 export interface RegionalStats {
   region: string;
   countryCount: number;
-  highCount: number;
+  strongCount: number;
   topPerformer: Country | null;
 }
 
 export interface MetricDistribution {
   metric: MetricKey;
   displayName: string;
-  counts: RatingCounts;
+  counts: ScoreTierCounts;
+  averageScore: number;
 }
 
 export interface Insight {
@@ -87,8 +94,9 @@ export interface SpotlightData {
 }
 
 export interface EnhancedRegionalStats extends RegionalStats {
-  mediumCount: number;
+  moderateCount: number;
   lowCount: number;
+  averageScore: number;
 }
 
 export interface MetricAnalysisData extends MetricDistribution {

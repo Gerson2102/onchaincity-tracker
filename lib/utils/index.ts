@@ -1,10 +1,10 @@
 export { cn } from "./cn";
 export {
-  ratingToNumber,
-  numberToRating,
-  calculateOverallRating,
-  getRatingColor,
-  getRatingBgColor,
+  getScoreTier,
+  getScoreTierLabel,
+  getScoreColor,
+  getScoreBgColor,
+  calculateOverallScore,
   getCountryById,
   getCountriesByRegion,
   getFlagUrl,
@@ -15,7 +15,7 @@ export {
   filterCountries,
   assignRanks,
   getLeaderboardData,
-  countByRating,
+  countByScoreTier,
 } from "./leaderboard";
 export {
   parseCountryIdsFromUrl,
@@ -23,7 +23,6 @@ export {
   getSharedHighMetrics,
   getBiggestDivergence,
   hasMetricDivergence,
-  getMetricRatingDistribution,
   generateComparisonInsight,
 } from "./comparison";
 export {

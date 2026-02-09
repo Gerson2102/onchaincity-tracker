@@ -10,6 +10,7 @@ import {
 } from "react-simple-maps";
 import type { Country } from "@/lib/types";
 import { TOPOJSON_TO_ISO, isTrackedCountry } from "@/lib/countryCodeMap";
+import { getScoreTier } from "@/lib/utils";
 import { MapControls } from "./MapControls";
 import { CountryTooltip } from "./CountryTooltip";
 
@@ -23,16 +24,17 @@ const MIN_ZOOM = 1;
 const MAX_ZOOM = 8;
 const DEFAULT_CENTER: [number, number] = [0, 20];
 
-function getRatingColor(rating: string, hovered: boolean): string {
+function getScoreMapColor(score: number, hovered: boolean): string {
   const opacity = hovered ? 0.85 : 0.55;
-  switch (rating) {
-    case "High":
+  const tier = getScoreTier(score);
+  switch (tier) {
+    case "strong":
       // Teal - #115E59
       return `rgba(17, 94, 89, ${opacity})`;
-    case "Medium":
+    case "moderate":
       // Amber - #D97706
       return `rgba(217, 119, 6, ${opacity})`;
-    case "Low":
+    case "low":
       // Rose - #BE185D
       return `rgba(190, 24, 93, ${opacity})`;
     default:
@@ -109,13 +111,13 @@ export function WorldMap({ countries }: WorldMapProps) {
   );
 
   return (
-    <div className="relative w-full" role="application" aria-label="Interactive world map showing country ratings">
+    <div className="relative w-full" role="application" aria-label="Interactive world map showing country scores">
       {/* Keyboard-accessible country navigation */}
       <nav className="sr-only" aria-label="Map countries">
         <ul>
           {countries.map((c) => (
             <li key={c.id}>
-              <a href={`/country/${c.id}`}>{c.name} – rated {c.overallRating}</a>
+              <a href={`/country/${c.id}`}>{c.name} – scored {c.overallScore}/10</a>
             </li>
           ))}
         </ul>
@@ -154,7 +156,7 @@ export function WorldMap({ countries }: WorldMapProps) {
                     style={{
                       default: {
                         fill: country
-                          ? getRatingColor(country.overallRating, false)
+                          ? getScoreMapColor(country.overallScore, false)
                           : "#E8E4E0",
                         stroke: "#FFFFFF",
                         strokeWidth: 0.5,
@@ -163,7 +165,7 @@ export function WorldMap({ countries }: WorldMapProps) {
                       },
                       hover: {
                         fill: country
-                          ? getRatingColor(country.overallRating, true)
+                          ? getScoreMapColor(country.overallScore, true)
                           : "#E8E4E0",
                         stroke: "#FFFFFF",
                         strokeWidth: 0.5,
@@ -172,7 +174,7 @@ export function WorldMap({ countries }: WorldMapProps) {
                       },
                       pressed: {
                         fill: country
-                          ? getRatingColor(country.overallRating, true)
+                          ? getScoreMapColor(country.overallScore, true)
                           : "#E8E4E0",
                         stroke: "#FFFFFF",
                         strokeWidth: 0.5,
@@ -207,7 +209,7 @@ export function WorldMap({ countries }: WorldMapProps) {
 
       {/* Visually-hidden text alternative for screen readers */}
       <div className="sr-only">
-        <p>Interactive map of 20 countries rated by digital government infrastructure. Use Tab to navigate to individual countries, then Enter to view details.</p>
+        <p>Interactive map of 20 countries scored by digital government infrastructure. Use Tab to navigate to individual countries, then Enter to view details.</p>
       </div>
     </div>
   );
